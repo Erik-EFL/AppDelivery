@@ -10,7 +10,11 @@ const registerSchema = {
     });
 
     const { error } = schema.validate(body);
-    if (error) throw new Error('TODO: error');
+    if (error) {
+      const e = new Error('Some required fields are missing');
+      e.name = 'BadRequest';
+      throw e;
+    }
   }
 }
 
