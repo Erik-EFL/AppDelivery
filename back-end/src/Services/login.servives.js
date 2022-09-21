@@ -5,6 +5,7 @@ require('dotenv/config');
 const jwt = require('jsonwebtoken');
 const md5 = require('md5');
 const JWT_SECRET = require('../jwt.evaluation.key');
+const NotFoundError = require('../Errors/NotFoundError');
 
 const loginServices = {
   validateBody: runSchema(Joi.object({
@@ -26,7 +27,7 @@ const loginServices = {
     const { password, ...userWithoutPassword } = user.dataValues;
 
     if (!user || passwordHash !== password) {
-      throw new Error('Invalid fields');
+      throw new NotFoundError('User not found, please check your email and/or password');
     }
 
     const token = this.createToken(userWithoutPassword);
