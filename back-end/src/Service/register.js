@@ -1,18 +1,17 @@
-const { User } = require('../database/models');
+const { user } = require('../database/models');
 const { Op } = require("sequelize");
 const md5 = require('md5');
 
 const registerSevice = {
   register: async (body) => {
-
     const { name, password, email, role } = body;
 
     // check if user already exists
-    const userFound = await User.findOne({
+    const userFound = await user.findOne({
       where: {
         [Op.or]: [
-          { name },
-          { email },
+          { name: name },
+          { email: email },
         ],
       },
     });
@@ -23,10 +22,10 @@ const registerSevice = {
     }
 
     // hash password
-    const passwordHashed = md5(password);
+    const hashedPassword = md5(password);
 
     // store a user
-    const storedUser = await User.create({ name, email, password: passwordHashed, role });
+    const storedUser = await user.create({ name, email, password: hashedPassword, role });
 
     return storedUser;
 

@@ -1,7 +1,7 @@
 const Joi = require('joi');
 
 const registerSchema = {
-  register: () => {
+  register: (body) => {
     const schema = Joi.object({
       name: Joi.string().min(12).required(),
       email: Joi.string().email().required(),
