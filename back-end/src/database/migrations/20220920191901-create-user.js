@@ -6,13 +6,19 @@ module.exports = {
   {
     id: {
       type: Sequelize.INTEGER,
-      primaryKey: true,
       autoIncrement: true,
+      primaryKey: true,
+      allowNull: false,
+    },
+    name: Sequelize.STRING,
+    email: {
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
     },
     password: Sequelize.STRING,
-    email: Sequelize.STRING,
     role: Sequelize.STRING,
-  });
+    });
   },
 
   async down (queryInterface, Sequelize) {
