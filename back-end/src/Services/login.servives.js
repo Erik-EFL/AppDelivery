@@ -33,5 +33,6 @@ const loginServices = {
 
     return { token };
   }
-
 }
+
+module.exports = loginServices;
