@@ -12,6 +12,6 @@ const errorMiddleware = (err, _req, res, _next) => {
     console.warn(err); 
     return res.sendStatus(500);
   }
-}
+};
 
 module.exports = errorMiddleware;

@@ -1,6 +1,5 @@
 const loginServices = require('../Services/login.servives');
 
-
 const loginController = {
   async login(req, res) {
     const body = loginServices.validateBody(req.body);
