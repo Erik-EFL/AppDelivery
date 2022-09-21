@@ -7,9 +7,11 @@ export default {
     lightBlue: '#00CC9B',
     lemonGreen: '#66CC00',
     gold: '#CCB800',
+    white: '#E5E5E5',
   },
   text: {
     black: '#001813',
     whit: '#F2FFFC',
+    darkGreen: '#036B52',
   },
 };
