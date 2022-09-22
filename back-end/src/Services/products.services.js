@@ -19,7 +19,7 @@ const productsServices = {
     if (!product) throw new NotFoundError('Product not found');
 
     return product;
-  }
+  },
 };
 
 module.exports = productsServices;
