@@ -8,6 +8,9 @@ const errorMiddleware = (err, _req, res, _next) => {
     case 'NotFoundError':
       return res.status(404).json({ message });
 
+    case 'ConflictError':
+      return res.status(409).json({ message });
+
     default:
     console.warn(err); 
     return res.sendStatus(500);
