@@ -5,6 +5,7 @@ import * as Styles from './styles';
 export default function InputGeneric({ name, domId, value, placeholder }) {
   const [search, setSearch] = useState('');
 
+  console.log(search);
   return (
     <label htmlFor={ domId }>
       {name}
