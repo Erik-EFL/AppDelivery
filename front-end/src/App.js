@@ -3,8 +3,8 @@ import './App.css';
 import SimpleButton from './components/GenericButton/index';
 import GenericTextInput from './components/GenericInputs/index';
 import GenericSelect from './components/GenericSelect';
+import Counter from './components/Counter';
 import Navbar from './components/NavBar';
-import StatusButton from './components/StatusButton';
 
 function App() {
   return (
@@ -18,6 +18,7 @@ function App() {
       <SimpleButton readLine="Terciário" variant="secondary" />
       <GenericTextInput name="test" placeholder="Sou o text" />
       <GenericSelect name="test" />
+      <Counter description="Latinha de cerveja" />
     </div>
   );
 }
