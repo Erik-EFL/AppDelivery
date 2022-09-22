@@ -9,9 +9,16 @@ export default {
     gold: '#CCB800',
     white: '#E5E5E5',
   },
-  text: {
-    black: '#001813',
-    whit: '#F2FFFC',
-    darkGreen: '#036B52',
+  typography: {
+    textColor: {
+      black: '#001813',
+      whit: '#F2FFFC',
+      darkGreen: '#036B52',
+    },
+    textSize: {
+      sm: '24px',
+      md: '28px',
+      lg: '36px',
+    },
   },
 };
