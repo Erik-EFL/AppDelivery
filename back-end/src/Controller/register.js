@@ -5,6 +5,6 @@ const registerController = {
     const storedUser = await service.register(req.body);
     res.status(201).json(storedUser);
   },
-}
+};
 
 module.exports = registerController;

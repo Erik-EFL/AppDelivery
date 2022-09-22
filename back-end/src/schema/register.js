@@ -15,7 +15,7 @@ const registerSchema = {
       e.name = 'BadRequest';
       throw e;
     }
-  }
-}
+  },
+};
 
 module.exports = registerSchema;

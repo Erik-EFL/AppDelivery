@@ -1,6 +1,6 @@
-const { user } = require('../database/models');
-const { Op } = require("sequelize");
 const md5 = require('md5');
+const { user } = require('../database/models');
+const { Op } = require('sequelize');
 
 const registerSevice = {
   register: async (body) => {
@@ -10,8 +10,8 @@ const registerSevice = {
     const userFound = await user.findOne({
       where: {
         [Op.or]: [
-          { name: name },
-          { email: email },
+          { name },
+          { email },
         ],
       },
     });
@@ -28,8 +28,7 @@ const registerSevice = {
     const storedUser = await user.create({ name, email, password: hashedPassword, role });
 
     return storedUser;
-
-  }
-}
+  },
+};
 
 module.exports = registerSevice;
