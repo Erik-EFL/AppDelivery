@@ -1,7 +1,7 @@
 const { Router } = require('express');
-const controller = require('../Controller/register');
+const controller = require('../Controllers/register.controller');
 
-const { fieldsValidation } = require('../middleware/register');
+const { fieldsValidation } = require('../Middlewares/register.middleware');
 
 const router = Router();
 router.post('/', fieldsValidation, controller.register);
