@@ -2,17 +2,18 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import * as Styles from './styles';
 
-export default function GenericSelect({ name, domId, value }) {
+export default function GenericSelect({ name, domId, value, size }) {
   const [search, setSearch] = useState('');
 
   console.log(search);
   return (
-    <label htmlFor={ domId }>
-      {name}
+    <Styles.LabelGeneric htmlFor={ domId }>
+      <p>{name}</p>
       <Styles.GenericSelect
         type="text"
         id={ domId }
         value={ value }
+        size={ size }
         onChange={ (event) => setSearch(event.target.value) }
       >
         <option value="Test">Test</option>
@@ -22,11 +23,12 @@ export default function GenericSelect({ name, domId, value }) {
           )}
         ; */}
       </Styles.GenericSelect>
-    </label>
+    </Styles.LabelGeneric>
   );
 }
 
 GenericSelect.propTypes = {
+  size: PropTypes.string,
   name: PropTypes.string,
   domId: PropTypes.string,
   value: PropTypes.string,

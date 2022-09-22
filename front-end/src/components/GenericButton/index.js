@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Styles from './style';
 
-function index({ readLine, variant }) {
+function SimpleButton({ readLine, variant }) {
   return (
     <Styles.GenericButton variant={ variant }>
       {readLine}
@@ -10,9 +10,9 @@ function index({ readLine, variant }) {
   );
 }
 
-index.propTypes = {
+SimpleButton.propTypes = {
   readLine: PropTypes.string,
   variant: PropTypes.string,
 }.isRequired;
 
-export default index;
+export default SimpleButton;

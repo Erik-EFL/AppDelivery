@@ -4,7 +4,7 @@ const sizeHandleChange = (size) => {
   switch (size) {
   case 'sm':
     return `
-        width: 371px;
+        width: 325px;
       `;
   case 'md':
     return `
@@ -12,7 +12,7 @@ const sizeHandleChange = (size) => {
       `;
   default:
     return `
-        width: 325px;
+        width: 345px;
       `;
   }
 };
@@ -23,11 +23,17 @@ export const GenericInputText = styled.input`
   border-radius: 5px;
   padding: 12px;
 
-  ::placeholder {
-    color: #828282;
-  }
-
   ${({ size }) => sizeHandleChange(size)}
+`;
+
+export const LabelGeneric = styled.label`
+  display: flex;
+  flex-direction: column;
+
+   p {
+    padding: 5px;
+    margin-left: 8px;
+   }
 `;
 
 export const Box = styled.div`

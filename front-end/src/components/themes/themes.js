@@ -7,12 +7,12 @@ export default {
     lightBlue: '#00CC9B',
     lemonGreen: '#66CC00',
     gold: '#CCB800',
-    white: '#E5E5E5',
+    white: '#FFFFFF',
   },
   typography: {
     textColor: {
       black: '#001813',
-      whit: '#F2FFFC',
+      white: '#F2FFFC',
       darkGreen: '#036B52',
     },
     textSize: {
