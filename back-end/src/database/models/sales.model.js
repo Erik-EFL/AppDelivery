@@ -15,7 +15,7 @@ const createSale = (sequelize, DataTypes) => {
     totalPrice: DataTypes.DECIMAL(9,2),
     deliveryAddress: DataTypes.STRING,
     deliveryNumber: DataTypes.STRING,
-    salesDate: DataTypes.DATE,
+    saleDate: DataTypes.DATE,
     status: DataTypes.STRING,
   };
 
