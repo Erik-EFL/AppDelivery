@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+
 import {
   Counter,
   GenericButton,
@@ -30,6 +31,7 @@ function App() {
         orderId="0001"
       />
       <Counter description="Latinha de cerveja" />
+      <GenericProductCard description="test" price="2,20" name="Cerveja" img="https://www.imigrantesbebidas.com.br/bebida/images/products/full/222-cerveja-heineken-long-neck-330ml.jpg" />
     </div>
   );
 }
