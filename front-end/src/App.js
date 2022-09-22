@@ -1,10 +1,14 @@
 import React from 'react';
 import './App.css';
-import SimpleButton from './components/GenericButton/index';
-import GenericTextInput from './components/GenericInputs/index';
-import GenericSelect from './components/GenericSelect';
-import Counter from './components/Counter';
-import Navbar from './components/NavBar';
+import {
+  Counter,
+  GenericButton,
+  GenericInput,
+  GenericSelect,
+  Navbar,
+  ProductStatusCard,
+  StatusButton,
+} from './components';
 
 function App() {
   return (
@@ -13,11 +17,18 @@ function App() {
       <StatusButton status="ENTREGUE" />
       <StatusButton status="PREPARANDO" />
       <StatusButton status="PENDENTE" />
-      <SimpleButton readLine="Primário" variant="" />
-      <SimpleButton readLine="Secundário" variant="primary" />
-      <SimpleButton readLine="Terciário" variant="secondary" />
-      <GenericTextInput name="test" placeholder="Sou o text" />
+      <GenericButton readLine="Primário" variant="" />
+      <GenericButton readLine="Secundário" variant="primary" />
+      <GenericButton readLine="Terciário" variant="secondary" />
+      <GenericInput name="test" placeholder="Sou o text" />
       <GenericSelect name="test" />
+      <ProductStatusCard
+        userRole="seller"
+        adress="Rua Vila Bela,  Bairro Gurupi, 670"
+        price="00,00"
+        date="DD/MM/AA"
+        orderId="0001"
+      />
       <Counter description="Latinha de cerveja" />
     </div>
   );
