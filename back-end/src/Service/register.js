@@ -1,6 +1,6 @@
 const md5 = require('md5');
-const { user } = require('../database/models');
 const { Op } = require('sequelize');
+const { user } = require('../database/models');
 
 const registerSevice = {
   register: async (body) => {
