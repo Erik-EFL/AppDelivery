@@ -6,18 +6,18 @@ const simpleButtonVariant = (variant) => {
   case 'primary':
     return `
       background-color:${themes.bgPrimary.green};
-      color:${themes.text.whit}
+      color:${themes.typography.textColor.white}
       `;
   case 'secondary':
     return `
       background-color:${themes.bgPrimary.white};
-      color:${themes.text.darkGreen};
+      color:${themes.typography.textColor.darkGreen};
       border: 2px solid ${themes.bgPrimary.darkGreen};
     `;
   default:
     return `
       background-color:${themes.bgPrimary.darkGreen};
-      color:${themes.text.whit}
+      color:${themes.typography.textColor.white}
       `;
   }
 };
