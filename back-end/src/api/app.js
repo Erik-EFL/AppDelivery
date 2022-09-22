@@ -3,6 +3,7 @@ const express = require('express');
 
 const registerRoutes = require('../Routes/register.routes');
 const loginRoutes = require('../Routes/login.routes');
+const productsRoutes = require('../Routes/products.routes');
 
 const errorMiddleware = require('../Middlewares/error.middleware');
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.get('/coffee', (_req, res) => res.status(418).end());
 app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
+app.use('/products', productsRoutes);
 app.use(errorMiddleware);
 
 module.exports = app;
