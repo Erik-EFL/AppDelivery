@@ -8,9 +8,9 @@ const productsController = {
   },
 
   async get(req, res) {
-    const id = productsServices.validateParamsId(req.params.id);
+    const { id } = productsServices.validateParamsId(req.params);
 
-    const product = productsServices.get(id);
+    const product = await productsServices.get(id);
 
     return res.status(200).json(product);
   },
