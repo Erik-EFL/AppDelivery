@@ -25,7 +25,6 @@ function App() {
       <GenericInput name="test" placeholder="Sou o text" />
       <GenericSelect name="test" />
       <ProductStatusCard
-        userRole="seller"
         adress="Rua Vila Bela,  Bairro Gurupi, 670"
         price="00,00"
         date="DD/MM/AA"

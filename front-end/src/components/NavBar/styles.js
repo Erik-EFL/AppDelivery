@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const NavBarContainer = styled.div`
   width: 100%;
-  height: 105px;
+  height: 5rem;
   background-color: #036B52;
   display: flex;
   flex-direction: row;
@@ -12,7 +12,7 @@ export const NavBarContainer = styled.div`
 
 export const UsernameTextContainer = styled.div`
   height: 90%;
-  padding: 5px 40px;
+  padding: 0.25rem 2rem;
   background-color: #421981;
   display: flex;
   flex-direction: row;
@@ -21,15 +21,15 @@ export const UsernameTextContainer = styled.div`
 `;
 
 export const UsernameText = styled.p`
-  font-size: 36px;
+  font-size: 1.8rem;
   color: #F2FFFC;
   `;
 
 export const SimpleButton = styled.a`
-  font-size: 28px;
+  font-size: 1.4rem;
   color: #F2FFFC;
   height: 90%;
-  padding: ${(props) => (props.variant === 'logout' ? '5px 50px' : '5px 80px')};
+  padding: ${(props) => (props.variant === 'logout' ? '0.25rem 2.5rem' : '0.25rem 4rem')};
   display: flex;
   flex-direction: row;
   align-items: center;

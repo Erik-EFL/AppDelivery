@@ -8,10 +8,10 @@ export const ProductStatusCardContainer = styled.div`
   background-color: ${themes.bgPrimary.lightGray};
   width: fit-content;
   height: fit-content;
-  padding-right: 10px;
-  gap: 10px;
+  padding-right: .5rem;
+  gap: .5rem;
   border: 1px solid #B1C2BE;
-  box-shadow: 0px 4px 4px 0px #00000040;
+  box-shadow: 0 .2rem .2rem 0 #00000040;
 `;
 
 export const OrderIdContainer = styled.div`
@@ -20,24 +20,24 @@ export const OrderIdContainer = styled.div`
   align-items: center;
   background-color: ${themes.bgPrimary.white};
   flex-direction: column;
-  padding: ${({ userRole }) => (userRole === 'seller' ? '60px 50px' : '40px 50px')};
+  padding: ${({ userRole }) => (userRole === 'seller' ? '4.1rem 3rem' : '2.6rem 3rem')};
 `;
 
 export const OrderCardText = styled.p`
-  font-size: ${({ fontSize }) => (fontSize === 'md' ? '24px' : '36px')};
+  font-size: ${({ fontSize }) => (fontSize === 'md' ? '1.2rem' : '1.8rem')};
   color: ${themes.typography.textColor.black};
   font-weight: ${({ bold }) => (bold ? '700' : '400')};
   text-align: center;
 `;
 
 export const OrderInfoContainer = styled.div`
-  border-radius: 10px;
+  border-radius: .5rem;
   background-color: #F2FFFCBF;
-  padding: 10px 20px;
+  padding: .5rem 1rem;
 `;
 
 export const AdressText = styled.p`
-  font-size: 24px;
+  font-size: 1.2rem;
   text-align: right;
 `;
 
