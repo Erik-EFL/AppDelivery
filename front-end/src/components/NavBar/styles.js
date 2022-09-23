@@ -1,9 +1,10 @@
 import styled from 'styled-components';
+import themes from '../themes/themes';
 
 export const NavBarContainer = styled.div`
   width: 100%;
   height: 105px;
-  background-color: #036B52;
+  background-color: ${themes.bgPrimary.darkGreen};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -13,7 +14,7 @@ export const NavBarContainer = styled.div`
 export const UsernameTextContainer = styled.div`
   height: 90%;
   padding: 5px 40px;
-  background-color: #421981;
+  background-color: ${themes.bgPrimary.violet};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -22,19 +23,21 @@ export const UsernameTextContainer = styled.div`
 
 export const UsernameText = styled.p`
   font-size: 36px;
-  color: #F2FFFC;
+  color: ${themes.typography.textColor.white};
   `;
 
 export const SimpleButton = styled.a`
   font-size: 28px;
-  color: #F2FFFC;
+  color: ${themes.typography.textColor.white};
   height: 90%;
   padding: ${(props) => (props.variant === 'logout' ? '5px 50px' : '5px 80px')};
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: ${(props) => (props.variant === 'logout' ? '#056CF9' : '#036B52')};
+  background-color: ${(props) => (props.variant === 'logout'
+    ? `${themes.bgPrimary.blue}`
+    : `${themes.bgPrimary.darkGreen}`)};
 `;
 
 export const Box = styled.div`

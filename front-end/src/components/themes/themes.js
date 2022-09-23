@@ -8,6 +8,8 @@ export default {
     lemonGreen: '#66CC00',
     gold: '#CCB800',
     white: '#FFFFFF',
+    gray: '#B1C2BE',
+    lightGray: '#EAF1EF',
   },
   typography: {
     textColor: {

@@ -22,14 +22,15 @@ const simpleButtonVariant = (variant) => {
   }
 };
 
+const simpleButtonSizes = (bs, lt) => `${bs}px ${lt}px`;
+const simpleButtonFontSizes = (sz) => `font-size: ${sz}px`;
+
 export const GenericButton = styled.button`
   border-radius: 10px;
   border: none;
-  font-size: 28px;
   font-weight: 400;
-  height: 59px;
-  width: 332px;
-
+  padding: ${(props) => simpleButtonSizes(props.bs, props.lt)};
+  ${(props) => simpleButtonFontSizes(props.sz)};
   ${(props) => simpleButtonVariant(props.variant)}
 `;
 
