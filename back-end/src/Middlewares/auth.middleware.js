@@ -1,22 +1,16 @@
-const jwt = require('jsonwebtoken');
-require('dotenv/config');
+const UnauthorizedError = require('../Errors/UnauthorizedError');
+const { validateToken } = require('../Services/auth.services');
 
-const authMiddleware = async (req, res, next) => {
-  const { authorization } = req.headers;
-
-  if (!authorization) {
-    return res.status(401).json({ message: 'Token not found!' });
-  }
-
-  await jwt.verify(
-    authorization, 
-    process.env.JWT_SECRET,
-    (err, _decoded) => {
-      if (err) return res.status(401).json({ message: 'You must provide a valid token' });
-    },
-  );
-
+const authMiddleware = {
+  required: (req, _res, next) => {
+    const { authorization } = req.headers;
+    if (!authorization) {
+        throw new UnauthorizedError('Token not found');
+    }
+    const { data } = validateToken(authorization);
+    req.userId = data.id;
     next();
+  },
 };
 
 module.exports = authMiddleware;

@@ -13,7 +13,7 @@ const loginServices = {
   })),
 
   createToken(data) {
-    const token = jwt.sign({ data }, process.env.JWT_SECRET, {});
+    const token = jwt.sign({ data }, process.env.JWT_SECRET || 'secret', {});
     return token;
   },
 

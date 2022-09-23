@@ -12,14 +12,14 @@ const createSale = (sequelize, DataTypes) => {
     },
     userId: DataTypes.INTEGER,
     sellerId: DataTypes.INTEGER,
-    totalPrice: DataTypes.DECIMAL(9,2),
+    totalPrice: DataTypes.DECIMAL(9, 2),
     deliveryAddress: DataTypes.STRING,
     deliveryNumber: DataTypes.STRING,
-    salesDate: DataTypes.DATE,
+    saleDate: DataTypes.DATE,
     status: DataTypes.STRING,
   };
 
-  const options =   {
+  const options = {
     tableName: 'sales',
     underscored: true,
     timestamps: false,

@@ -11,6 +11,9 @@ const errorMiddleware = (err, _req, res, _next) => {
     case 'ConflictError':
       return res.status(409).json({ message });
 
+    case 'UnauthorizedError':
+      return res.status(401).json({ message });
+
     default:
     console.warn(err); 
     return res.sendStatus(500);
