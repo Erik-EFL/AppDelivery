@@ -10,11 +10,14 @@ export default {
     white: '#FFFFFF',
     gray: '#B1C2BE',
     lightGray: '#EAF1EF',
+    iceWhite: '#f2fffcBF',
+    black: '#000019',
+    blackShadow: '#00000040',
   },
   typography: {
     textColor: {
       black: '#001813',
-      white: '#F2FFFC',
+      iceWhite: '#F2FFFCBF',
       darkGreen: '#036B52',
     },
     textSize: {

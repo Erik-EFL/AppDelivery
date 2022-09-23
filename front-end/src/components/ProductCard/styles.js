@@ -6,21 +6,21 @@ export const ProductCard = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border: 1px solid ${themes.bgPrimary.gray};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  width: 359px;
-  height: 479px;
+  border: 1px solid  ${themes.bgPrimary.gray};
+  box-shadow: 0 .2rem .2rem  ${themes.bgPrimary.blackShadow};
+  width: 18rem;
+  height: 24rem;
 
   span {
     position: absolute;
     box-sizing: border-box;
-    top: 3px;
-    left: 3px;
-    background-color: rgba(242, 255, 252, 0.75);
-    font-size: 28px;
-    padding: 8px;
+    top: .15rem;
+    left: .15rem;
+    background-color:  ${themes.bgPrimary.iceWhite};
+    font-size: 1.4rem;
+    padding: .4rem;
     z-index: 10;
-    border-radius: 10px;
+    border-radius: .5rem;
   }
 `;
 
@@ -28,8 +28,8 @@ export const BoxImage = styled.div`
   position: relative;
   box-sizing: border-box;
   display: flex;
-  width: 357px;
-  height: 357px;
+  width: 17.8rem;
+  height: 17.8rem;
   align-items: center;
 
   img {
@@ -45,7 +45,7 @@ export const Box = styled.div`
   justify-content: center;
   align-items: center;
   align-content: center;
-  height: 122px;
+  height: 6.1rem;
   background-color: ${themes.bgPrimary.lightGray};
   flex-direction: ${(props) => (props.direction === 'row' ? 'row' : 'column')};
 `;
