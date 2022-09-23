@@ -7,6 +7,7 @@ const sellerRoutes = require('../Routes/seller.routes');
 const productsRoutes = require('../Routes/products.routes');
 
 const errorMiddleware = require('../Middlewares/error.middleware');
+const salesRouter = require('../Routes/sales.routes');
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use('/login', loginRoutes);
 app.use('/register', registerRoutes);
 app.use('/seller', sellerRoutes);
 app.use('/products', productsRoutes);
+app.use('/orders', salesRouter);
 app.use(errorMiddleware);
 
 module.exports = app;
