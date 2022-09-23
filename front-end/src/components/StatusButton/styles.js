@@ -22,13 +22,13 @@ export const StatusButtonContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  padding: 40px 20px;
-  width: 290px;
+  border-radius: .5rem;
+  padding: 2rem 1rem;
+  width: 14.5rem;
   ${(props) => StatusButtonProps(props.status)}
 `;
 
 export const StatusButtonText = styled.p`
-  font-size: 36px;
+  font-size: 1.8rem;
   font-weight: 700;
 `;
