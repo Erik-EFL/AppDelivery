@@ -13,6 +13,7 @@ const salesService = {
 
   validateBody: runSchema(Joi.object({
     sellerId: Joi.number().integer().positive().required(),
+    userId: Joi.number().integer().positive().required(),
     products: Joi.array().items(Joi.object({
       productId: Joi.number().integer().positive().required(),
       quantity: Joi.number().integer().positive().min(1)
@@ -42,14 +43,13 @@ const salesService = {
     }));
   },
 
-  async create(userId, payload) {
+  async create(payload) {
     const { products, ...body } = payload;
 
     await this.validateProducts(products);
 
     const [sale, created] = await db.sale.findOrCreate({
       where: {
-        userId,
         ...body,
         salesDate: new Date(),
         status: 'Pendente',

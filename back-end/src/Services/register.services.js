@@ -27,12 +27,6 @@ const registerSevice = {
 
     return storedUser;
   },
-
-  //  get userId from a token
-  getUserId(token) {
-    const { data } = jwt.decode(token);
-    return data.id;
-  },
 };
 
 module.exports = registerSevice;
