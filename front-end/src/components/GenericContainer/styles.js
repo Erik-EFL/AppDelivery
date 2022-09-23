@@ -26,8 +26,24 @@ export const Container = styled.div`
   }
 `;
 
-export const Box = styled.div`
-  display: flex;
-  height: 100%;
-  flex-direction: ${(props) => (props.direction === 'row' ? 'row' : 'column')};
+const userRoleDefine = (role) => {
+  switch (role) {
+  case 'vendedor':
+    return `
+        repeat(5, 1fr)
+      `;
+  default:
+    return `
+        repeat(4, 1fr)
+      `;
+  }
+};
+
+export const OrderDetails = styled.div`
+  display: grid;
+  grid-template-columns: ${(props) => userRoleDefine(props.repeat)};
+  justify-content: space-between;
+  border: 1px solid black;
+  width: 100%;
+  margin: 0 auto;
 `;

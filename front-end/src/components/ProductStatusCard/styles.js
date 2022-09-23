@@ -36,7 +36,7 @@ export const OrderInfoContainer = styled.div`
   padding: 10px 20px;
 `;
 
-export const AdressText = styled.p`
+export const AddressText = styled.p`
   font-size: 24px;
   text-align: right;
 `;
