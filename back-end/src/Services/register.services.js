@@ -1,4 +1,5 @@
 const md5 = require('md5');
+const jwt = require('jsonwebtoken');
 const { Op } = require('sequelize');
 const { user } = require('../database/models');
 const ConflictError = require('../Errors/ConflictError');
@@ -25,6 +26,12 @@ const registerSevice = {
     const storedUser = await user.create({ name, email, password: hashedPassword, role });
 
     return storedUser;
+  },
+
+  //  get userId from a token
+  getUserId(token) {
+    const { data } = jwt.decode(token);
+    return data.id;
   },
 };
 
