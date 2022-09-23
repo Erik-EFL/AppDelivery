@@ -1,5 +1,4 @@
 const md5 = require('md5');
-const jwt = require('jsonwebtoken');
 const { Op } = require('sequelize');
 const { user } = require('../database/models');
 const ConflictError = require('../Errors/ConflictError');
