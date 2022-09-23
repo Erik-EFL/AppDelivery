@@ -20,9 +20,9 @@ function App() {
       <StatusButton status="ENTREGUE" />
       <StatusButton status="PREPARANDO" />
       <StatusButton status="PENDENTE" />
-      <GenericButton readLine="Primário" variant="" />
-      <GenericButton readLine="Secundário" variant="primary" />
-      <GenericButton readLine="Terciário" variant="secondary" />
+      <GenericButton readLine="Primário" variant="" bs="6" lt="26" />
+      <GenericButton readLine="Secundário" variant="primary" bs="6" lt="26" />
+      <GenericButton readLine="Terciário" variant="secondary" bs="6" lt="26" />
       <GenericInput name="test" placeholder="Sou o text" />
       <GenericSelect name="test" />
       <ProductStatusCard
@@ -39,7 +39,10 @@ function App() {
         name="Cerveja"
         img="https://www.imigrantesbebidas.com.br/bebida/images/products/full/222-cerveja-heineken-long-neck-330ml.jpg"
       />
-      <GenericContainer pageName="Finalizar Pedido" />
+      <GenericContainer
+        pageName="Detalhes do Pedido"
+        userType="vendedor"
+      />
     </div>
   );
 }

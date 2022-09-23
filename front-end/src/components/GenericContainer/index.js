@@ -5,7 +5,7 @@ import * as Styles from './styles';
 import InfoBar from './subComponents/BarContainer';
 
 const selectedPage = (page, role) => {
-  if (page === '') {
+  if (page === 'Detalhes do Pedido' && role === 'comprador') {
     return (
       <main>
         <InfoBar pageName="" userRole="" date="" orderId="" />
@@ -26,25 +26,25 @@ const selectedPage = (page, role) => {
       <Styles.Container>
         <header>Detalhes e Endereço para Entrega</header>
         <main>
-          <TableBar pageName="" userRole="" />
+          <TableBar pageName={ page } userRole={ role } />
         </main>
       </Styles.Container>
     );
   }
 };
 
-const testRole = '';
-function GenericContainer({ pageName }) {
+function GenericContainer({ pageName, userType }) {
   return (
     <Styles.Container>
       <header>{`${pageName}`}</header>
-      {selectedPage(pageName, testRole)}
+      {selectedPage(pageName, userType)}
     </Styles.Container>
   );
 }
 
 GenericContainer.propTypes = {
   pageName: PropTypes.string,
+  userType: PropTypes.string,
 }.isRequired;
 
 export default GenericContainer;
