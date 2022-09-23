@@ -23,12 +23,12 @@ const simpleButtonVariant = (variant) => {
 };
 
 export const GenericButton = styled.button`
-  border-radius: 10px;
+  border-radius: .5rem;
   border: none;
-  font-size: 28px;
+  font-size: 1.4rem;
   font-weight: 400;
-  height: 59px;
-  width: 332px;
+  height: 3rem;
+  width: 16.6rem;
 
   ${(props) => simpleButtonVariant(props.variant)}
 `;
