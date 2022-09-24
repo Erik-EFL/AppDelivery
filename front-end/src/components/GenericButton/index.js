@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Styles from './style';
 
-function SimpleButton({ readLine, variant }) {
+function SimpleButton({ readLine, variant, large, id, onClick }) {
   return (
-    <Styles.GenericButton variant={ variant }>
+    <Styles.GenericButton
+      onClick={ onClick }
+      id={ id }
+      variant={ variant }
+      large={ large }
+    >
       {readLine}
     </Styles.GenericButton>
   );

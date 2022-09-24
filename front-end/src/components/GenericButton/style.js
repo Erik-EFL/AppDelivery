@@ -10,7 +10,7 @@ const simpleButtonVariant = (variant) => {
       `;
   case 'secondary':
     return `
-      background-color:${themes.bgPrimary.white};
+      background-color: transparent;
       color:${themes.typography.textColor.darkGreen};
       border: 2px solid ${themes.bgPrimary.darkGreen};
     `;
@@ -28,7 +28,7 @@ export const GenericButton = styled.button`
   font-size: 1.4rem;
   font-weight: 400;
   height: 3rem;
-  width: 16.6rem;
+  width: ${({ large }) => (large ? '100%' : '16.6rem')};
 
   ${(props) => simpleButtonVariant(props.variant)}
 `;
