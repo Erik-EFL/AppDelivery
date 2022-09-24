@@ -10,7 +10,7 @@ const simpleButtonVariant = (variant) => {
       `;
   case 'secondary':
     return `
-      background-color:${themes.bgPrimary.white};
+      background-color: transparent;
       color:${themes.typography.textColor.darkGreen};
       border: 2px solid ${themes.bgPrimary.darkGreen};
     `;

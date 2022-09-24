@@ -20,6 +20,14 @@ const productsServices = {
 
     return product;
   },
+
+  async checkProducts(products) {
+    const result = await db.product.findAll({
+      where: { products },
+    });
+    
+    return result;
+  },
 };
 
 module.exports = productsServices;
