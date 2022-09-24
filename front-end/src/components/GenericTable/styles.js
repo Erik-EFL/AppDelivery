@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-// import themes from '../themes/themes';
+import themes from '../themes/themes';
 
 export const TableHeader = styled.table`
   border-collapse: collapse;
   width: 100%;
   th {
+    font-size: ${themes.typography.textSize.md};
     text-align: center;
     padding: 8px;
   }
