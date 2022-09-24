@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import * as Styles from './style';
 
-function SimpleButton({ dataTestid, readLine, variant, bs, lt, sz }) {
+function SimpleButton({ dataTestid, readLine, variant, wdt, hgt, fs }) {
   return (
     <Styles.GenericButton
       data-testid={ dataTestid }
-      bs={ bs }
-      lt={ lt }
-      sz={ sz }
+      wdt={ wdt }
+      hgt={ hgt }
+      fs={ fs }
       variant={ variant }
     >
       {readLine}
@@ -17,11 +17,11 @@ function SimpleButton({ dataTestid, readLine, variant, bs, lt, sz }) {
 }
 
 SimpleButton.propTypes = {
-  bs: PropTypes.number,
+  wdt: PropTypes.number,
+  fs: PropTypes.number,
   dataTestid: PropTypes.string,
-  lt: PropTypes.number,
+  hgt: PropTypes.number,
   readLine: PropTypes.string,
-  sz: PropTypes.number,
   variant: PropTypes.string,
 }.isRequired;
 

@@ -23,12 +23,12 @@ export const UsernameTextContainer = styled.div`
 
 export const UsernameText = styled.p`
   font-size: 1.8rem;
-  color: ${themes.typography.textColor.white};
+  color: ${themes.typography.textColor.iceWhite};
   `;
 
 export const SimpleButton = styled.a`
   font-size: 1.4rem;
-  color: ${themes.typography.textColor.white};
+  color: ${themes.typography.textColor.iceWhite};
   height: 90%;
   padding: ${(props) => (props.variant === 'logout' ? '0.25rem 2.5rem' : '0.25rem 4rem')};
   display: flex;
