@@ -36,7 +36,9 @@ const selectedPage = (page, role) => {
 function GenericContainer({ pageName, userType }) {
   return (
     <Styles.Container>
-      <header>{`${pageName}`}</header>
+      <header>
+        <h1>{`${pageName}`}</h1>
+      </header>
       {selectedPage(pageName, userType)}
     </Styles.Container>
   );
