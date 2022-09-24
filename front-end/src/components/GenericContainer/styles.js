@@ -12,17 +12,18 @@ export const Container = styled.div`
     margin: 0 auto;
     padding: 16px;
     font-size: ${themes.typography.textSize.lg};
+
   }
 
   main {
-    padding: 8px;
-    width: 80%;
+    position: relative;
+    width: 90%;
     margin: 0 auto;
-    margin-bottom: 30px;
-    height: 708.1px;
+    margin-bottom: 4rem;
+    height: 70.45rem;
     background: ${themes.bgPrimary.white};
     border: 1px solid ${themes.bgPrimary.gray};
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px ${themes.bgPrimary.blackShadow};
   }
 `;
 
@@ -39,11 +40,42 @@ const userRoleDefine = (role) => {
   }
 };
 
-export const OrderDetails = styled.div`
-  display: grid;
-  grid-template-columns: ${(props) => userRoleDefine(props.repeat)};
+export const OrderDetails = styled.table`
+/*   display: grid;
+  grid-template-columns: ${(props) => userRoleDefine(props.repeat)}; */
+
+  background-color: ${themes.bgPrimary.lightGray};
   justify-content: space-between;
-  border: 1px solid black;
   width: 100%;
-  margin: 0 auto;
+  justify-content: center;
+  align-content: center;
+  align-items: baseline;
+  padding: .5rem;
+
+  .peopleName {
+    display: flex;
+    flex-direction: row;
+    margin-left: 1rem;
+  }
+
+  .date {
+    display: block;
+    height: 2.63rem;
+    width: 13.2rem;
+    border-radius: .5rem;
+    background-color: ${themes.bgPrimary.iceWhite};
+  }
+`;
+
+export const TH3 = styled.h3`
+  display: inline;
+  font-size: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+`;
+
+export const TSPAN = styled.span`
+  margin-left: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 `;
