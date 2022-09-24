@@ -1,14 +1,15 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import * as Styles from './style';
 
-function SimpleButton({ readLine, variant, large, id, onClick }) {
+function SimpleButton({ dataTestid, readLine, variant, wdt, hgt, fs }) {
   return (
     <Styles.GenericButton
-      onClick={ onClick }
-      id={ id }
+      data-testid={ dataTestid }
+      wdt={ wdt }
+      hgt={ hgt }
+      fs={ fs }
       variant={ variant }
-      large={ large }
     >
       {readLine}
     </Styles.GenericButton>
@@ -16,6 +17,10 @@ function SimpleButton({ readLine, variant, large, id, onClick }) {
 }
 
 SimpleButton.propTypes = {
+  wdt: PropTypes.number,
+  fs: PropTypes.number,
+  dataTestid: PropTypes.string,
+  hgt: PropTypes.number,
   readLine: PropTypes.string,
   variant: PropTypes.string,
 }.isRequired;

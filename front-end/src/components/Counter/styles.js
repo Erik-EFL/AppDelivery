@@ -30,7 +30,7 @@ export const CountInput = styled.input`
   font-size: 1.2rem;
   width: 2.5rem;
   outline: none;
-  border: 1px solid black;
+  border: 1px solid ${themes.bgPrimary.black};
 `;
 
 export const Box = styled.div`
