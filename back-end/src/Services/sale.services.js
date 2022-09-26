@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const db = require('../database/models');
 const NotFoundError = require('../Errors/NotFoundError');
 const user = require('./user.services');
@@ -30,6 +31,23 @@ const saleService = {
     if (!sale) throw new NotFoundError('Sale not found');
 
     return sale;
+  },
+  updateSaleStatusBySeller: async ({ params, userId }, { status }) => {
+    // Criar erro 
+    const isValidStatus = ['Pendente', 'Preparando', 'Em Trânsito', 'Entregue'].includes(status);
+    if (!isValidStatus) throw new NotFoundError('Sale not found');
+    // Verifica se o pedido pertence ao vendendor
+    const sale = await db.sale.findOne({
+      where: {
+        [Op.and]: [{ sellerId: userId }, { id: params.id }],
+      },
+    });
+
+    if (!sale) throw new NotFoundError('Sale not found');
+
+    await db.sale.update({ status }, {
+      where: { id: params.id },
+    });
   },
 };
 
