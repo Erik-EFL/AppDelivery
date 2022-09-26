@@ -1,19 +1,51 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   GenericButton,
   GenericInput,
 } from '../../components';
+import requestLogin from '../../services/api';
+// import UseApi from '../../services/hooks/useApi';
 import * as Styles from './styles';
 
 function SignIn() {
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: '',
+  });
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+
   const error = false;
 
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    console.log('login feito com sucesso');
+  const fieldsVerify = (data) => {
+    const { email, password } = data;
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i;
+    const isEmailValid = emailRegex.test(email);
+    const isPasswordValid = password ? password.length >= Number('6') : '';
+    const fields = [email, password];
+    const validateFields = fields.every((field) => field !== '');
+    const isValid = isPasswordValid && isEmailValid && validateFields;
+    return isValid
+      ? setButtonDisabled(false)
+      : setButtonDisabled(true);
   };
+
+  const handleSubmit = async () => {
+    await requestLogin(loginData).then((response) => {
+      const { token } = response.data;
+      if (token) {
+        localStorage.setItem('token', JSON.stringify(token));
+        navigate('/');
+      }
+    }).catch((err) => console.error(err.message));
+  };
+
+  useEffect(() => {
+    fieldsVerify(loginData);
+  }, [loginData.email, loginData.password]);
 
   return (
     <Styles.Container>
@@ -25,6 +57,10 @@ function SignIn() {
           placeholder="email@trybeer.com.br"
           size="sm"
           type="email"
+          value={ loginData.email }
+          onChange={ (event) => setLoginData(
+            { ...loginData, email: event.target.value },
+          ) }
         />
         <GenericInput
           domId="common_login__input-password"
@@ -33,18 +69,23 @@ function SignIn() {
           size="sm"
           mg="10px"
           type="password"
+          value={ loginData.password }
+          onChange={ (event) => setLoginData(
+            { ...loginData, password: event.target.value },
+          ) }
         />
         <GenericButton
           readLine="Login"
           large
-          id="common_login__button-login"
+          dataTestid="common_login__button-login"
           onClick={ handleSubmit }
+          disabled={ buttonDisabled }
         />
         <GenericButton
           readLine="Ainda não tenho conta"
           variant="secondary"
           large
-          id="common_login__button-register"
+          dataTestid="common_login__button-register"
           onClick={ () => navigate('/register') }
         />
       </Styles.FormContainer>

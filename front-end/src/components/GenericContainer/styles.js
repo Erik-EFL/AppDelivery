@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
+  margin-top: .5rem;
   flex-direction: column;
 
   header {
@@ -12,38 +13,21 @@ export const Container = styled.div`
     margin: 0 auto;
     padding: 16px;
     font-size: ${themes.typography.textSize.lg};
-
   }
 
   main {
     position: relative;
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     margin-bottom: 4rem;
-    height: 70.45rem;
+    height: 77vh;
     background: ${themes.bgPrimary.white};
     border: 1px solid ${themes.bgPrimary.gray};
     box-shadow: 0px 4px 4px ${themes.bgPrimary.blackShadow};
   }
 `;
 
-const userRoleDefine = (role) => {
-  switch (role) {
-  case 'vendedor':
-    return `
-        repeat(5, 1fr)
-      `;
-  default:
-    return `
-        repeat(4, 1fr)
-      `;
-  }
-};
-
 export const OrderDetails = styled.table`
-/*   display: grid;
-  grid-template-columns: ${(props) => userRoleDefine(props.repeat)}; */
-
   background-color: ${themes.bgPrimary.lightGray};
   justify-content: space-between;
   width: 100%;
@@ -53,9 +37,10 @@ export const OrderDetails = styled.table`
   padding: .5rem;
 
   .peopleName {
+    margin-left: 5px;
+
     display: flex;
     flex-direction: row;
-    margin-left: 1rem;
   }
 
   .date {
@@ -67,15 +52,54 @@ export const OrderDetails = styled.table`
   }
 `;
 
+export const FinishOrderContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+
+  .UpperTable {
+    height: 46vh;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    background: ${themes.bgPrimary.white};
+    border: 1px solid ${themes.bgPrimary.gray};
+    box-shadow: 0px 4px 4px ${themes.bgPrimary.blackShadow};
+  }
+`;
+
+export const ContainerInputs = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  height: 20vh;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  background: ${themes.bgPrimary.white};
+  border: 1px solid ${themes.bgPrimary.gray};
+  box-shadow: 0px 4px 4px ${themes.bgPrimary.blackShadow};
+`;
+
 export const TH3 = styled.h3`
-  display: inline;
   font-size: 2rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
 `;
 
 export const TSPAN = styled.span`
-  margin-left: 1.2rem;
+  width: 30rem;
+  font-size: 2rem;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
+`;
+
+export const Box = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  flex-direction: ${(props) => (props.direction === 'row' ? 'row' : 'column')};
+  padding: .5rem;
 `;
