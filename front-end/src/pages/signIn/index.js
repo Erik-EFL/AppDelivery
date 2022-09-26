@@ -1,12 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   GenericButton,
   GenericInput,
 } from '../../components';
 import requestLogin from '../../services/api';
-// import UseApi from '../../services/hooks/useApi';
 import * as Styles from './styles';
 
 function SignIn() {
@@ -16,7 +15,6 @@ function SignIn() {
   });
   const [buttonDisabled, setButtonDisabled] = useState(true);
 
-  // const error = false;
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
@@ -37,7 +35,7 @@ function SignIn() {
   const handleSubmit = async () => {
     await requestLogin(loginData).then((response) => {
       const result = response.data;
-      console.log(result)
+      console.log(result);
       if (result.token) {
         localStorage.setItem('token', JSON.stringify(result.token));
         navigate('/customer/products');
@@ -46,13 +44,13 @@ function SignIn() {
       //   // setError(result.message);
       // }
     }).catch((err) => {
-      setError(err.response.data.message)
+      setError(err.response.data.message);
     });
   };
 
   useEffect(() => {
     fieldsVerify(loginData);
-  }, [loginData.email, loginData.password]);
+  }, [loginData.email, loginData.password, loginData]);
 
   return (
     <Styles.Container>
@@ -64,10 +62,10 @@ function SignIn() {
           placeholder="email@trybeer.com.br"
           size="sm"
           type="email"
-          value={loginData.email}
-          onChange={(event) => setLoginData(
+          value={ loginData.email }
+          onChange={ (event) => setLoginData(
             { ...loginData, email: event.target.value },
-          )}
+          ) }
         />
         <GenericInput
           domId="common_login__input-password"
@@ -76,28 +74,28 @@ function SignIn() {
           size="sm"
           mg="10px"
           type="password"
-          value={loginData.password}
-          onChange={(event) => setLoginData(
+          value={ loginData.password }
+          onChange={ (event) => setLoginData(
             { ...loginData, password: event.target.value },
-          )}
+          ) }
         />
         <GenericButton
           readLine="Login"
           large
           dataTestid="common_login__button-login"
-          onClick={handleSubmit}
-          disabled={buttonDisabled}
+          onClick={ handleSubmit }
+          disabled={ buttonDisabled }
         />
         <GenericButton
           readLine="Ainda não tenho conta"
           variant="secondary"
           large
           dataTestid="common_login__button-register"
-          onClick={() => navigate('/register')}
+          onClick={ () => navigate('/register') }
         />
       </Styles.FormContainer>
       {error && (
-        <p data-testid="common_login__element-invalid-email">{error}</p>
+        <p data-testid="common_login__element-invalid-email">{ error }</p>
       )}
     </Styles.Container>
   );
