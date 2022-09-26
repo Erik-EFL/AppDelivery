@@ -32,17 +32,20 @@ const saleService = {
 
     return sale;
   },
-  updateSaleStatusBySeller: async ({ params, userId }, { status }) => {
-    // Criar erro 
+  updateSaleStatus: async ({ params, id, role }, { status }) => {
     const isValidStatus = ['Pendente', 'Preparando', 'Em Trânsito', 'Entregue'].includes(status);
     if (!isValidStatus) throw new NotFoundError('Sale not found');
-    // Verifica se o pedido pertence ao vendendor
-    const sale = await db.sale.findOne({
-      where: {
-        [Op.and]: [{ sellerId: userId }, { id: params.id }],
-      },
-    });
 
+    const update = async (chaveId) => {
+      return await db.sale.findOne({
+        where: {
+          [Op.and]: [{ [chaveId]: id }, { id: params.id }],
+        },
+      });
+    }
+    let sale;
+    if (role === 'seller') sale = update('sellerId');
+    if (role === 'customer') sale = update('userId');
     if (!sale) throw new NotFoundError('Sale not found');
 
     await db.sale.update({ status }, {
