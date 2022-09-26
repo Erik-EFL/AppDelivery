@@ -2,16 +2,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import * as Styles from './style';
 
-function SimpleButton({ disabled, onClick, dataTestid, readLine, variant, wdt, hgt, fs }) {
+function SimpleButton(
+  { disabled, onClick, dataTestid, readLine, variant, wdt, hgt, fs },
+) {
   return (
     <Styles.GenericButton
-      data-testid={dataTestid}
-      wdt={wdt}
-      hgt={hgt}
-      fs={fs}
-      variant={variant}
-      onClick={onClick}
-      disabled={disabled}
+      data-testid={ dataTestid }
+      wdt={ wdt }
+      hgt={ hgt }
+      fs={ fs }
+      variant={ variant }
+      onClick={ onClick }
+      disabled={ disabled }
     >
       {readLine}
     </Styles.GenericButton>
