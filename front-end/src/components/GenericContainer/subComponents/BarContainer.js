@@ -4,40 +4,103 @@ import SimpleButton from '../../GenericButton/index';
 import StatusButton from '../../StatusButton/index';
 import * as Styles from '../styles';
 
-const renderBar = ({ pageName, userRole, date, orderId }) => {
-  if (pageName === '') {
+const renderBar = ({ pageName, userRole, date, orderId, userName }) => {
+  if (userRole === 'vendedor' && pageName === 'Detalhes do Pedido') {
     return (
-      <Styles.OrderDetails repeat={ userRole }>
+      <Styles.OrderDetails>
         <tr>
-          <th style={ { width: '70rem' } }>
-            <Styles.TH3 className="peopleName">
+          <th style={ { width: '15rem' } }>
+            <Styles.TH3
+              data-testid="seller_order_details__element-order-details-label-order-id"
+            >
+              {`PEDIDO ${orderId}`}
+            </Styles.TH3>
+          </th>
+          <th style={ { width: '15rem' } }>
+            <Styles.TH3
+              data-testid="seller_order_details__element-order-details-label-order-date"
+              className="date"
+            >
+              {date}
+            </Styles.TH3>
+          </th>
+          <th style={ { width: '33rem' } }>
+            <StatusButton
+              data-testid={ `seller_order_details
+              __element-order-details-label-delivery-status` }
+              status="PENDENTE"
+              hgt="3.7"
+              wdt="19"
+            />
+          </th>
+          <th style={ { width: '10rem' } }>
+            <SimpleButton
+              data-testid="seller_order_details__button-preparing-check"
+              hgt="3.7"
+              wdt="25"
+              fs="md"
+              readLine="PREPARANDO PEDIDO"
+              variant="primary"
+            />
+          </th>
+          <th style={ { width: '10rem' } }>
+            <SimpleButton
+              data-testid="seller_order_details__button-dispatch-check"
+              hgt="3.7"
+              wdt="25"
+              fs="md"
+              readLine="SAIU PARA ENTREGA"
+            />
+          </th>
+        </tr>
+      </Styles.OrderDetails>
+    );
+  }
+  if (userRole === 'costumer' && pageName === 'Detalhes do Pedido') {
+    return (
+      <Styles.OrderDetails>
+        <tr>
+          <th
+            style={ { width: '50rem' } }
+            className="peopleName"
+          >
+            <Styles.TH3
+              data-testid="customer_order_details__element-order-details-label-order-id"
+            >
               <strong>
                 PEDIDO
                 {' '}
-                0001
+                {orderId}
                 {' '}
                 ;
               </strong>
-              <Styles.TSPAN>
-                Fulana Pereira
-              </Styles.TSPAN>
+            </Styles.TH3>
+            <Styles.TSPAN
+              data-testid={ `customer_order_details
+              __element-order-details-label-seller-name` }
+            >
+              { userName }
+            </Styles.TSPAN>
+          </th>
+          <th style={ { width: '15rem' } }>
+            <Styles.TH3
+              data-testid={ `customer_order_details
+            __element-order-details-label-order-date` }
+              className="date"
+            >
+              {date}
             </Styles.TH3>
           </th>
-          <th style={ { width: '12rem' } }>
-            <Styles.TH3 className="date">
-              11/04/1995
-            </Styles.TH3>
-          </th>
-          <th style={ { width: '12rem' } }>
+          <th style={ { width: '22rem' } }>
             <StatusButton
               status="ENTREGUE"
-              hgt="4"
-              wdt="17"
+              hgt="3.7"
+              wdt="19"
             />
           </th>
-          <th style={ { width: '6rem' } }>
+          <th style={ { width: '10rem' } }>
             <SimpleButton
-              hgt="4"
+              hgt="3.7"
               wdt="25"
               fs="md"
               readLine="MARCAR COMO ENTREGUE"
@@ -47,43 +110,28 @@ const renderBar = ({ pageName, userRole, date, orderId }) => {
       </Styles.OrderDetails>
     );
   }
-  if (pageName === 'Detalhe do Pedido' && userRole === 'vendedor') {
-    return (
-      <Styles.OrderDetails>
-        <Styles.TH3>{`PEDIDO ${orderId}`}</Styles.TH3>
-        <Styles.TH3>{date}</Styles.TH3>
-        <StatusButton status="PENDENTE" />
-        <SimpleButton
-          bs="5"
-          lt="100"
-          sz="30"
-          readLine="PREPARANDO PEDIDO"
-          variant="primary"
-        />
-        <SimpleButton
-          bs="5"
-          lt="100"
-          sz="30"
-          readLine="SAIU PARA ENTREGA"
-        />
-      </Styles.OrderDetails>
-    );
-  }
 };
 
-function BarContainer({ pageName, userRole, date, orderId }) {
+function BarContainer({ pageName, userRole, date, orderId, userName, dataTestId }) {
   return (
     <>
-      {renderBar({ pageName, userRole, date, orderId })}
+      {renderBar({ pageName, userRole, date, orderId, userName, dataTestId })}
     </>
   );
 }
 
 BarContainer.propTypes = {
-  userRole: PropTypes.string,
-  pageName: PropTypes.string,
+  dataTestId: PropTypes.string.isRequired,
+  pageName: PropTypes.string.isRequired,
+  userRole: PropTypes.string.isRequired,
   date: PropTypes.string,
   orderId: PropTypes.string,
-}.isRequired;
+  userName: PropTypes.string,
+};
 
+BarContainer.defaultProps = {
+  date: '11/04/1995',
+  orderId: '0001',
+  userName: 'Fulana Pereira da Silva Sousa',
+};
 export default BarContainer;

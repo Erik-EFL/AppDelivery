@@ -7,8 +7,8 @@ import {
   Navigate,
 } from 'react-router-dom';
 
-import SignIn from './pages/signIn';
-import SignUp from './pages/signUp';
+import SignIn from '../pages/signIn';
+import SignUp from '../pages/signUp';
 
 function AppRoutes() {
   return (

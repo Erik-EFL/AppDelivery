@@ -9,6 +9,10 @@ const sizeHandleChange = (size) => {
       `;
   case 'md':
     return `
+        width: 32rem;
+      `;
+  case 'lg':
+    return `
         width: 39rem;
       `;
   default:
