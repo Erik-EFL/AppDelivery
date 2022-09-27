@@ -1,9 +1,10 @@
 const Joi = require('joi');
+const jwt = require('jsonwebtoken');
 const md5 = require('md5');
 const db = require('../database/models');
 const { runSchema } = require('../utils/schemas');
 const NotFoundError = require('../Errors/NotFoundError');
-const auth = require('../Services/auth.services');
+const auth = require('./auth.services');
 const { JWT_SECRET } = require('../utils/getJwtKey');
 
 const loginServices = {
