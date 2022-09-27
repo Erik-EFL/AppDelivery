@@ -10,7 +10,7 @@ const sellerController = {
     res.status(200).json(sale);
   },
   updateSaleStatus: async (req, res) => {
-    await saleService.updateSaleStatus(req, req.body);
+    await saleService.updateSaleStatusBySeller(req, req.body);
     res.status(200).json({ ok: true });
   },
 };

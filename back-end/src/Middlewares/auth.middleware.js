@@ -9,7 +9,7 @@ const authMiddleware = {
     }
     const { data } = validateToken(authorization);
     req.id = data.id;
-    req.role = data.role
+    req.role = data.role;
     next();
   },
 };
