@@ -3,8 +3,9 @@ const jwt = require('jsonwebtoken');
 const md5 = require('md5');
 const db = require('../database/models');
 const { runSchema } = require('../utils/schemas');
-require('dotenv/config');
 const NotFoundError = require('../Errors/NotFoundError');
+const auth = require('./auth.services');
+const { JWT_SECRET } = require('../utils/getJwtKey');
 
 const loginServices = {
   validateBody: runSchema(Joi.object({
@@ -13,7 +14,7 @@ const loginServices = {
   })),
 
   createToken(data) {
-    const token = jwt.sign({ data }, process.env.JWT_SECRET || 'secret', {});
+    const token = jwt.sign({ data }, JWT_SECRET || 'secret', {});
     return token;
   },
 
@@ -31,7 +32,7 @@ const loginServices = {
       throw new NotFoundError('Please check your email and/or password');
     }
 
-    const token = this.createToken(userWithoutPassword);
+    const token = auth.createToken(userWithoutPassword);
 
     return { token };
   },

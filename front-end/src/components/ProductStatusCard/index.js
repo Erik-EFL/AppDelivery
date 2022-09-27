@@ -6,7 +6,7 @@ import * as Styles from './styles';
 import OrderIdCard from './subcomponents/OrderIdCard';
 import OrderInfoCard from './subcomponents/OrderInfoCard';
 
-function ProductStatusCard({ userRole, adress, price, date, orderId }) {
+function ProductStatusCard({ userRole, address, price, date, orderId }) {
   return (
     <Styles.ProductStatusCardContainer>
       <OrderIdCard userRole={ userRole }>
@@ -26,7 +26,7 @@ function ProductStatusCard({ userRole, adress, price, date, orderId }) {
         </Styles.Box>
         {userRole === 'seller' && (
           <Styles.Box pd="10px">
-            <Styles.AdressText>{adress}</Styles.AdressText>
+            <Styles.AddressText>{address}</Styles.AddressText>
           </Styles.Box>
         )}
       </Styles.Box>
@@ -36,7 +36,7 @@ function ProductStatusCard({ userRole, adress, price, date, orderId }) {
 
 ProductStatusCard.propTypes = {
   userRole: PropTypes.string,
-  adress: PropTypes.string,
+  address: PropTypes.string,
   date: PropTypes.string,
   price: PropTypes.string,
   orderId: PropTypes.string,
@@ -44,7 +44,7 @@ ProductStatusCard.propTypes = {
 
 ProductStatusCard.defaultProps = {
   userRole: 'customer',
-  adress: 'Adress',
+  address: 'Address',
   date: 'DD/MM/AA',
   price: '00,00',
   orderId: '0000',
