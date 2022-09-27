@@ -3,8 +3,8 @@ const jwt = require('jsonwebtoken');
 const md5 = require('md5');
 const db = require('../database/models');
 const { runSchema } = require('../utils/schemas');
-require('dotenv/config');
 const NotFoundError = require('../Errors/NotFoundError');
+const { JWT_SECRET } = require('../utils/getJwtKey');
 
 const loginServices = {
   validateBody: runSchema(Joi.object({
@@ -13,7 +13,7 @@ const loginServices = {
   })),
 
   createToken(data) {
-    const token = jwt.sign({ data }, process.env.JWT_SECRET || 'secret', {});
+    const token = jwt.sign({ data }, JWT_SECRET || 'secret', {});
     return token;
   },
 
