@@ -4,4 +4,9 @@ const baseUrl = 'http://localhost:3001';
 
 const requestLogin = (data) => axios.post(`${baseUrl}/login`, data);
 
-export default requestLogin;
+const registerUser = (data) => axios.post(`${baseUrl}/register`, data);
+
+export {
+  requestLogin,
+  registerUser,
+};
