@@ -35,14 +35,11 @@ function SignIn() {
   const handleSubmit = async () => {
     await requestLogin(loginData).then((response) => {
       const result = response.data;
-      console.log(result);
+      console.log(response);
       if (result.token) {
         localStorage.setItem('token', JSON.stringify(result.token));
         navigate('/customer/products');
       }
-      // if (result.message) {
-      //   // setError(result.message);
-      // }
     }).catch((err) => {
       setError(err.response.data.message);
     });
