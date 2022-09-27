@@ -3,10 +3,10 @@ const jwt = require('jsonwebtoken');
 
 const auth = {
 
-//   createToken: (payload) => {
-//     const token = jwt.sign(payload, process.env.JWT_SECRET);
-//     return token;
-//   },
+  createToken(data) {
+    const token = jwt.sign({ data }, process.env.JWT_SECRET || 'secret', {});
+    return token;
+  },
 
   validateToken: (token) => {
     try {

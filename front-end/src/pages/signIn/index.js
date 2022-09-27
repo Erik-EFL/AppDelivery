@@ -5,7 +5,7 @@ import {
   GenericButton,
   GenericInput,
 } from '../../components';
-import requestLogin from '../../services/api';
+import { requestLogin } from '../../services/api';
 import * as Styles from './styles';
 
 function SignIn() {
