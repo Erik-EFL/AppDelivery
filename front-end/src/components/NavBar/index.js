@@ -1,53 +1,76 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as Styles from './styles';
 
-const userRole = 'customer';
+function Navbar({ role }) {
+  const navigate = useNavigate();
 
-const renderPerUserRole = (role) => {
-  if (role === 'customer') {
-    return (
-      <Styles.Box direction="row">
+  const logout = () => {
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
+  const renderPerUserRole = (userRole) => {
+    if (userRole === 'customer') {
+      return (
+        <Styles.Box direction="row">
+          <Styles.SimpleButton
+            data-testid="customer_products__element-navbar-link-products"
+            variant="simple"
+          >
+            PRODUTOS
+          </Styles.SimpleButton>
+          <Styles.SimpleButton
+            variant="simple"
+            data-testid="customer_products__element-navbar-link-orders"
+          >
+            MEUS PEDIDOS
+          </Styles.SimpleButton>
+        </Styles.Box>
+      );
+    }
+    if (userRole === 'administrator') {
+      return (
         <Styles.SimpleButton variant="simple">
-          PRODUTOS
+          GERENCIAR USUÁRIOS
         </Styles.SimpleButton>
-        <Styles.SimpleButton variant="simple">
-          MEUS PEDIDOS
-        </Styles.SimpleButton>
-      </Styles.Box>
-    );
-  }
-  if (role === 'administrator') {
+      );
+    }
     return (
       <Styles.SimpleButton variant="simple">
-        GERENCIAR USUÁRIOS
+        PEDIDOS
       </Styles.SimpleButton>
     );
-  }
-  return (
-    <Styles.SimpleButton variant="simple">
-      PEDIDOS
-    </Styles.SimpleButton>
-  );
-};
+  };
 
-function Navbar() {
   return (
     <Styles.NavBarContainer>
       <Styles.Box direction="row">
-        {renderPerUserRole(userRole)}
+        {renderPerUserRole(role)}
       </Styles.Box>
       <Styles.Box direction="row">
         <Styles.UsernameTextContainer>
-          <Styles.UsernameText>
+          <Styles.UsernameText
+            data-testid="customer_products__element-navbar-user-full-name"
+          >
             Nome de Usuário
           </Styles.UsernameText>
         </Styles.UsernameTextContainer>
-        <Styles.SimpleButton variant="logout">
+        <Styles.SimpleButton
+          variant="logout"
+          data-testid="customer_products__element-navbar-link-logout"
+          onClick={ logout }
+        >
           Sair
         </Styles.SimpleButton>
       </Styles.Box>
     </Styles.NavBarContainer>
   );
 }
+
+Navbar.propTypes = {
+  role: PropTypes.string,
+}.isRequired;
 
 export default Navbar;

@@ -36,7 +36,6 @@ function SignUp() {
     console.log(registerData);
     await registerUser(registerData).then((response) => {
       const result = response.data;
-      console.log(response.data.token);
       if (result.token) {
         localStorage.setItem('token', JSON.stringify(result.token));
         navigate('/customer/products');
