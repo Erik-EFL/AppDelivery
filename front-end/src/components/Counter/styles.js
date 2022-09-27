@@ -20,7 +20,9 @@ export const CountButton = styled.button`
   padding: 0.5rem 1rem;
   align-items: center;
   justify-content: center;
-  border-radius: ${({ max }) => (!max ? '0.5rem 0 0 0.5rem' : '0 0.5rem 0.5rem 0')};
+  border-radius: ${({ maximum }) => (
+    !maximum ? '0.5rem 0 0 0.5rem' : '0 0.5rem 0.5rem 0'
+  )};
 `;
 
 export const CountInput = styled.input`
