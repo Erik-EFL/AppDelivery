@@ -1,8 +1,8 @@
 const { Op } = require('sequelize');
+const Joi = require('joi');
 const NotFoundError = require('../Errors/NotFoundError');
 const UnauthorizedError = require('../Errors/UnauthorizedError');
 const ValidationError = require('../Errors/ValidationError');
-const Joi = require('joi');
 const db = require('../database/models');
 const { runSchema } = require('../utils/schemas');
 const user = require('./user.services');
@@ -61,53 +61,53 @@ const saleService = {
     products: Joi.array().items(Joi.object({
       productId: Joi.number().integer().positive().required(),
       quantity: Joi.number().integer().positive().min(1)
-      .required(),
+        .required(),
     })).required(),
     totalPrice: Joi.number().precision(2).positive().required(),
     deliveryAddress: Joi.string().required(),
     deliveryNumber: Joi.string().required(),
   })),
 
-     //  Essa função valida se todos os produtos passados na requisição existem no banco de dados
-     async validateProducts(products) {
-      const existingProducts = await productsServices.checkProducts(products);
-      if (products.length !== existingProducts.length) {
-        throw new ValidationError('Some products do not exist in the database');
-      }
-    },
-  
-      //  Se uma venda for criada, essa função vai adicionar os dados necessários na tabela N:N salesProducts
-    async addToSalesProducts(saleId, products) {
-      await Promise.all(products.map(async (product) => {
-        await db.salesProducts.create({
-          saleId,
-          productId: product.productId,
-          quantity: product.quantity,
-        });
-      }));
-    },
-  
-    async create(payload) {
-      const { products, ...body } = payload;
-  
-      const productIds = products.map((product) => product.productId);
-  
-      await this.validateProducts(productIds);
-  
-      const [sale, created] = await db.sale.findOrCreate({
-        where: {
-          ...body,
-          saleDate: new Date(),
-          status: 'Pendente',
-        },
+  //  Essa função valida se todos os produtos passados na requisição existem no banco de dados
+  async validateProducts(products) {
+    const existingProducts = await productsServices.checkProducts(products);
+    if (products.length !== existingProducts.length) {
+      throw new ValidationError('Some products do not exist in the database');
+    }
+  },
+
+  //  Se uma venda for criada, essa função vai adicionar os dados necessários na tabela N:N salesProducts
+  async addToSalesProducts(saleId, products) {
+    await Promise.all(products.map(async (product) => {
+      await db.salesProducts.create({
+        saleId,
+        productId: product.productId,
+        quantity: product.quantity,
       });
-  
-      if (created) {
-        await this.addToSalesProducts(sale.id, products);
-      }
-  
-      return sale;
-    },
+    }));
+  },
+
+  async create(payload) {
+    const { products, ...body } = payload;
+
+    const productIds = products.map((product) => product.productId);
+
+    await this.validateProducts(productIds);
+
+    const [sale, created] = await db.sale.findOrCreate({
+      where: {
+        ...body,
+        saleDate: new Date(),
+        status: 'Pendente',
+      },
+    });
+
+    if (created) {
+      await this.addToSalesProducts(sale.id, products);
+    }
+
+    return sale;
+  },
 };
 
 module.exports = saleService;
