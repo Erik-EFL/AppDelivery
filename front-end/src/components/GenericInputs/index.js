@@ -1,30 +1,30 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
 import * as Styles from './styles';
 
-export default function InputGeneric({ name, domId, value, placeholder, size }) {
-  const [search, setSearch] = useState('');
-
-  console.log(search);
+export default function InputGeneric(
+  { value, name, domId, placeholder, size, type, onChange },
+) {
   return (
     <Styles.LabelGeneric htmlFor={ domId }>
       <p>{name}</p>
       <Styles.GenericInputText
-        id={ domId }
+        data-testid={ domId }
         placeholder={ placeholder }
         size={ size }
-        type="text"
+        type={ type || 'text' }
         value={ value }
-        onChange={ (event) => setSearch(event.target.value) }
+        onChange={ onChange }
       />
     </Styles.LabelGeneric>
   );
 }
 
 InputGeneric.propTypes = {
+  value: PropTypes.string,
   domId: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,
   size: PropTypes.string,
-  value: PropTypes.string,
+  type: PropTypes.string,
+  onChange: PropTypes.func,
 }.isRequired;

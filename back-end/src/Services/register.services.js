@@ -5,7 +5,7 @@ const ConflictError = require('../Errors/ConflictError');
 
 const registerSevice = {
   register: async (body) => {
-    const { name, password, email, role } = body;
+    const { name, password, email } = body;
 
     // check if user already exists
     const userFound = await user.findOne({
@@ -16,13 +16,15 @@ const registerSevice = {
         ],
       },
     });
-    if (userFound) return new ConflictError('User already registered');
+
+    if (userFound) throw new ConflictError('User already registered');
 
     // hash password
     const hashedPassword = md5(password);
 
     // store a user
-    const storedUser = await user.create({ name, email, password: hashedPassword, role });
+    const storedUser = await user
+      .create({ name, email, password: hashedPassword, role: 'customer' });
 
     return storedUser;
   },

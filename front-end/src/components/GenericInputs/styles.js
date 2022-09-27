@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import themes from '../themes/themes';
 
 const sizeHandleChange = (size) => {
   switch (size) {
@@ -7,6 +8,10 @@ const sizeHandleChange = (size) => {
         width: 16.25rem;
       `;
   case 'md':
+    return `
+        width: 32rem;
+      `;
+  case 'lg':
     return `
         width: 39rem;
       `;
@@ -18,8 +23,8 @@ const sizeHandleChange = (size) => {
 };
 
 export const GenericInputText = styled.input`
-  background: #FFFFFF;
-  border: 1px solid #001813;
+  background: ${themes.bgPrimary.white};
+  border: 1px solid ${themes.typography.textColor.black};
   border-radius: .25rem;
   padding: .6rem;
   ${({ size }) => sizeHandleChange(size)}

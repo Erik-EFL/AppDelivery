@@ -10,8 +10,8 @@ export const ProductStatusCardContainer = styled.div`
   height: fit-content;
   padding-right: .5rem;
   gap: .5rem;
-  border: 1px solid #B1C2BE;
-  box-shadow: 0 .2rem .2rem 0 #00000040;
+  border: 1px solid ${themes.bgPrimary.gray};
+  box-shadow: 0 .2rem .2rem 0 ${themes.bgPrimary.blackShadow};
 `;
 
 export const OrderIdContainer = styled.div`
@@ -32,11 +32,11 @@ export const OrderCardText = styled.p`
 
 export const OrderInfoContainer = styled.div`
   border-radius: .5rem;
-  background-color: #F2FFFCBF;
+  background-color: ${themes.bgPrimary.iceWhite};
   padding: .5rem 1rem;
 `;
 
-export const AdressText = styled.p`
+export const AddressText = styled.p`
   font-size: 1.2rem;
   text-align: right;
 `;

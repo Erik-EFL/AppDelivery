@@ -1,12 +1,13 @@
 import styled from 'styled-components';
+import themes from '../themes/themes';
 
 export const ProductCard = styled.div`
   position: relative;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  border: 1px solid #B1C2BE;
-  box-shadow: 0 .2rem .2rem rgba(0, 0, 0, 0.25);
+  border: 1px solid  ${themes.bgPrimary.gray};
+  box-shadow: 0 .2rem .2rem  ${themes.bgPrimary.blackShadow};
   width: 18rem;
   height: 24rem;
 
@@ -15,7 +16,7 @@ export const ProductCard = styled.div`
     box-sizing: border-box;
     top: .15rem;
     left: .15rem;
-    background-color: rgba(242, 255, 252, 0.75);
+    background-color:  ${themes.bgPrimary.iceWhite};
     font-size: 1.4rem;
     padding: .4rem;
     z-index: 10;
@@ -45,6 +46,6 @@ export const Box = styled.div`
   align-items: center;
   align-content: center;
   height: 6.1rem;
-  background-color: #EAF1EF;
+  background-color: ${themes.bgPrimary.lightGray};
   flex-direction: ${(props) => (props.direction === 'row' ? 'row' : 'column')};
 `;

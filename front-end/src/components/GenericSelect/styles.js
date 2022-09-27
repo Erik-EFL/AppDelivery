@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import themes from '../themes/themes';
 
 const sizeHandleChange = (size) => {
   switch (size) {
@@ -8,8 +9,12 @@ const sizeHandleChange = (size) => {
       `;
   case 'md':
     return `
+        width: 32rem;
+          `;
+  case 'lg':
+    return `
         width: 39rem;
-      `;
+          `;
   default:
     return `
         width: 18.55rem;
@@ -18,11 +23,11 @@ const sizeHandleChange = (size) => {
 };
 
 export const GenericSelect = styled.select`
-  background: #FFFFFF;
-  border: 1px solid #001813;
+  background: ${themes.bgPrimary.white};
+  border: 1px solid ${themes.typography.textColor.black};
   border-radius: 5px;
   padding: .55rem;
-  color: #001813;
+  color: ${themes.typography.textColor.black};
 
   ${({ size }) => sizeHandleChange(size)}
 `;
