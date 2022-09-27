@@ -21,9 +21,9 @@ const productsServices = {
     return product;
   },
 
-  async checkProducts(products) {
+  async checkProducts(productsIds) {
     const result = await db.product.findAll({
-      where: { products },
+      where: { id: productsIds },
     });
     
     return result;
