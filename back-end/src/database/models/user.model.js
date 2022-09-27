@@ -23,10 +23,10 @@ const createUser = (sequelize, DataTypes) => {
 
   const Users = sequelize.define(MODEL_NAME, attributes, options);
 
-/*   Users.associate = (db) => {
-    Users.hasMany(db.Sales, { as: 'Sales', foreignKey: 'userId' });
-    Users.hasMany(db.Sales, { as: 'Sales', foreignKey: 'sellerId' });
-  }; */
+  // Users.associate = (db) => {
+  //   Users.hasMany(db.Sales, { as: 'Sales', foreignKey: 'userId' });
+  //   Users.hasMany(db.Sales, { as: 'Sales', foreignKey: 'sellerId' });
+  // };
 
   return Users;
 };
