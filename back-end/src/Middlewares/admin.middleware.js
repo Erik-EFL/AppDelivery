@@ -13,7 +13,6 @@ const adminMiddleware = {
     if (!isAdmin(data.id)) {
       throw new UnauthorizedError('Unauthorized');
     }
-    req.adminId = data.id;
     next();
   },
 };

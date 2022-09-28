@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const ValidationError = require('../Errors/ValidationError');
 
 const userSchema = {
   register: (body) => {
@@ -10,9 +11,7 @@ const userSchema = {
 
     const { error } = schema.validate(body);
     if (error) {
-      const e = new Error('Some required fields are missing');
-      e.name = 'BadRequest';
-      throw e;
+      throw new ValidationError(error.message);
     }
   },
   createByAdmin: (body) => {
@@ -25,9 +24,7 @@ const userSchema = {
 
     const { error } = schema.validate(body);
     if (error) {
-      const e = new Error(error.message);
-      e.name = 'BadRequest';
-      throw e;
+      throw new ValidationError(error.message);
     }
   },
 };

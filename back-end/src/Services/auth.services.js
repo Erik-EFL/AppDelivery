@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+const UnauthorizedError = require('../Errors/UnauthorizedError');
 const auth = {
 
   createToken(data) {
@@ -12,9 +12,7 @@ const auth = {
       const payload = jwt.verify(token, process.env.JWT_SECRET || 'secret');
       return payload;
     } catch (e) {
-      const error = new Error('Expired or invalid token');
-      error.name = 'UnauthorizedError';
-      throw error;
+      throw new UnauthorizedError('Expired or invalid token');
     }
   },
 };
