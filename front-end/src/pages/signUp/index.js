@@ -37,10 +37,11 @@ function SignUp() {
     event.preventDefault();
     await registerUser(registerData).then((response) => {
       const result = response.data;
+      console.log(result);
       if (result.token) {
         localStorage.setItem('token', JSON.stringify(result.token));
+        // dispatch(setNewUser(registerData));
         navigate('/customer/products');
-        dispatch(setNewUser(registerData));
       }
     }).catch((err) => {
       setError(err.response.data.message);
