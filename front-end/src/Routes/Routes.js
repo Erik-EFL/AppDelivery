@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import Marketplace from '../pages/marketplace';
+import OrderDetails from '../pages/OrderDetails';
 import SignIn from '../pages/signIn';
 import SignUp from '../pages/signUp';
 
@@ -24,6 +25,10 @@ function AppRoutes() {
         <Route
           path="/customer/products"
           element={ <Marketplace /> }
+        />
+        <Route
+          path="customer/orders"
+          element={ <OrderDetails /> }
         />
       </Routes>
     </Router>
