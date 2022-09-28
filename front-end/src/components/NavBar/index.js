@@ -1,13 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import * as Styles from './styles';
 
-function Navbar({ role }) {
+function Navbar() {
   const navigate = useNavigate();
 
+  const { user } = useSelector((state) => state.userAuthReducer);
+
   const logout = () => {
-    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     navigate('/login');
   };
 
@@ -47,14 +49,14 @@ function Navbar({ role }) {
   return (
     <Styles.NavBarContainer>
       <Styles.Box direction="row">
-        {renderPerUserRole(role)}
+        {renderPerUserRole(user.role)}
       </Styles.Box>
       <Styles.Box direction="row">
         <Styles.UsernameTextContainer>
           <Styles.UsernameText
             data-testid="customer_products__element-navbar-user-full-name"
           >
-            Nome de Usuário
+            {user.name}
           </Styles.UsernameText>
         </Styles.UsernameTextContainer>
         <Styles.SimpleButton
@@ -68,9 +70,5 @@ function Navbar({ role }) {
     </Styles.NavBarContainer>
   );
 }
-
-Navbar.propTypes = {
-  role: PropTypes.string,
-}.isRequired;
 
 export default Navbar;

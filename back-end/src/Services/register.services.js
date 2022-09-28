@@ -5,7 +5,15 @@ const registerSevice = {
   register: async (body) => {
     const { password, ...userWithoutPassword } = await user.create(body);
     const token = auth.createToken(userWithoutPassword);
-    return token;
+    return {
+      user: {
+        token,
+        id: userWithoutPassword.id,
+        name: userWithoutPassword.name,
+        email: userWithoutPassword.email,
+        role: userWithoutPassword.role,
+      }
+    };
   },
 };
 

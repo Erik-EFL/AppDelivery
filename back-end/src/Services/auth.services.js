@@ -3,7 +3,7 @@ const UnauthorizedError = require('../Errors/UnauthorizedError');
 const auth = {
 
   createToken(data) {
-    const token = jwt.sign({ data }, process.env.JWT_SECRET || 'secret', {});
+    const token = jwt.sign({ data }, process.env.JWT_SECRET || 'chaveDoTolkien', {});
     return token;
   },
 

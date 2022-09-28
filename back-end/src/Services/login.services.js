@@ -34,7 +34,15 @@ const loginServices = {
 
     const token = auth.createToken(userWithoutPassword);
 
-    return { token };
+    return {
+      user: {
+        token,
+        id: user.dataValues.id,
+        name: user.dataValues.name,
+        email: user.dataValues.email,
+        role: user.dataValues.role,
+      }
+    };
   },
 };
 

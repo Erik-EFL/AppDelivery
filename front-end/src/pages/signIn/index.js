@@ -1,12 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import {
   GenericButton,
   GenericInput,
 } from '../../components';
 import { requestLogin } from '../../services/api';
 import * as Styles from './styles';
+import { userAuth } from '../../redux/actions/userActions';
 
 function SignIn() {
   const [loginData, setLoginData] = useState({
@@ -18,6 +20,7 @@ function SignIn() {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const fieldsVerify = (data) => {
     const { email, password } = data;
@@ -35,8 +38,9 @@ function SignIn() {
   const handleSubmit = async () => {
     await requestLogin(loginData).then((response) => {
       const result = response.data;
-      if (result.token) {
-        localStorage.setItem('token', JSON.stringify(result.token));
+      if (result.user) {
+        localStorage.setItem('user', JSON.stringify(result.user));
+        dispatch(userAuth(result.user));
         navigate('/customer/products');
       }
     }).catch((err) => {

@@ -26,9 +26,8 @@ export const CountButton = styled.button`
 `;
 
 export const CountInput = styled.input`
-  text-align: right;
-  padding: 0.5rem 0;
-  padding-left: 1rem;
+  text-align: center;
+  padding: 0 .5rem;
   font-size: 1.2rem;
   width: 2.5rem;
   outline: none;

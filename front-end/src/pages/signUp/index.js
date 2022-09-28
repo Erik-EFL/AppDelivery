@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {
-  GenericButton,
-  GenericInput,
-} from '../../components';
+import { GenericButton, GenericInput } from '../../components';
+import { userAuth } from '../../redux/actions/userActions';
 import { registerUser } from '../../services/api';
 import * as Styles from './styles';
 
@@ -16,6 +16,7 @@ function SignUp() {
     password: '',
   });
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const fieldsVerify = (data) => {
@@ -23,7 +24,7 @@ function SignUp() {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i;
     const isEmailValid = emailRegex.test(email);
     const isPasswordValid = password ? password.length >= Number('6') : '';
-    const isNameValid = name ? name.length >= Number('12') : '';
+    const isNameValid = name ? name.length <= Number('11') : '';
     const fields = [email, password];
     const validateFields = fields.every((field) => field !== '');
     const isValid = isPasswordValid && isEmailValid && validateFields && isNameValid;
@@ -32,17 +33,18 @@ function SignUp() {
       : setButtonDisabled(true);
   };
 
-  const handleSubmit = async () => {
-    console.log(registerData);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     await registerUser(registerData).then((response) => {
       const result = response.data;
-      if (result.token) {
-        localStorage.setItem('token', JSON.stringify(result.token));
+      console.log(result);
+      if (result.user) {
+        localStorage.setItem('user', JSON.stringify(result.user));
+        dispatch(userAuth(result.user));
         navigate('/customer/products');
       }
     }).catch((err) => {
       setError(err.response.data.message);
-      console.log(err);
     });
   };
 
@@ -59,6 +61,7 @@ function SignUp() {
           name="Nome"
           placeholder="Seu nome"
           size="sm"
+          max={ 11 }
           value={ registerData.name }
           onChange={ (event) => setRegisterData(
             { ...registerData, name: event.target.value },
