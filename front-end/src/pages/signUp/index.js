@@ -1,19 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  GenericButton,
-  GenericInput,
-} from '../../components';
+import { GenericButton, GenericInput } from '../../components';
+import { setNewUser } from '../../redux/actions/userActions';
 import { registerUser } from '../../services/api';
 import * as Styles from './styles';
 
 function SignUp() {
-  const { loading, erro } = useSelector(
-    (state) => state.auth,
-  );
-  const dispatch = useDispatch();
-
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [error, setError] = useState(null);
   const [registerData, setRegisterData] = useState({
@@ -22,6 +16,7 @@ function SignUp() {
     password: '',
   });
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const fieldsVerify = (data) => {
@@ -38,18 +33,17 @@ function SignUp() {
       : setButtonDisabled(true);
   };
 
-  const handleSubmit = async () => {
-    console.log(registerData);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     await registerUser(registerData).then((response) => {
       const result = response.data;
-      console.log(response.data.token);
       if (result.token) {
         localStorage.setItem('token', JSON.stringify(result.token));
         navigate('/customer/products');
+        dispatch(setNewUser(registerData));
       }
     }).catch((err) => {
       setError(err.response.data.message);
-      console.log(err);
     });
   };
 
