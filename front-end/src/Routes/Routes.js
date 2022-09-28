@@ -6,6 +6,9 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
+
+import Products from '../pages/products';
+
 import Marketplace from '../pages/marketplace';
 
 import SignIn from '../pages/signIn';
@@ -19,8 +22,9 @@ function AppRoutes() {
           path="/"
           element={ <Navigate to="/login" replace /> }
         />
-        <Route path="/login" element={ <SignIn /> } />
+        <Route path="customer/products" element={ <Products /> } />
         <Route path="/register" element={ <SignUp /> } />
+        <Route path="/login" element={ <SignIn /> } />
         <Route
           path="/customer/products"
           element={ <Marketplace userRole="customer" /> }

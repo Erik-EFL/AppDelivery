@@ -11,7 +11,7 @@ export const Container = styled.div`
   height: 100vh;
 `;
 
-export const FormContainer = styled.div`
+export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,7 +20,7 @@ export const FormContainer = styled.div`
   padding: 15px;
   background-color: ${themes.bgPrimary.lightGray};
   box-shadow: 0px 4px 4px 0px #00000040;
-  
+
   & > :last-child {
     margin-top: 10px;
   }
