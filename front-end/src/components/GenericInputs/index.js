@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import * as Styles from './styles';
 
 export default function InputGeneric(
-  { value, name, domId, placeholder, size, type, onChange },
+  { value, name, domId, placeholder, size, type, onChange, max },
 ) {
   return (
     <Styles.LabelGeneric htmlFor={ domId }>
@@ -14,6 +14,7 @@ export default function InputGeneric(
         type={ type || 'text' }
         value={ value }
         onChange={ onChange }
+        maxLength={ max }
       />
     </Styles.LabelGeneric>
   );
@@ -21,6 +22,7 @@ export default function InputGeneric(
 
 InputGeneric.propTypes = {
   value: PropTypes.string,
+  max: PropTypes.string,
   domId: PropTypes.string,
   name: PropTypes.string,
   placeholder: PropTypes.string,
