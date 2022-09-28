@@ -8,7 +8,7 @@ import {
 } from '../../components';
 import { requestLogin } from '../../services/api';
 import * as Styles from './styles';
-import { userLogin } from '../../redux/actions/userActions';
+import { userAuth } from '../../redux/actions/userActions';
 
 function SignIn() {
   const [loginData, setLoginData] = useState({
@@ -38,10 +38,10 @@ function SignIn() {
   const handleSubmit = async () => {
     await requestLogin(loginData).then((response) => {
       const result = response.data;
-      if (result.token) {
-        localStorage.setItem('token', JSON.stringify(result.token));
+      if (result.user) {
+        localStorage.setItem('user', JSON.stringify(result.user));
+        dispatch(userAuth(result.user));
         navigate('/customer/products');
-        dispatch(userLogin(loginData));
       }
     }).catch((err) => {
       setError(err.response.data.message);
