@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { GenericButton, GenericInput } from '../../components';
-import { setNewUser } from '../../redux/actions/userActions';
+import { userAuth } from '../../redux/actions/userActions';
 import { registerUser } from '../../services/api';
 import * as Styles from './styles';
 
@@ -38,9 +38,9 @@ function SignUp() {
     await registerUser(registerData).then((response) => {
       const result = response.data;
       console.log(result);
-      if (result.token) {
-        localStorage.setItem('token', JSON.stringify(result.token));
-        // dispatch(setNewUser(registerData));
+      if (result.user) {
+        localStorage.setItem('user', JSON.stringify(result.user));
+        dispatch(userAuth(result.user));
         navigate('/customer/products');
       }
     }).catch((err) => {
