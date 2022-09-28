@@ -5,10 +5,11 @@ const authMiddleware = {
   required: (req, _res, next) => {
     const { authorization } = req.headers;
     if (!authorization) {
-        throw new UnauthorizedError('Token not found');
+      throw new UnauthorizedError('Token not found');
     }
     const { data } = validateToken(authorization);
-    req.userId = data.id;
+    req.id = data.id;
+    req.role = data.role;
     next();
   },
 };
