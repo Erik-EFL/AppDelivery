@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../utils/getJwtKey');
 
 const auth = {
 
@@ -10,7 +9,7 @@ const auth = {
 
   validateToken: (token) => {
     try {
-      const payload = jwt.verify(token, JWT_SECRET || 'secret');
+      const payload = jwt.verify(token, process.env.JWT_SECRET || 'secret');
       return payload;
     } catch (e) {
       const error = new Error('Expired or invalid token');

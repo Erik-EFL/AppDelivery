@@ -3,7 +3,7 @@ const Joi = require('joi');
 const userSchema = {
   register: (body) => {
     const schema = Joi.object({
-      name: Joi.string().min(12).required(),
+      name: Joi.string().max(11).required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(6).required(),
     });
@@ -17,7 +17,7 @@ const userSchema = {
   },
   createByAdmin: (body) => {
     const schema = Joi.object({
-      name: Joi.string().min(12).required(),
+      name: Joi.string().max(11).required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(6).required(),
       role: Joi.string().valid('customer', 'seller', 'admin').required(),
@@ -25,7 +25,7 @@ const userSchema = {
 
     const { error } = schema.validate(body);
     if (error) {
-      const e = new Error('Some required fields are missing');
+      const e = new Error(error.message);
       e.name = 'BadRequest';
       throw e;
     }
