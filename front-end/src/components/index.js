@@ -7,6 +7,7 @@ import Navbar from './NavBar';
 import StatusButton from './StatusButton';
 import GenericProductCard from './ProductCard';
 import GenericContainer from './GenericContainer';
+import TableBar from './GenericTable/TableContainer';
 
 export {
   Counter,
@@ -18,4 +19,5 @@ export {
   StatusButton,
   GenericProductCard,
   GenericContainer,
+  TableBar,
 };

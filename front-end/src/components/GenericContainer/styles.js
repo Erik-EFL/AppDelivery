@@ -52,37 +52,6 @@ export const OrderDetails = styled.table`
   }
 `;
 
-export const FinishOrderContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-
-  .UpperTable {
-    height: 46vh;
-    position: relative;
-    width: 80%;
-    margin: 0 auto;
-    background: ${themes.bgPrimary.white};
-    border: 1px solid ${themes.bgPrimary.gray};
-    box-shadow: 0px 4px 4px ${themes.bgPrimary.blackShadow};
-  }
-`;
-
-export const ContainerInputs = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-
-  height: 20vh;
-  position: relative;
-  width: 80%;
-  margin: 0 auto;
-  background: ${themes.bgPrimary.white};
-  border: 1px solid ${themes.bgPrimary.gray};
-  box-shadow: 0px 4px 4px ${themes.bgPrimary.blackShadow};
-`;
-
 export const TH3 = styled.h3`
   font-size: 2rem;
   font-family: 'Roboto', sans-serif;

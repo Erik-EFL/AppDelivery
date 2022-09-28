@@ -5,7 +5,7 @@ import StatusButton from '../../StatusButton/index';
 import * as Styles from '../styles';
 
 const renderBar = ({ pageName, userRole, date, orderId, userName }) => {
-  if (userRole === 'vendedor' && pageName === 'Detalhes do Pedido') {
+  if (userRole === 'seller' && pageName === 'Detalhes do Pedido') {
     return (
       <Styles.OrderDetails>
         <tr>
@@ -56,7 +56,7 @@ const renderBar = ({ pageName, userRole, date, orderId, userName }) => {
       </Styles.OrderDetails>
     );
   }
-  if (userRole === 'costumer' && pageName === 'Detalhes do Pedido') {
+  if (userRole === 'customer' && pageName === 'Detalhes do Pedido') {
     return (
       <Styles.OrderDetails>
         <tr>
