@@ -8,7 +8,15 @@ const registerController = {
     const { password, ...userWithoutPassword } = storedUser;
 
     const token = auth.createToken(userWithoutPassword);
-    res.status(201).json({ token });
+    res.status(201).json({
+      user: {
+        token,
+        id: storedUser.id,
+        name: storedUser.name,
+        email: storedUser.email,
+        role: storedUser.role,
+      }
+    });
   },
 };
 

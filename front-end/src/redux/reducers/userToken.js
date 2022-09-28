@@ -2,7 +2,7 @@ import produce from 'immer';
 import { TOKEN } from '../actions/actionsType';
 
 const INICIAL_STATE = {
-  token: {},
+  token: '',
 };
 
 const tokenReducer = (state = INICIAL_STATE, action) => {
