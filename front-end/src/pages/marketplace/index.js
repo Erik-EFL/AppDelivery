@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { GenericProductCard, Navbar } from '../../components';
 import * as Styles from './styles';
 import { getAllProducts } from '../../services/api';
 import SimpleButton from '../../components/GenericButton';
+import { addItem, removeItem } from '../../redux/actions/userActions';
 
 function Marketplace() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.shoppingCartReducer);
   const getProducts = async () => {
     try {
       setLoading(true);
@@ -20,16 +24,31 @@ function Marketplace() {
     }
   };
 
-  const renderCards = (productArray) => productArray.map((prod) => (
-    <GenericProductCard
-      name={ prod.name }
-      img={ prod.urlImage }
-      price={ prod.price }
-      description={ prod.name }
-      key={ prod.id }
-      domId={ prod.id }
-    />
-  ));
+  const addToCart = (item) => {
+    dispatch(addItem(item));
+  };
+
+  const removeFromCart = (item) => {
+    dispatch(removeItem(item));
+  };
+
+  const renderCards = (productArray) => productArray.map((prod) => {
+    const currentItem = cart.find((item) => item.id === prod.id);
+    return (
+      <GenericProductCard
+        name={ prod.name }
+        img={ prod.urlImage }
+        price={ prod.price }
+        description={ prod.name }
+        key={ prod.id }
+        domId={ prod.id }
+        item={ prod }
+        addToCart={ addToCart }
+        value={ currentItem?.qty }
+        removeFromCart={ removeFromCart }
+      />
+    );
+  });
 
   useEffect(() => {
     getProducts();
