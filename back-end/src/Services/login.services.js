@@ -31,13 +31,8 @@ const loginServices = {
     if (passwordHash !== password) {
       throw new NotFoundError('Please check your email and/or password');
     }
-<<<<<<< HEAD
-    console.log(userWithoutPassword);
-    const token = this.createToken(userWithoutPassword);
-=======
 
     const token = auth.createToken(userWithoutPassword);
->>>>>>> a5347c2da4c6bbf617a8f55c5155ecbe930ee700
 
     return { token };
   },
