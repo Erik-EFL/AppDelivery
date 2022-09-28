@@ -78,9 +78,10 @@ export const GenericButton = styled.button`
   border-radius: .5rem;
   border: none;
   font-size: ${(props) => simpleButtonFontSize(props.fs)};
-  font-weight: 400;
-  ${(props) => simpleButtonSize(props.hgt, props.wdt)}
-  ${(props) => simpleButtonVariant(props.variant)}
+  font-weight: ${({ bold }) => (bold ? '700' : '400')};
+  ${(props) => simpleButtonSize(props.hgt, props.wdt)};
+  ${(props) => simpleButtonVariant(props.variant)};
+  width: ${({ large }) => (large ? '100%' : '')};
 `;
 
 export const Box = styled.div`

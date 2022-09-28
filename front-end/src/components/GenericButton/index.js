@@ -3,7 +3,7 @@ import React from 'react';
 import * as Styles from './style';
 
 function SimpleButton(
-  { disabled, onClick, dataTestid, readLine, variant, wdt, hgt, fs },
+  { disabled, bold, large, onClick, dataTestid, readLine, variant, wdt, hgt, fs },
 ) {
   return (
     <Styles.GenericButton
@@ -14,6 +14,8 @@ function SimpleButton(
       variant={ variant }
       onClick={ onClick }
       disabled={ disabled }
+      large={ large }
+      bold={ bold }
     >
       {readLine}
     </Styles.GenericButton>
@@ -29,6 +31,8 @@ SimpleButton.propTypes = {
   hgt: PropTypes.number,
   readLine: PropTypes.string,
   variant: PropTypes.string,
+  large: PropTypes.bool,
+  bold: PropTypes.bool,
 }.isRequired;
 
 export default SimpleButton;

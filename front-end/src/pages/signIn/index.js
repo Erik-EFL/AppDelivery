@@ -38,7 +38,6 @@ function SignIn() {
   const handleSubmit = async () => {
     await requestLogin(loginData).then((response) => {
       const result = response.data;
-      console.log(response);
       if (result.token) {
         localStorage.setItem('token', JSON.stringify(result.token));
         navigate('/customer/products');
