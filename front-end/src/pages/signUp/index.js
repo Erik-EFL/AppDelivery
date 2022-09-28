@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { GenericButton, GenericInput } from '../../components';
-import { setNewUser } from '../../redux/actions/userActions';
+import { userAuth } from '../../redux/actions/userActions';
 import { registerUser } from '../../services/api';
 import * as Styles from './styles';
 
@@ -24,7 +24,7 @@ function SignUp() {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i;
     const isEmailValid = emailRegex.test(email);
     const isPasswordValid = password ? password.length >= Number('6') : '';
-    const isNameValid = name ? name.length >= Number('12') : '';
+    const isNameValid = name ? name.length <= Number('11') : '';
     const fields = [email, password];
     const validateFields = fields.every((field) => field !== '');
     const isValid = isPasswordValid && isEmailValid && validateFields && isNameValid;
@@ -37,10 +37,11 @@ function SignUp() {
     event.preventDefault();
     await registerUser(registerData).then((response) => {
       const result = response.data;
-      if (result.token) {
-        localStorage.setItem('token', JSON.stringify(result.token));
+      console.log(result);
+      if (result.user) {
+        localStorage.setItem('user', JSON.stringify(result.user));
+        dispatch(userAuth(result.user));
         navigate('/customer/products');
-        dispatch(setNewUser(registerData));
       }
     }).catch((err) => {
       setError(err.response.data.message);
@@ -60,6 +61,7 @@ function SignUp() {
           name="Nome"
           placeholder="Seu nome"
           size="sm"
+          max={ 11 }
           value={ registerData.name }
           onChange={ (event) => setRegisterData(
             { ...registerData, name: event.target.value },

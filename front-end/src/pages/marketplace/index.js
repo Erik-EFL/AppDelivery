@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import { GenericProductCard, Navbar } from '../../components';
 import * as Styles from './styles';
 import { getAllProducts } from '../../services/api';
 import SimpleButton from '../../components/GenericButton';
 
-function Marketplace({ userRole }) {
+function Marketplace() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -44,7 +43,7 @@ function Marketplace({ userRole }) {
 
   return (
     <Styles.Container>
-      <Navbar role={ userRole } />
+      <Navbar />
       <Styles.MarketContainer>
         { products?.length > 0 && renderCards(products) }
       </Styles.MarketContainer>
@@ -61,9 +60,5 @@ function Marketplace({ userRole }) {
     </Styles.Container>
   );
 }
-
-Marketplace.propTypes = {
-  role: PropTypes.string,
-}.isRequired;
 
 export default Marketplace;

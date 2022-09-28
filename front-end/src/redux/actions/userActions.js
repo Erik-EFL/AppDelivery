@@ -1,11 +1,7 @@
-import { REGISTER, LOGIN, TOKEN } from './actionsType';
+import { USER_AUTH, TOKEN } from './actionsType';
 
-export function setNewUser(register) {
-  return { type: REGISTER, register };
-}
-
-export function userLogin(login) {
-  return { type: LOGIN, login };
+export function userAuth(user) {
+  return { type: USER_AUTH, user };
 }
 
 export function userToken(token) {

@@ -25,7 +25,7 @@ function AppRoutes() {
         <Route path="/login" element={ <SignIn /> } />
         <Route
           path="/customer/products"
-          element={ <Marketplace userRole="customer" /> }
+          element={ <Marketplace /> }
         />
         <Route
           path="/customer/checkout"

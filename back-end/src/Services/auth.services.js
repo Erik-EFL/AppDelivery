@@ -4,7 +4,7 @@ const { JWT_SECRET } = require('../utils/getJwtKey');
 const auth = {
 
   createToken(data) {
-    const token = jwt.sign({ data }, process.env.JWT_SECRET || 'secret', {});
+    const token = jwt.sign({ data }, JWT_SECRET || 'chaveDoTolkien', {});
     return token;
   },
 
