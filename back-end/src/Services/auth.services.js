@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../Errors/UnauthorizedError');
+
 const auth = {
 
   createToken(data) {

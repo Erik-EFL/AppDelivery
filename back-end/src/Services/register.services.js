@@ -12,7 +12,7 @@ const registerSevice = {
         name: userWithoutPassword.name,
         email: userWithoutPassword.email,
         role: userWithoutPassword.role,
-      }
+      },
     };
   },
 };
