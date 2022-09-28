@@ -19,9 +19,7 @@ const loginServices = {
   },
 
   async login(payload) {
-    const user = await db.user.findOne({
-      where: { email: payload.email },
-    });
+    const user = await db.user.findOne({ where: { email: payload.email } });
 
     if (!user) throw new NotFoundError('User not found, please check your email and/or password');
 
@@ -31,9 +29,7 @@ const loginServices = {
     if (passwordHash !== password) {
       throw new NotFoundError('Please check your email and/or password');
     }
-
     const token = auth.createToken(userWithoutPassword);
-
     return {
       user: {
         token,
@@ -41,7 +37,7 @@ const loginServices = {
         name: user.dataValues.name,
         email: user.dataValues.email,
         role: user.dataValues.role,
-      }
+      },
     };
   },
 };
