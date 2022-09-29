@@ -112,16 +112,15 @@ const renderBar = ({ pageName, userRole, date, orderId, userName }) => {
   }
 };
 
-function BarContainer({ pageName, userRole, date, orderId, userName, dataTestId }) {
+function BarContainer({ pageName, userRole, date, orderId, userName }) {
   return (
     <>
-      {renderBar({ pageName, userRole, date, orderId, userName, dataTestId })}
+      {renderBar({ pageName, userRole, date, orderId, userName })}
     </>
   );
 }
 
 BarContainer.propTypes = {
-  dataTestId: PropTypes.string.isRequired,
   pageName: PropTypes.string.isRequired,
   userRole: PropTypes.string.isRequired,
   date: PropTypes.string,
@@ -134,4 +133,5 @@ BarContainer.defaultProps = {
   orderId: '0001',
   userName: 'Fulana Pereira da Silva Sousa',
 };
+
 export default BarContainer;

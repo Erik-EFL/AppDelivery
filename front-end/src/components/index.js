@@ -8,6 +8,8 @@ import StatusButton from './StatusButton';
 import GenericProductCard from './ProductCard';
 import GenericContainer from './GenericContainer';
 import TableBar from './GenericTable/TableContainer';
+import TableInfo from './TableInfo/index';
+import BarContainer from './GenericContainer/subComponents/BarContainer';
 
 export {
   Counter,
@@ -20,4 +22,6 @@ export {
   GenericProductCard,
   GenericContainer,
   TableBar,
+  TableInfo,
+  BarContainer,
 };

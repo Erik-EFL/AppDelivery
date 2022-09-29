@@ -1,32 +1,35 @@
-import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { /* useDispatch, */ useSelector } from 'react-redux';
 import {
-  GenericButton, GenericInput, GenericSelect, Navbar, TableBar
+  GenericButton,
+  GenericInput,
+  GenericSelect,
+  Navbar,
+  TableBar,
 } from '../../components/index';
 import * as Styles from './style';
 
-function Checkout({ userRole }) {
-  const loginReducer = useSelector((state) => state.loginReducer);
-  const dispatch = useDispatch();
-  console.log(loginReducer.name);
+function Checkout() {
+  const loginReducer = useSelector((state) => state.userAuthReducer);
+  const { role } = loginReducer.user;
+  const page = 'Finalizar Pedido';
+  // const dispatch = useDispatch();
 
   /*   const orderSubmit = () => {
 
   }; */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     dispatch();
-  });
+  }); */
 
-  const page = 'Finalizar Pedido';
   return (
     <>
-      <Navbar role={ userRole } />
+      <Navbar role={ role } />
       <Styles.CheckoutContainer>
         <header><h1>{`${page}`}</h1></header>
         <section className="UpperTable">
-          <TableBar pageName={ page } userRole={ userRole } />
+          <TableBar pageName={ page } userRole={ role } />
         </section>
         <header><h1>Detalhes e Endereço para Entrega</h1></header>
         <Styles.CheckoutInputs>
@@ -43,9 +46,5 @@ function Checkout({ userRole }) {
     </>
   );
 }
-
-Checkout.propTypes = {
-  userRole: PropTypes.string,
-}.isRequired;
 
 export default Checkout;
