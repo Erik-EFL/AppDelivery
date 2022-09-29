@@ -3,7 +3,7 @@ const errorMiddleware = (err, _req, res, _next) => {
 
   switch (name) {
     case 'ValidationError':
-      return res.status(400).json({ message });   
+      return res.status(400).json({ message });
 
     case 'NotFoundError':
       return res.status(404).json({ message });
@@ -15,8 +15,8 @@ const errorMiddleware = (err, _req, res, _next) => {
       return res.status(401).json({ message });
 
     default:
-    console.warn(err); 
-    return res.sendStatus(500);
+      console.warn(err);
+      return res.sendStatus(500);
   }
 };
 

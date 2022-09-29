@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { GenericProductCard, Navbar } from '../../components';
-import * as Styles from './styles';
-import { getAllProducts } from '../../services/api';
 import SimpleButton from '../../components/GenericButton';
+import {
+  addItem,
+  removeItem,
+  updatePrice,
+  updateQuantity,
+} from '../../redux/actions/userActions';
+import { getAllProducts } from '../../services/api';
+import * as Styles from './styles';
 
 function Marketplace() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { cart, totalPrices } = useSelector((state) => state.shoppingCartReducer);
 
   const getProducts = async () => {
     try {
@@ -20,16 +32,39 @@ function Marketplace() {
     }
   };
 
-  const renderCards = (productArray) => productArray.map((prod) => (
-    <GenericProductCard
-      name={ prod.name }
-      img={ prod.urlImage }
-      price={ prod.price }
-      description={ prod.name }
-      key={ prod.id }
-      domId={ prod.id }
-    />
-  ));
+  const addToCart = (item) => {
+    dispatch(addItem(item));
+    dispatch(updatePrice());
+  };
+
+  const removeFromCart = (item) => {
+    dispatch(removeItem(item));
+    dispatch(updatePrice());
+  };
+
+  const updateItem = (item) => {
+    dispatch(updateQuantity(item));
+    dispatch(updatePrice());
+  };
+
+  const renderCards = (productArray) => productArray.map((prod) => {
+    const currentItem = cart.find((item) => item.id === prod.id);
+    return (
+      <GenericProductCard
+        name={ prod.name }
+        img={ prod.urlImage }
+        price={ prod.price }
+        description={ prod.name }
+        key={ prod.id }
+        domId={ prod.id }
+        item={ prod }
+        addToCart={ addToCart }
+        value={ currentItem?.qty }
+        removeFromCart={ removeFromCart }
+        updateItem={ updateItem }
+      />
+    );
+  });
 
   useEffect(() => {
     getProducts();
@@ -51,11 +86,17 @@ function Marketplace() {
         <SimpleButton
           wdt="20.25"
           hgt="4"
-          readLine="Ver Carrinho: R$ 28,00"
+          readLine="Ver Carrinho: R$ "
           bold
           fs="lg"
-          dataTestid="customer_products__checkout-bottom-value"
-        />
+          disabled={ totalPrices === '0,00' }
+          onClick={ () => navigate('/customer/checkout') }
+          dataTestid="customer_products__button-cart"
+        >
+          <span data-testid="customer_products__checkout-bottom-value">
+            {totalPrices.replace('.', ',')}
+          </span>
+        </SimpleButton>
       </Styles.CartButtonContainer>
     </Styles.Container>
   );

@@ -3,7 +3,18 @@ import React from 'react';
 import * as Styles from './style';
 
 function SimpleButton(
-  { disabled, bold, large, onClick, dataTestid, readLine, variant, wdt, hgt, fs },
+  { disabled,
+    bold,
+    large,
+    onClick,
+    dataTestid,
+    children,
+    readLine,
+    variant,
+    wdt,
+    hgt,
+    fs,
+  },
 ) {
   return (
     <Styles.GenericButton
@@ -18,6 +29,7 @@ function SimpleButton(
       bold={ bold }
     >
       {readLine}
+      {children}
     </Styles.GenericButton>
   );
 }
