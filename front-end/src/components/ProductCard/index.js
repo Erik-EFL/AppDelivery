@@ -2,12 +2,29 @@ import PropTypes from 'prop-types';
 import Counter from '../Counter/index';
 import * as Styles from './styles';
 
-function GenericProductCard({ img, price, description, name, domId }) {
+function GenericProductCard(
+  {
+    img,
+    price,
+    description,
+    name,
+    domId,
+    addToCart,
+    removeFromCart,
+    item,
+    value,
+    updateItem,
+  },
+) {
   return (
     <Styles.ProductCard>
-      <span data-testid={ `customer_products__element-card-price-${domId}` }>
-        {`R$ ${price}`}
-      </span>
+      <p id="price">
+        R$
+        {' '}
+        <span data-testid={ `customer_products__element-card-price-${domId}` }>
+          {price.replace('.', ',')}
+        </span>
+      </p>
       <Styles.BoxImage>
         <img
           src={ img }
@@ -16,7 +33,15 @@ function GenericProductCard({ img, price, description, name, domId }) {
         />
       </Styles.BoxImage>
       <Styles.Box>
-        <Counter description={ description } domId={ domId } />
+        <Counter
+          description={ description }
+          addToCart={ addToCart }
+          removeFromCart={ removeFromCart }
+          updateItem={ updateItem }
+          domId={ domId }
+          item={ item }
+          value={ value }
+        />
       </Styles.Box>
     </Styles.ProductCard>
   );
@@ -28,6 +53,8 @@ GenericProductCard.propTypes = {
   price: PropTypes.string,
   domId: PropTypes.string,
   description: PropTypes.string,
+  addToCart: PropTypes.func,
+  removeFromCart: PropTypes.func,
 }.isRequired;
 
 export default GenericProductCard;

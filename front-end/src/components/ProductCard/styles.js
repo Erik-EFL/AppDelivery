@@ -11,7 +11,7 @@ export const ProductCard = styled.div`
   width: 18rem;
   height: 24rem;
 
-  span {
+  #price {
     position: absolute;
     box-sizing: border-box;
     top: .15rem;
