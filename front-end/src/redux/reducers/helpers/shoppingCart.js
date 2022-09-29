@@ -37,3 +37,37 @@ export const removeFromCartFlow = (state, action) => {
   localStorage.setItem('cart', JSON.stringify(filteredResponse));
   return filteredResponse;
 };
+
+export const updatePrice = (state) => {
+  let price = 0;
+
+  state.cart.forEach((item) => {
+    price += Number(item.price) * item.qty;
+  });
+
+  const response = {
+    ...state,
+    totalPrices: Number(price).toFixed(2),
+  };
+
+  localStorage.removeItem('cart');
+  localStorage.setItem('cart', JSON.stringify(response));
+
+  return response;
+};
+
+export const updateQuantity = (state, action, inCart) => {
+  const response = {
+    ...state,
+    cart: inCart
+      ? state.cart.map((item) => (item.id === action.item.id
+        ? { ...item, qty: action.item.qty }
+        : item))
+      : [...state.cart, { ...action.item, qty: action.item.qty }],
+  };
+
+  localStorage.removeItem('cart');
+  localStorage.setItem('cart', JSON.stringify(response));
+
+  return response;
+};

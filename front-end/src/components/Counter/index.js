@@ -1,9 +1,17 @@
-import React, { useState } from 'react';
-import { FaPlus, FaMinus } from 'react-icons/fa';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { FaMinus, FaPlus } from 'react-icons/fa';
 import * as Styles from './styles';
 
-function Counter({ description, domId, addToCart, removeFromCart, item, value }) {
+function Counter({
+  description,
+  domId,
+  addToCart,
+  removeFromCart,
+  item,
+  value,
+  updateItem,
+}) {
   const [count, setCount] = useState(value || 0);
 
   const minusChange = () => {
@@ -14,6 +22,11 @@ function Counter({ description, domId, addToCart, removeFromCart, item, value })
   const plusChange = () => {
     setCount(count + 1);
     addToCart(item);
+  };
+
+  const updateCount = (event) => {
+    setCount(+(event.target.value));
+    updateItem({ ...item, qty: +(event.target.value) });
   };
 
   return (
@@ -31,9 +44,9 @@ function Counter({ description, domId, addToCart, removeFromCart, item, value })
         </Styles.CountButton>
         <Styles.CountInput
           min="0"
-          value={ count }
+          value={ +count || 0 }
           type="number"
-          readOnly
+          onChange={ (event) => updateCount(event) }
           data-testid={ `customer_products__input-card-quantity-${domId}` }
         />
         <Styles.CountButton
@@ -53,6 +66,7 @@ Counter.propTypes = {
   domId: PropTypes.string,
   addToCart: PropTypes.func,
   removeFromCart: PropTypes.func,
+  updateItem: PropTypes.func,
 }.isRequired;
 
 export default Counter;
