@@ -82,6 +82,7 @@ export const GenericButton = styled.button`
   ${(props) => simpleButtonSize(props.hgt, props.wdt)};
   ${(props) => simpleButtonVariant(props.variant)};
   width: ${({ large }) => (large ? '100%' : '')};
+  cursor: pointer;
 `;
 
 export const Box = styled.div`
