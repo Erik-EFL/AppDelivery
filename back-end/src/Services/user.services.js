@@ -39,6 +39,7 @@ const userService = {
   getAll: async () => {
     const users = await user.findAll({
       attributes: ['id', 'name', 'email', 'role'],
+      where: { role: { [Op.ne]: 'administrator' } },
     });
     return users;
   },

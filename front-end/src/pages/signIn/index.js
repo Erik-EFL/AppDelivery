@@ -42,6 +42,12 @@ function SignIn() {
         localStorage.setItem('user', JSON.stringify(result.user));
         dispatch(userAuth(result.user));
         navigate('/customer/products');
+        // if (result.user.role === 'administrator') {
+        //   navigate('/admin/manage');
+        // }
+        // if (result.user.role === 'customer') {
+        //   navigate('/customer/products');
+        // }
       }
     }).catch((err) => {
       setError(err.response.data.message);
@@ -62,10 +68,10 @@ function SignIn() {
           placeholder="email@trybeer.com.br"
           size="sm"
           type="email"
-          value={ loginData.email }
-          onChange={ (event) => setLoginData(
+          value={loginData.email}
+          onChange={(event) => setLoginData(
             { ...loginData, email: event.target.value },
-          ) }
+          )}
         />
         <GenericInput
           domId="common_login__input-password"
@@ -74,28 +80,28 @@ function SignIn() {
           size="sm"
           mg="10px"
           type="password"
-          value={ loginData.password }
-          onChange={ (event) => setLoginData(
+          value={loginData.password}
+          onChange={(event) => setLoginData(
             { ...loginData, password: event.target.value },
-          ) }
+          )}
         />
         <GenericButton
           readLine="Login"
           large
           dataTestid="common_login__button-login"
-          onClick={ handleSubmit }
-          disabled={ buttonDisabled }
+          onClick={handleSubmit}
+          disabled={buttonDisabled}
         />
         <GenericButton
           readLine="Ainda não tenho conta"
           variant="secondary"
           large
           dataTestid="common_login__button-register"
-          onClick={ () => navigate('/register') }
+          onClick={() => navigate('/register')}
         />
       </Styles.FormContainer>
       {error && (
-        <p data-testid="common_login__element-invalid-email">{ error }</p>
+        <p data-testid="common_login__element-invalid-email">{error}</p>
       )}
     </Styles.Container>
   );
