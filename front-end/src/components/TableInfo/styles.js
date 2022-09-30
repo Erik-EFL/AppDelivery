@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-// import themes from '../themes/themes';
+import themes from '../themes/themes';
 
 export const InfoTableLine = styled.table`
-  border: 1px solid black;
-  width: 90%;
   margin: 0 auto;
   border-collapse: collapse;
-  width: 100%;
-  
+  width: 90%;
+  background-color: ${themes.bgPrimary.lightGray};
+  border-radius: 8px;
+
   th {
-    font-size: ${themes.typography.textSize.md};
-    text-align: center;
+    font-size: ${themes.typography.textSize.lg};
     padding: 8px;
+    margin: auto;
   }
 `;
 
