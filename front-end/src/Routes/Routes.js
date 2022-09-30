@@ -10,6 +10,8 @@ import {
 import Marketplace from '../pages/marketplace';
 import SignIn from '../pages/signIn';
 import SignUp from '../pages/signUp';
+import OrderDetails from '../pages/OrderDetails';
+import Checkout from '../pages/Checkout';
 
 function AppRoutes() {
   return (
@@ -24,6 +26,14 @@ function AppRoutes() {
         <Route
           path="/customer/products"
           element={ <Marketplace /> }
+        />
+        <Route
+          path="/customer/checkout"
+          element={ <Checkout userRole="customer" /> }
+        />
+        <Route
+          path="/customer/orders"
+          element={ <OrderDetails userRole="customer" /> }
         />
       </Routes>
     </Router>
