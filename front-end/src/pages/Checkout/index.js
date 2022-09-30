@@ -6,11 +6,14 @@ import {
   GenericSelect,
   Navbar,
   TableBar,
+  TableInfo,
+  ScrollContainer,
 } from '../../components/index';
 import * as Styles from './style';
 
 function Checkout() {
   const loginReducer = useSelector((state) => state.userAuthReducer);
+  const { totalPrices, cart } = useSelector((state) => state.shoppingCartReducer);
   const { role } = loginReducer.user;
   const page = 'Finalizar Pedido';
   // const dispatch = useDispatch();
@@ -22,14 +25,43 @@ function Checkout() {
   /*   useEffect(() => {
     dispatch();
   }); */
-
+  console.log(cart);
   return (
     <>
-      <Navbar role={ role } />
+      <Navbar />
       <Styles.CheckoutContainer>
         <header><h1>{`${page}`}</h1></header>
-        <section className="UpperTable">
+        <section className="upperTable">
           <TableBar pageName={ page } userRole={ role } />
+          <ScrollContainer>
+            {cart?.length > 0
+              && cart.map((item) => (
+                <TableInfo
+                  key={ item.id }
+                  productId={ item.id }
+                  productName={ item.name }
+                  quantidade={ item.qty }
+                  unitValue={ item.price }
+                  totalValue={ item.ttpItem }
+                  // onClick={ () => }
+                  pageName="Finalizar Pedido"
+                />
+              ))}
+          </ScrollContainer>
+          <div className="button-container">
+            <GenericButton
+              wdt="20.25"
+              hgt="4"
+              readLine={ `${totalPrices.replace('.', ',')}` }
+              bold
+              fs="lg"
+              disabled={ totalPrices === '0,00' }
+              // onClick={ () => navigate('/customer/checkout') }
+              data-testid="customer_order_details__element-order-total-price"
+            >
+              {/*  */}
+            </GenericButton>
+          </div>
         </section>
         <header><h1>Detalhes e Endereço para Entrega</h1></header>
         <Styles.CheckoutInputs>

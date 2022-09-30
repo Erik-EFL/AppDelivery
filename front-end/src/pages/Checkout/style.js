@@ -12,14 +12,19 @@ export const CheckoutContainer = styled.section`
     font-size: ${themes.typography.textSize.lg};
   }
 
-  .UpperTable {
-    height: 46vh;
+  .upperTable {
     position: relative;
+    height: 46vh;
     width: 80%;
     margin: 0 auto;
-    background: ${themes.bgPrimary.white};
     border: 1px solid ${themes.bgPrimary.gray};
     box-shadow: 0px 4px 4px ${themes.bgPrimary.blackShadow};
+
+    .button-container {
+      position: absolute;
+      right: 3rem;
+      bottom: 3rem;
+    }
   }
 `;
 
@@ -38,6 +43,19 @@ export const CheckoutInputs = styled.section`
   background: ${themes.bgPrimary.white};
   border: 1px solid ${themes.bgPrimary.gray};
   box-shadow: 0px 4px 4px ${themes.bgPrimary.blackShadow};
+`;
+
+export const ScrollContainer = styled.div`
+  margin: 0 auto;
+  width: 98%;
+  height: 65%;
+  overflow-y: scroll;
+`;
+
+export const CartButtonContainer = styled.div`
+  position: fixed;
+  right: 3rem;
+  bottom: 3rem;
 `;
 
 export const Box = styled.form`
