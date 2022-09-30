@@ -3,12 +3,14 @@ import {
   REMOVE_ITEM,
   TOTAL_PRICE,
   UPDATE_QUANTITY,
+  UPDATE_ITEM_PRICES,
 } from '../actions/actionsType';
 import {
   addtoCartFlow,
   removeFromCartFlow,
   updatePrice,
   updateQuantity,
+  updateUnitPrice,
 } from './helpers/shoppingCart';
 
 const INICIAL_STATE = JSON.parse(localStorage.getItem('cart')) || {
@@ -30,6 +32,10 @@ const shoppingCartReducer = (state = INICIAL_STATE, action) => {
 
   case TOTAL_PRICE: {
     return updatePrice(state);
+  }
+
+  case UPDATE_ITEM_PRICES: {
+    return updateUnitPrice(state);
   }
 
   case UPDATE_QUANTITY: {
