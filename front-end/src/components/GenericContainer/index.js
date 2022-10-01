@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import TableBar from '../GenericTable/TableContainer';
 import Navbar from '../NavBar';
 import * as Styles from './styles';
@@ -24,21 +24,18 @@ const selectedPage = (role, page) => {
   }
 };
 
-function GenericContainer({ userRole }) {
+function GenericContainer() {
+  const { role } = useSelector((state) => state.userAuthReducer);
   const pageName = 'Detalhes do Pedido';
   return (
     <>
-      <Navbar role={ userRole } />
+      <Navbar />
       <Styles.Container>
         <header><h1>{`${pageName}`}</h1></header>
-        {selectedPage(userRole, pageName)}
+        {selectedPage(role, pageName)}
       </Styles.Container>
     </>
   );
 }
-
-GenericContainer.propTypes = {
-  userRole: PropTypes.string,
-}.isRequired;
 
 export default GenericContainer;

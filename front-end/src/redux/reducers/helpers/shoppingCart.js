@@ -56,6 +56,21 @@ export const updatePrice = (state) => {
   return response;
 };
 
+export const updateUnitPrice = (state) => {
+  const response = {
+    ...state,
+    cart: state.cart.map((item) => {
+      const price = Number(item.price) * item.qty;
+      return { ...item, ttpItem: Number(price).toFixed(2) };
+    }),
+  };
+
+  localStorage.removeItem('cart');
+  localStorage.setItem('cart', JSON.stringify(response));
+
+  return response;
+};
+
 export const updateQuantity = (state, action, inCart) => {
   const response = {
     ...state,

@@ -1,16 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import * as Styles from './styles';
 
 function Navbar() {
-  const navigate = useNavigate();
-
   const { user } = useSelector((state) => state.userAuthReducer);
 
   const logout = () => {
     localStorage.removeItem('user');
-    navigate('/login');
   };
 
   const renderPerUserRole = (userRole) => {
@@ -20,12 +16,14 @@ function Navbar() {
           <Styles.SimpleButton
             data-testid="customer_products__element-navbar-link-products"
             variant="simple"
+            to="/customer/products"
           >
             PRODUTOS
           </Styles.SimpleButton>
           <Styles.SimpleButton
             variant="simple"
             data-testid="customer_products__element-navbar-link-orders"
+            to="/customer/orders"
           >
             MEUS PEDIDOS
           </Styles.SimpleButton>
@@ -34,7 +32,9 @@ function Navbar() {
     }
     if (userRole === 'administrator') {
       return (
-        <Styles.SimpleButton variant="simple">
+        <Styles.SimpleButton
+          variant="simple"
+        >
           GERENCIAR USUÁRIOS
         </Styles.SimpleButton>
       );
@@ -63,6 +63,7 @@ function Navbar() {
           variant="logout"
           data-testid="customer_products__element-navbar-link-logout"
           onClick={ logout }
+          to="/login"
         >
           Sair
         </Styles.SimpleButton>

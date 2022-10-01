@@ -5,7 +5,7 @@ import {
 
 function OrderDetails() {
   return (
-    <GenericContainer userType="customer" />
+    <GenericContainer />
   );
 }
 

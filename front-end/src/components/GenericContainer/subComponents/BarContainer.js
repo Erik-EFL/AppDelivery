@@ -121,17 +121,11 @@ function BarContainer({ pageName, userRole, date, orderId, userName }) {
 }
 
 BarContainer.propTypes = {
-  pageName: PropTypes.string.isRequired,
-  userRole: PropTypes.string.isRequired,
+  pageName: PropTypes.string,
+  userRole: PropTypes.string,
   date: PropTypes.string,
   orderId: PropTypes.string,
   userName: PropTypes.string,
-};
-
-BarContainer.defaultProps = {
-  date: '11/04/1995',
-  orderId: '0001',
-  userName: 'Fulana Pereira da Silva Sousa',
-};
+}.isRequired;
 
 export default BarContainer;

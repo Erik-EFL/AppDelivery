@@ -5,6 +5,7 @@ import {
   TOTAL_PRICE,
   UPDATE_QUANTITY,
   USER_AUTH,
+  UPDATE_ITEM_PRICES,
 } from './actionsType';
 
 export function userAuth(user) {
@@ -25,6 +26,10 @@ export function removeItem(item) {
 
 export function updatePrice() {
   return { type: TOTAL_PRICE };
+}
+
+export function updateUnitPrice() {
+  return { type: UPDATE_ITEM_PRICES };
 }
 
 export function updateQuantity(item) {

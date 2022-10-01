@@ -10,6 +10,7 @@ import GenericContainer from './GenericContainer';
 import TableBar from './GenericTable/TableContainer';
 import TableInfo from './TableInfo/index';
 import BarContainer from './GenericContainer/subComponents/BarContainer';
+import ScrollContainer from './ScrollContainer/styles';
 
 export {
   Counter,
@@ -24,4 +25,5 @@ export {
   TableBar,
   TableInfo,
   BarContainer,
+  ScrollContainer,
 };

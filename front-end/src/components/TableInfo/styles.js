@@ -4,9 +4,10 @@ import themes from '../themes/themes';
 export const InfoTableLine = styled.table`
   margin: 0 auto;
   border-collapse: collapse;
-  width: 90%;
+  width: 100%;
   background-color: ${themes.bgPrimary.lightGray};
   border-radius: 8px;
+  margin-bottom: .5rem;
 
   th {
     font-size: ${themes.typography.textSize.lg};
