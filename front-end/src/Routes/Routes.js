@@ -1,14 +1,12 @@
 import React from 'react';
 
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
+  BrowserRouter as Router, Navigate, Route, Routes,
 } from 'react-router-dom';
 
+import Checkout from '../pages/Checkout';
 import Marketplace from '../pages/marketplace';
-import OrderDetails from '../pages/OrderDetails';
+import OrderDetails from '../pages/OrderDetails/index';
 import SignIn from '../pages/signIn';
 import SignUp from '../pages/signUp';
 
@@ -27,8 +25,12 @@ function AppRoutes() {
           element={ <Marketplace /> }
         />
         <Route
-          path="customer/orders"
-          element={ <OrderDetails /> }
+          path="/customer/checkout"
+          element={ <Checkout userRole="customer" /> }
+        />
+        <Route
+          path="/customer/orders"
+          element={ <OrderDetails userRole="customer" /> }
         />
       </Routes>
     </Router>

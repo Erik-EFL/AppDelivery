@@ -1,17 +1,20 @@
 const UnauthorizedError = require('../Errors/UnauthorizedError');
 const { validateToken } = require('../Services/auth.services');
+const { isAdmin } = require('../Services/user.services');
 
-const authMiddleware = {
+const adminMiddleware = {
   required: (req, _res, next) => {
     const { authorization } = req.headers;
     if (!authorization) {
       throw new UnauthorizedError('Token not found');
     }
     const { data } = validateToken(authorization);
-    req.id = data.id;
-    req.role = data.role;
+
+    if (!isAdmin(data.id)) {
+      throw new UnauthorizedError('Unauthorized');
+    }
     next();
   },
 };
 
-module.exports = authMiddleware;
+module.exports = adminMiddleware;

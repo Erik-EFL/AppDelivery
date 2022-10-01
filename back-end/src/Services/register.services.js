@@ -1,32 +1,19 @@
-const md5 = require('md5');
-const { Op } = require('sequelize');
-const { user } = require('../database/models');
-const ConflictError = require('../Errors/ConflictError');
+const auth = require('./auth.services');
+const user = require('./user.services');
 
 const registerSevice = {
   register: async (body) => {
-    const { name, password, email } = body;
-
-    // check if user already exists
-    const userFound = await user.findOne({
-      where: {
-        [Op.or]: [
-          { name },
-          { email },
-        ],
+    const { password, ...userWithoutPassword } = await user.create(body);
+    const token = auth.createToken(userWithoutPassword);
+    return {
+      user: {
+        token,
+        id: userWithoutPassword.id,
+        name: userWithoutPassword.name,
+        email: userWithoutPassword.email,
+        role: userWithoutPassword.role,
       },
-    });
-
-    if (userFound) throw new ConflictError('User already registered');
-
-    // hash password
-    const hashedPassword = md5(password);
-
-    // store a user
-    const storedUser = await user
-      .create({ name, email, password: hashedPassword, role: 'customer' });
-
-    return storedUser;
+    };
   },
 };
 

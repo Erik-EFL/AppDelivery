@@ -31,16 +31,16 @@ const renderTable = (pageType, userType) => {
       </Styles.TableHeader>
     );
   }
-  if (pageType === 'Finalizar Pedido' && userType === 'vendedor') {
+  if (pageType === 'Finalizar Pedido' && userType === 'customer') {
     return (
       <Styles.TableHeader>
         <tr>
-          <th style={ { width: '10rem' } }>Item</th>
-          <th style={ { width: '50rem' } }>Descrição</th>
-          <th style={ { width: '10rem' } }>Quantidade</th>
-          <th style={ { width: '10rem' } }>Valor Unitário</th>
-          <th style={ { width: '10rem' } }>Sub-Total</th>
-          <th style={ { width: '10rem' } }>Remover item</th>
+          <th style={ { width: '7rem' } }>Item</th>
+          <th style={ { width: '55rem' } }>Descrição</th>
+          <th style={ { width: '15rem' } }>Quantidade</th>
+          <th style={ { width: '15rem' } }>Valor Unitário</th>
+          <th style={ { width: '15rem' } }>Sub-Total</th>
+          <th style={ { width: '27rem' } }>Remover item</th>
         </tr>
         {/* criar a função para gerar as linhas da tabela */}
       </Styles.TableHeader>

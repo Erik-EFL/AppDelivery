@@ -5,7 +5,7 @@ import StatusButton from '../../StatusButton/index';
 import * as Styles from '../styles';
 
 const renderBar = ({ pageName, userRole, date, orderId, userName }) => {
-  if (userRole === 'vendedor' && pageName === 'Detalhes do Pedido') {
+  if (userRole === 'seller' && pageName === 'Detalhes do Pedido') {
     return (
       <Styles.OrderDetails>
         <tr>
@@ -56,7 +56,7 @@ const renderBar = ({ pageName, userRole, date, orderId, userName }) => {
       </Styles.OrderDetails>
     );
   }
-  if (userRole === 'costumer' && pageName === 'Detalhes do Pedido') {
+  if (userRole === 'customer' && pageName === 'Detalhes do Pedido') {
     return (
       <Styles.OrderDetails>
         <tr>
@@ -112,26 +112,20 @@ const renderBar = ({ pageName, userRole, date, orderId, userName }) => {
   }
 };
 
-function BarContainer({ pageName, userRole, date, orderId, userName, dataTestId }) {
+function BarContainer({ pageName, userRole, date, orderId, userName }) {
   return (
     <>
-      {renderBar({ pageName, userRole, date, orderId, userName, dataTestId })}
+      {renderBar({ pageName, userRole, date, orderId, userName })}
     </>
   );
 }
 
 BarContainer.propTypes = {
-  dataTestId: PropTypes.string.isRequired,
-  pageName: PropTypes.string.isRequired,
-  userRole: PropTypes.string.isRequired,
+  pageName: PropTypes.string,
+  userRole: PropTypes.string,
   date: PropTypes.string,
   orderId: PropTypes.string,
   userName: PropTypes.string,
-};
+}.isRequired;
 
-BarContainer.defaultProps = {
-  date: '11/04/1995',
-  orderId: '0001',
-  userName: 'Fulana Pereira da Silva Sousa',
-};
 export default BarContainer;
