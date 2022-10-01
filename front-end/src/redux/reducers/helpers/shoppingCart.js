@@ -71,6 +71,18 @@ export const updateUnitPrice = (state) => {
   return response;
 };
 
+export const removeItemFromCheckout = (state, action) => {
+  const response = {
+    ...state,
+    cart: state.cart.filter((item) => item.id !== action.id),
+  };
+
+  localStorage.removeItem('cart');
+  localStorage.setItem('cart', JSON.stringify(response));
+
+  return response;
+};
+
 export const updateQuantity = (state, action, inCart) => {
   const response = {
     ...state,

@@ -61,8 +61,8 @@ export const CartButtonContainer = styled.div`
 export const Box = styled.form`
   position: relative;
   display: flex;
-  justify-content: space-between;
-  width: 90%;
+  justify-content: center;
+  gap: 1rem;
   flex-direction: ${(props) => (props.direction === 'row' ? 'row' : 'column')};
   padding: .5rem;
 `;

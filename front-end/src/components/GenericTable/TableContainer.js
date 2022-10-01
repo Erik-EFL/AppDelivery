@@ -35,12 +35,12 @@ const renderTable = (pageType, userType) => {
     return (
       <Styles.TableHeader>
         <tr>
-          <th style={ { width: '8rem' } }>Item</th>
+          <th style={ { width: '7rem' } }>Item</th>
           <th style={ { width: '55rem' } }>Descrição</th>
           <th style={ { width: '15rem' } }>Quantidade</th>
           <th style={ { width: '15rem' } }>Valor Unitário</th>
           <th style={ { width: '15rem' } }>Sub-Total</th>
-          <th style={ { width: '25rem' } }>Remover item</th>
+          <th style={ { width: '27rem' } }>Remover item</th>
         </tr>
         {/* criar a função para gerar as linhas da tabela */}
       </Styles.TableHeader>

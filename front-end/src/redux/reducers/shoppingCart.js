@@ -4,10 +4,12 @@ import {
   TOTAL_PRICE,
   UPDATE_QUANTITY,
   UPDATE_ITEM_PRICES,
+  REMOVE_CHECKOUT_ITEM,
 } from '../actions/actionsType';
 import {
   addtoCartFlow,
   removeFromCartFlow,
+  removeItemFromCheckout,
   updatePrice,
   updateQuantity,
   updateUnitPrice,
@@ -42,6 +44,10 @@ const shoppingCartReducer = (state = INICIAL_STATE, action) => {
     const inCart = state.cart.find((item) => (item.id === action.item.id));
 
     return updateQuantity(state, action, inCart);
+  }
+
+  case REMOVE_CHECKOUT_ITEM: {
+    return removeItemFromCheckout(state, action);
   }
 
   default:
