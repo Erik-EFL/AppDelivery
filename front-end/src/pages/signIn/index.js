@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import {
   GenericButton,
   GenericInput,
 } from '../../components';
+import { userAuth } from '../../redux/actions/userActions';
 import { requestLogin } from '../../services/api';
 import * as Styles from './styles';
-import { userAuth } from '../../redux/actions/userActions';
 
 function SignIn() {
   const [loginData, setLoginData] = useState({
@@ -51,6 +51,16 @@ function SignIn() {
   useEffect(() => {
     fieldsVerify(loginData);
   }, [loginData.email, loginData.password, loginData]);
+
+  useEffect(() => {
+    const pathName = window.location.pathname;
+    if (pathName.includes('/')) {
+      const user = JSON.parse(localStorage.getItem('user'));
+      if (user) {
+        localStorage.removeItem('user');
+      }
+    }
+  });
 
   return (
     <Styles.Container>

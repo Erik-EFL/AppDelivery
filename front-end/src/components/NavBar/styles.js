@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import themes from '../themes/themes';
 import { NavLink } from 'react-router-dom';
+import themes from '../themes/themes';
 
 export const NavBarContainer = styled.div`
   width: 100%;
