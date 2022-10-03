@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 import themes from '../themes/themes';
 
 export const NavBarContainer = styled.div`
@@ -26,7 +27,7 @@ export const UsernameText = styled.p`
   color: ${themes.typography.textColor.iceWhite};
   `;
 
-export const SimpleButton = styled.a`
+export const SimpleButton = styled(NavLink)`
   font-size: 1.4rem;
   color: ${themes.typography.textColor.iceWhite};
   height: 90%;
@@ -38,6 +39,12 @@ export const SimpleButton = styled.a`
   background-color: ${(props) => (props.variant === 'logout'
     ? `${themes.bgPrimary.blue}`
     : `${themes.bgPrimary.darkGreen}`)};
+  cursor: pointer;
+  text-decoration: none;
+
+  .active {
+    background-color: ${themes.bgPrimary.green};
+  }
 `;
 
 export const Box = styled.div`

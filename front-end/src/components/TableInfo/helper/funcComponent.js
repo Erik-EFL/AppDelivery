@@ -2,8 +2,7 @@ const borderThFinish = '0px 8px 8px 0px';
 const borderThStart = '8px 0 0 8px';
 
 const selectTable = (
-  { productId, productName,
-    quantidade, unitValue, totalValue, role, pageName, name,
+  { productId, productName, quantidade, unitValue, totalValue, role, pageName, name,
     userId, email, onClick, userType,
   },
 ) => {
@@ -40,7 +39,7 @@ const selectTable = (
             { width: '15rem', backgroundColor: '#421981', color: '#F2FFFC' }
           }
         >
-          {`R$ ${unitValue}`}
+          {`R$ ${unitValue.replace('.', ',')}`}
         </th>
         <th
           style={
@@ -51,7 +50,7 @@ const selectTable = (
               color: '#F2FFFC' }
           }
         >
-          {`R$ ${totalValue}`}
+          {`R$ ${totalValue.replace('.', ',')}`}
         </th>
         <th
           style={
@@ -83,7 +82,7 @@ const selectTable = (
   }
   if (role === 'customer' && pageName === 'Detalhe do pedido') {
     return (
-      <tr>
+      <tr style={ { marginBottom: '.5rem' } }>
         <th
           style={
             {

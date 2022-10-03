@@ -3,12 +3,16 @@ import {
   REMOVE_ITEM,
   TOTAL_PRICE,
   UPDATE_QUANTITY,
+  UPDATE_ITEM_PRICES,
+  REMOVE_CHECKOUT_ITEM,
 } from '../actions/actionsType';
 import {
   addtoCartFlow,
   removeFromCartFlow,
+  removeItemFromCheckout,
   updatePrice,
   updateQuantity,
+  updateUnitPrice,
 } from './helpers/shoppingCart';
 
 const INICIAL_STATE = JSON.parse(localStorage.getItem('cart')) || {
@@ -32,10 +36,18 @@ const shoppingCartReducer = (state = INICIAL_STATE, action) => {
     return updatePrice(state);
   }
 
+  case UPDATE_ITEM_PRICES: {
+    return updateUnitPrice(state);
+  }
+
   case UPDATE_QUANTITY: {
     const inCart = state.cart.find((item) => (item.id === action.item.id));
 
     return updateQuantity(state, action, inCart);
+  }
+
+  case REMOVE_CHECKOUT_ITEM: {
+    return removeItemFromCheckout(state, action);
   }
 
   default:

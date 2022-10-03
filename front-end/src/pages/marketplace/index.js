@@ -8,6 +8,7 @@ import {
   removeItem,
   updatePrice,
   updateQuantity,
+  updateUnitPrice,
 } from '../../redux/actions/userActions';
 import { getAllProducts } from '../../services/api';
 import * as Styles from './styles';
@@ -35,16 +36,19 @@ function Marketplace() {
   const addToCart = (item) => {
     dispatch(addItem(item));
     dispatch(updatePrice());
+    dispatch(updateUnitPrice());
   };
 
   const removeFromCart = (item) => {
     dispatch(removeItem(item));
     dispatch(updatePrice());
+    dispatch(updateUnitPrice());
   };
 
   const updateItem = (item) => {
     dispatch(updateQuantity(item));
     dispatch(updatePrice());
+    dispatch(updateUnitPrice());
   };
 
   const renderCards = (productArray) => productArray.map((prod) => {
