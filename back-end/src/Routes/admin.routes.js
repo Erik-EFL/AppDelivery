@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const controller = require('../Controllers/admin.controller');
-// const auth = require('../Middlewares/auth.middleware');
 const admin = require('../Middlewares/admin.middleware');
 
 const { createByAdminValidation } = require('../Middlewares/user.middleware');

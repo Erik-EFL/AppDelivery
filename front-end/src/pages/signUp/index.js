@@ -24,7 +24,7 @@ function SignUp() {
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i;
     const isEmailValid = emailRegex.test(email);
     const isPasswordValid = password ? password.length >= Number('6') : '';
-    const isNameValid = name ? name.length <= Number('11') : '';
+    const isNameValid = name ? name.length >= Number('12') : '';
     const fields = [email, password];
     const validateFields = fields.every((field) => field !== '');
     const isValid = isPasswordValid && isEmailValid && validateFields && isNameValid;
@@ -61,11 +61,11 @@ function SignUp() {
           name="Nome"
           placeholder="Seu nome"
           size="sm"
-          max={ 11 }
-          value={ registerData.name }
-          onChange={ (event) => setRegisterData(
+          // max={ 11 }
+          value={registerData.name}
+          onChange={(event) => setRegisterData(
             { ...registerData, name: event.target.value },
-          ) }
+          )}
         />
         <GenericInput
           domId="common_register__input-email"
@@ -73,10 +73,10 @@ function SignUp() {
           placeholder="email@trybeer.com.br"
           size="sm"
           type="email"
-          value={ registerData.email }
-          onChange={ (event) => setRegisterData(
+          value={registerData.email}
+          onChange={(event) => setRegisterData(
             { ...registerData, email: event.target.value },
-          ) }
+          )}
         />
         <GenericInput
           domId="common_register__input-password"
@@ -85,21 +85,21 @@ function SignUp() {
           size="sm"
           mg="10px"
           type="password"
-          value={ registerData.password }
-          onChange={ (event) => setRegisterData(
+          value={registerData.password}
+          onChange={(event) => setRegisterData(
             { ...registerData, password: event.target.value },
-          ) }
+          )}
         />
         <GenericButton
           readLine="Cadastrar"
           large
           dataTestid="common_register__button-register"
-          disabled={ buttonDisabled }
-          onClick={ handleSubmit }
+          disabled={buttonDisabled}
+          onClick={handleSubmit}
         />
       </Styles.FormContainer>
       {error && (
-        <p data-testid="common_register__element-invalid_register">{ error }</p>
+        <p data-testid="common_register__element-invalid_register">{error}</p>
       )}
     </Styles.Container>
   );

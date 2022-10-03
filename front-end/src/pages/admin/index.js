@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { GenericButton, GenericInput, GenericSelect } from '../../components';
+import { GenericButton, GenericInput, GenericSelect, Navbar } from '../../components';
 import TableContainer from '../../components/GenericTable/TableContainer';
 import { getAllUsersByAdm, registerUserByAdm } from '../../services/api';
 import * as Styles from './styles';
@@ -10,38 +10,48 @@ function Admin() {
   const [error, setError] = useState(null);
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [registerData, setRegisterData] = useState({
+  const types = ['customer', 'seller'];
+  const NAME_MIN_LENGTH = 12;
+  const PASSWORD_MIN_LENGTH = 6;
+  const registerInitialState = {
     name: '',
     email: '',
     password: '',
-    role: 'customer',
-  });
-
-  const types = ['customer', 'seller'];
+    // role: '',
+    role: types[0],
+  };
+  const [registerData, setRegisterData] = useState(registerInitialState);
 
   const fieldsVerify = (data) => {
-    const { name, email, password, role } = data;
+    // const { name, email, password, role } = data;
+    const { name, email, password } = data;
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i;
     const isEmailValid = emailRegex.test(email);
-    const isPasswordValid = password ? password.length >= Number('6') : '';
-    const isNameValid = name ? name.length <= Number('11') : '';
+    const isPasswordValid = password ? password.length >= PASSWORD_MIN_LENGTH : '';
+    const isNameValid = name ? name.length >= NAME_MIN_LENGTH : '';
     const fields = [email, password];
     const validateFields = fields.every((field) => field !== '');
-    const isValidRole = types.includes(role);
+    // const isValidRole = types.includes(role);
     const isValid = isPasswordValid
       && isEmailValid
       && validateFields
-      && isNameValid
-      && isValidRole;
+      && isNameValid;
+    // && isValidRole;
     return isValid
       ? setButtonDisabled(false)
       : setButtonDisabled(true);
   };
 
+  const user = JSON.parse(localStorage.getItem('user'));
+  const headers = {
+    'Content-Type': 'application/json',
+    Authorization: user.token,
+  };
+
   const getUsers = async () => {
     try {
       setLoading(true);
-      const result = await getAllUsersByAdm();
+      const result = await getAllUsersByAdm(headers);
       setUsers(result.data);
     } catch (err) {
       console.log(err);
@@ -56,7 +66,7 @@ function Admin() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await registerUserByAdm(registerData).then((response) => {
+    await registerUserByAdm(registerData, headers).then((response) => {
       const result = response.data;
       if (result) {
         getUsers();
@@ -72,6 +82,7 @@ function Admin() {
 
   return (
     <Styles.Container>
+      <Navbar />
       <h1>Cadastro</h1>
       <Styles.FormContainer>
         <GenericInput
@@ -79,7 +90,7 @@ function Admin() {
           name="Nome"
           placeholder="Seu nome"
           size="sm"
-          max={11}
+          // max={11}
           value={registerData.name}
           onChange={(event) => setRegisterData(
             { ...registerData, name: event.target.value },
@@ -97,7 +108,7 @@ function Admin() {
           )}
         />
         <GenericInput
-          domId="common_register__input-email"
+          domId="admin_manage__input-password"
           name="Senha"
           placeholder="**********"
           size="sm"
@@ -108,8 +119,8 @@ function Admin() {
             { ...registerData, password: event.target.value },
           )}
         />
-
         <GenericSelect
+          // criar um select para o admin
           domId="admin_manage__select-role"
           name="Tipo"
           value={registerData.role}

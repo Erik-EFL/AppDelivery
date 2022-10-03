@@ -10,18 +10,19 @@ export default function GenericSelect({
   onChange,
   defaultValue }) {
   return (
-    <Styles.LabelGeneric htmlFor={domId}>
+    <Styles.LabelGeneric htmlFor={ domId }>
       <p>{name}</p>
       <Styles.GenericSelect
         type="text"
-        data-testid={domId}
-        size={size}
-        defaultValue={defaultValue}
-        onChange={onChange}
+        data-testid={ domId }
+        size={ size }
+        defaultValue={ defaultValue }
+        onChange={ onChange }
       >
         {data
           && data.map(
-            (item) => <option key={item.id} value={item.name}>{item.name}</option>,
+            // (item) => <option key={item.id} value={item.name}>{item.name}</option>,
+            (item, index) => <option key={ index } value={ item }>{item}</option>,
           )}
         ;
       </Styles.GenericSelect>
