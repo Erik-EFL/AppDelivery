@@ -47,16 +47,10 @@ function Admin() {
       : setButtonDisabled(true);
   };
 
-  const user = JSON.parse(localStorage.getItem('user'));
-  const headers = {
-    'Content-Type': 'application/json',
-    Authorization: user.token,
-  };
-
   const getUsers = async () => {
     try {
       setLoading(true);
-      const result = await getAllUsersByAdm(headers);
+      const result = await getAllUsersByAdm();
       setUsers(result.data);
     } catch (err) {
       console.log(err);
@@ -67,7 +61,7 @@ function Admin() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await registerUserByAdm(registerData, headers).then((response) => {
+    await registerUserByAdm(registerData).then((response) => {
       const result = response.data;
       if (result) {
         getUsers();
