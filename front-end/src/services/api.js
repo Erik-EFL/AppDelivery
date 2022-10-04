@@ -14,12 +14,26 @@ const registerUserByAdm = (data) => axios
       Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}`,
     },
   });
+
 const getAllUsersByAdm = () => axios.get(`${baseUrl}/admin/manage`, {
   headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}` },
 });
+
 const orderCreate = (data) => axios.post(`${baseUrl}/orders`, data, {
   headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}` },
 });
+
+const ordersContent = (data) => axios.post(`${baseUrl}/orders`, data);
+
+/* const orderDetails = (id) => axios.get(`${baseUrl}/orders/${id}`);
+
+const orderUpdate = (id, data) => axios.put(`${baseUrl}/orders/${id}`, data, {
+  headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}` },
+});
+
+const orderDelete = (id) => axios.delete(`${baseUrl}/orders/${id}`, {
+  headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}` },
+}); */
 
 export {
   requestLogin,
@@ -28,4 +42,5 @@ export {
   registerUserByAdm,
   getAllUsersByAdm,
   orderCreate,
+  ordersContent,
 };

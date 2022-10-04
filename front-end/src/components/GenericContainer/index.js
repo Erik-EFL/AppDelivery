@@ -25,8 +25,12 @@ const selectedPage = (role, page) => {
 };
 
 function GenericContainer() {
-  const { role } = useSelector((state) => state.userAuthReducer);
-  const pageName = 'Detalhes do Pedido';
+  const { user } = useSelector((state) => state.userAuthReducer);
+  const order = useSelector((state) => state.orderReducer);
+  const { role } = user;
+  console.log(user);
+  console.log(order);
+  const pageName = 'Detalhe do Pedido';
   return (
     <>
       <Navbar />

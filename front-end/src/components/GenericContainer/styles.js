@@ -38,7 +38,7 @@ export const OrderDetails = styled.table`
 
   .peopleName {
     margin-left: 5px;
-
+    width: 50rem;
     display: flex;
     flex-direction: row;
   }

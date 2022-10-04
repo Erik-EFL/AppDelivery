@@ -4,12 +4,12 @@ import {
   BrowserRouter as Router, Navigate, Route, Routes,
 } from 'react-router-dom';
 
+import Admin from '../pages/admin';
 import Checkout from '../pages/Checkout';
 import Marketplace from '../pages/marketplace';
+import OrderDetails from '../pages/OrderDetails';
 import SignIn from '../pages/signIn';
 import SignUp from '../pages/signUp';
-import OrderDetails from '../pages/OrderDetails';
-import Admin from '../pages/admin';
 
 function AppRoutes() {
   return (
@@ -30,8 +30,16 @@ function AppRoutes() {
           element={ <Checkout userRole="customer" /> }
         />
         <Route
+          path="/customer/orders/:id"
+          element={ <OrderDetails userRole="customer" /> }
+        />
+        <Route
           path="/customer/orders"
           element={ <OrderDetails userRole="customer" /> }
+        />
+        <Route
+          path="/customer/orders"
+          element={ <OrderDetails userRole="seller" /> }
         />
         <Route path="/admin/manage" element={ <Admin /> } />
       </Routes>

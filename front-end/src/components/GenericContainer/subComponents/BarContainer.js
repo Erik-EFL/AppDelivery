@@ -5,7 +5,7 @@ import StatusButton from '../../StatusButton/index';
 import * as Styles from '../styles';
 
 const renderBar = ({ pageName, userRole, date, orderId, userName }) => {
-  if (userRole === 'seller' && pageName === 'Detalhes do Pedido') {
+  if (userRole === 'seller' && pageName === 'Detalhe do Pedido') {
     return (
       <Styles.OrderDetails>
         <tr>
@@ -56,12 +56,11 @@ const renderBar = ({ pageName, userRole, date, orderId, userName }) => {
       </Styles.OrderDetails>
     );
   }
-  if (userRole === 'customer' && pageName === 'Detalhes do Pedido') {
+  if (userRole === 'customer' && pageName === 'Detalhe do Pedido') {
     return (
       <Styles.OrderDetails>
         <tr>
           <th
-            style={ { width: '50rem' } }
             className="peopleName"
           >
             <Styles.TH3
@@ -113,6 +112,7 @@ const renderBar = ({ pageName, userRole, date, orderId, userName }) => {
 };
 
 function BarContainer({ pageName, userRole, date, orderId, userName }) {
+  // const { user } = useSelector((state) => state.userAuthReducer);
   return (
     <>
       {renderBar({ pageName, userRole, date, orderId, userName })}

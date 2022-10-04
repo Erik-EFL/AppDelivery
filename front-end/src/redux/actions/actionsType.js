@@ -7,3 +7,4 @@ export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const UPDATE_ITEM_PRICES = 'UPDATE_ITEM_PRICES';
 export const REMOVE_CHECKOUT_ITEM = 'REMOVE_CHECKOUT_ITEM';
 export const CLEAR_CART = 'CLEAR_CART';
+export const NEW_ORDER = 'NEW_ORDER';

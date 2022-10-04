@@ -3,7 +3,7 @@ import React from 'react';
 import * as Styles from './styles';
 
 const renderTable = (pageType, userType) => {
-  if (userType === 'costumer' && pageType === 'Detalhes do Pedido') {
+  if (pageType === 'Detalhe do Pedido' && userType === 'costumer') {
     return (
       <Styles.TableHeader>
         <th style={ { width: '10rem' } }>Item</th>
@@ -14,7 +14,7 @@ const renderTable = (pageType, userType) => {
       </Styles.TableHeader>
     );
   }
-  if (pageType === 'Detalhes do Pedido' && userType === 'vendedor') {
+  if (pageType === 'Detalhe do Pedido' && userType === 'vendedor') {
     return (
       <Styles.TableHeader>
         <th style={ { width: '10rem' } }>Item</th>
@@ -37,7 +37,7 @@ const renderTable = (pageType, userType) => {
       </Styles.TableHeader>
     );
   }
-  if (pageType === 'admin' && userType === 'adminitrator') {
+  if (pageType === 'admin' && userType === 'administrator') {
     return (
       <Styles.TableHeader>
         <tr>

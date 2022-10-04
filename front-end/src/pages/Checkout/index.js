@@ -59,11 +59,11 @@ function Checkout() {
     };
     await orderCreate(data).then((response) => {
       const saleId = response.data.id;
-      navigate(`/orders/${saleId}`);
+      navigate(`/customer/orders/${saleId}`);
       localStorage.removeItem('cart');
       dispatch(clearCart());
     }).catch((err) => {
-      console.log(err.response.data);
+      console.error(err.response.data);
     });
   };
 

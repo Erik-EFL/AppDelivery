@@ -8,6 +8,7 @@ import {
   UPDATE_ITEM_PRICES,
   REMOVE_CHECKOUT_ITEM,
   CLEAR_CART,
+  NEW_ORDER,
 } from './actionsType';
 
 export function userAuth(user) {
@@ -44,4 +45,8 @@ export function removeCheckoutItem(id) {
 
 export function clearCart() {
   return { type: CLEAR_CART };
+}
+
+export function newOrder(order) {
+  return { type: NEW_ORDER, order };
 }
