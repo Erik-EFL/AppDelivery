@@ -64,7 +64,8 @@ function SignIn() {
 
   return (
     <Styles.Container>
-      <h1>&lt;Nome do seu app&gt;</h1>
+      <h1>Techila</h1>
+      <h2>O delivery de cachaça</h2>
       <Styles.FormContainer>
         <GenericInput
           domId="common_login__input-email"

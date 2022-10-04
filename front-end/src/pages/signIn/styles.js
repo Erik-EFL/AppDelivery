@@ -9,6 +9,7 @@ export const Container = styled.div`
   gap: 10px;
   width: 100vw;
   height: 100vh;
+  background-color: rgb(240, 230, 215);
 `;
 
 export const FormContainer = styled.div`

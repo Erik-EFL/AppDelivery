@@ -26,14 +26,10 @@ function Checkout() {
     dispatch(updatePrice());
   };
 
-  /*   const orderSubmit = () => {
-
-  }; */
-
   useEffect(() => {
     if (cart.length === 0) navigate('/customer/products');
   }, [cart, navigate]);
-  console.log(cart);
+
   return (
     <>
       <Navbar />
@@ -64,7 +60,6 @@ function Checkout() {
               bold
               fs="lg"
               disabled={ totalPrices === '0,00' }
-              // onClick={ () => navigate('/customer/checkout') }
               data-testid="customer_order_details__element-order-total-price"
             >
               {/*  */}
