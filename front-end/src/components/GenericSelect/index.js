@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import * as Styles from './styles';
 
 export default function GenericSelect({
@@ -9,6 +10,7 @@ export default function GenericSelect({
   data,
   onChange,
   defaultValue }) {
+  const { user } = useSelector((state) => state.userAuthReducer);
   return (
     <Styles.LabelGeneric htmlFor={ domId }>
       <p>{name}</p>
@@ -21,8 +23,9 @@ export default function GenericSelect({
       >
         {data
           && data.map(
-            // (item) => <option key={item.id} value={item.name}>{item.name}</option>,
-            (item, index) => <option key={ index } value={ item }>{item}</option>,
+            user.role === 'customer'
+              ? (item) => <option key={ item.id } value={ item.name }>{item.name}</option>
+              : (item, index) => <option key={ index } value={ item }>{item}</option>,
           )}
         ;
       </Styles.GenericSelect>

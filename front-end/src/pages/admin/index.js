@@ -153,11 +153,11 @@ function Admin() {
         )
       }
 
+      {loading && (<span>carregando...</span>)}
+      <header><h1>Lista de usuários</h1></header>
       <section className="upperTable">
-        <header><h1>Lista de usuários</h1></header>
         <TableContainer pageName="admin" userRole="adminitrator" />
         <ScrollContainer>
-          {loading && (<span>carregando...</span>)}
           {users?.length > 0
             && users.map((item, index) => (
               <TableInfo
