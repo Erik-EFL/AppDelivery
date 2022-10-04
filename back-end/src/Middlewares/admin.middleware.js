@@ -8,7 +8,7 @@ const adminMiddleware = {
     if (!authorization) {
       throw new UnauthorizedError('Token not found');
     }
-    const { data } = validateToken(authorization.split(" ")[1]);
+    const { data } = validateToken(authorization.split(' ')[1]);
 
     if (!isAdmin(data.id)) {
       throw new UnauthorizedError('Unauthorized');
