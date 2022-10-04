@@ -1,12 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart } from '../../redux/actions/userActions';
 import * as Styles from './styles';
 
 function Navbar() {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.userAuthReducer);
 
   const logout = () => {
     localStorage.removeItem('user');
+    localStorage.removeItem('cart');
+    dispatch(clearCart());
   };
 
   const renderPerUserRole = (userRole) => {

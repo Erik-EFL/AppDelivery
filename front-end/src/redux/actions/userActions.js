@@ -7,6 +7,7 @@ import {
   USER_AUTH,
   UPDATE_ITEM_PRICES,
   REMOVE_CHECKOUT_ITEM,
+  CLEAR_CART,
 } from './actionsType';
 
 export function userAuth(user) {
@@ -39,4 +40,8 @@ export function updateQuantity(item) {
 
 export function removeCheckoutItem(id) {
   return { type: REMOVE_CHECKOUT_ITEM, id };
+}
+
+export function clearCart() {
+  return { type: CLEAR_CART };
 }

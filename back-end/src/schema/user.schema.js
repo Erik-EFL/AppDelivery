@@ -4,7 +4,7 @@ const ValidationError = require('../Errors/ValidationError');
 const userSchema = {
   register: (body) => {
     const schema = Joi.object({
-      name: Joi.string().max(11).required(),
+      name: Joi.string().min(12).required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(6).required(),
     });
@@ -16,7 +16,7 @@ const userSchema = {
   },
   createByAdmin: (body) => {
     const schema = Joi.object({
-      name: Joi.string().max(11).required(),
+      name: Joi.string().min(12).required(),
       email: Joi.string().email().required(),
       password: Joi.string().min(6).required(),
       role: Joi.string().valid('customer', 'seller', 'admin').required(),
