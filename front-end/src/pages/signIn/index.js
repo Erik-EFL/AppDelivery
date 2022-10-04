@@ -77,10 +77,10 @@ function SignIn() {
           placeholder="email@trybeer.com.br"
           size="sm"
           type="email"
-          value={loginData.email}
-          onChange={(event) => setLoginData(
+          value={ loginData.email }
+          onChange={ (event) => setLoginData(
             { ...loginData, email: event.target.value },
-          )}
+          ) }
         />
         <GenericInput
           domId="common_login__input-password"
@@ -89,24 +89,24 @@ function SignIn() {
           size="sm"
           mg="10px"
           type="password"
-          value={loginData.password}
-          onChange={(event) => setLoginData(
+          value={ loginData.password }
+          onChange={ (event) => setLoginData(
             { ...loginData, password: event.target.value },
-          )}
+          ) }
         />
         <GenericButton
           readLine="Login"
           large
           dataTestid="common_login__button-login"
-          onClick={handleSubmit}
-          disabled={buttonDisabled}
+          onClick={ handleSubmit }
+          disabled={ buttonDisabled }
         />
         <GenericButton
           readLine="Ainda não tenho conta"
           variant="secondary"
           large
           dataTestid="common_login__button-register"
-          onClick={() => navigate('/register')}
+          onClick={ () => navigate('/register') }
         />
       </Styles.FormContainer>
       {error && (

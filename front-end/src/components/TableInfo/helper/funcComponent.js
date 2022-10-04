@@ -10,12 +10,11 @@ const selectTable = (
     return (
       <tr>
         <th
-          style={
-            {
-              width: '4rem',
-              backgroundColor: '#2FC18C',
-              borderRadius: borderThStart }
-          }
+          style={ {
+            width: '4rem',
+            backgroundColor: '#2FC18C',
+            borderRadius: borderThStart,
+          } }
         >
           {productId}
         </th>
@@ -27,10 +26,9 @@ const selectTable = (
           {productName}
         </th>
         <th
-          style={
-            {
-              width: '15rem', backgroundColor: '#036B52', color: '#F2FFFC' }
-          }
+          style={ {
+            width: '15rem', backgroundColor: '#036B52', color: '#F2FFFC',
+          } }
         >
           {quantidade}
         </th>
@@ -42,35 +40,32 @@ const selectTable = (
           {`R$ ${unitValue.replace('.', ',')}`}
         </th>
         <th
-          style={
-            {
-              width: '15rem',
-              padding: '0',
-              backgroundColor: '#056CF9',
-              color: '#F2FFFC' }
-          }
+          style={ {
+            width: '15rem',
+            padding: '0',
+            backgroundColor: '#056CF9',
+            color: '#F2FFFC',
+          } }
         >
           {`R$ ${totalValue.replace('.', ',')}`}
         </th>
         <th
-          style={
-            {
-              width: '15rem',
+          style={ {
+            width: '15rem',
+            padding: '0',
+            backgroundColor: '#2FC18C',
+            color: '#F2FFFC',
+            borderRadius: borderThFinish,
+          } }
+        >
+          <button
+            style={ {
+              width: '18rem',
               padding: '0',
               backgroundColor: '#2FC18C',
               color: '#F2FFFC',
-              borderRadius: borderThFinish }
-          }
-        >
-          <button
-            style={
-              {
-                width: '18rem',
-                padding: '0',
-                backgroundColor: '#2FC18C',
-                color: '#F2FFFC',
-                borderRadius: borderThFinish }
-            }
+              borderRadius: borderThFinish,
+            } }
             type="button"
             onClick={ onClick }
           >
@@ -84,12 +79,11 @@ const selectTable = (
     return (
       <tr style={ { marginBottom: '.5rem' } }>
         <th
-          style={
-            {
-              width: '2.8rem',
-              backgroundColor: '#2FC18C',
-              borderRadius: borderThStart }
-          }
+          style={ {
+            width: '2.8rem',
+            backgroundColor: '#2FC18C',
+            borderRadius: borderThStart,
+          } }
         >
           {productId}
         </th>
@@ -101,10 +95,9 @@ const selectTable = (
           {productName}
         </th>
         <th
-          style={
-            {
-              width: '15rem', backgroundColor: '#036B52', color: '#F2FFFC' }
-          }
+          style={ {
+            width: '15rem', backgroundColor: '#036B52', color: '#F2FFFC',
+          } }
         >
           {quantidade}
         </th>
@@ -116,14 +109,13 @@ const selectTable = (
           {`R$ ${unitValue}`}
         </th>
         <th
-          style={
-            {
-              width: '15rem',
-              padding: '0',
-              backgroundColor: '#056CF9',
-              color: '#F2FFFC',
-              borderRadius: borderThFinish }
-          }
+          style={ {
+            width: '15rem',
+            padding: '0',
+            backgroundColor: '#056CF9',
+            color: '#F2FFFC',
+            borderRadius: borderThFinish,
+          } }
         >
           {`R$ ${totalValue}`}
         </th>
@@ -134,12 +126,11 @@ const selectTable = (
     return (
       <tr>
         <th
-          style={
-            {
-              width: '3rem',
-              backgroundColor: '#2FC18C',
-              borderRadius: borderThStart }
-          }
+          style={ {
+            width: '3rem',
+            backgroundColor: '#2FC18C',
+            borderRadius: borderThStart,
+          } }
         >
           {productId}
         </th>
@@ -151,10 +142,9 @@ const selectTable = (
           {productName}
         </th>
         <th
-          style={
-            {
-              width: '15rem', backgroundColor: '#036B52', color: '#F2FFFC' }
-          }
+          style={ {
+            width: '15rem', backgroundColor: '#036B52', color: '#F2FFFC',
+          } }
         >
           {quantidade}
         </th>
@@ -166,14 +156,13 @@ const selectTable = (
           {`R$ ${unitValue}`}
         </th>
         <th
-          style={
-            {
-              width: '15rem',
-              padding: '0',
-              backgroundColor: '#056CF9',
-              color: '#F2FFFC',
-              borderRadius: borderThFinish }
-          }
+          style={ {
+            width: '15rem',
+            padding: '0',
+            backgroundColor: '#056CF9',
+            color: '#F2FFFC',
+            borderRadius: borderThFinish,
+          } }
         >
           {`R$ ${totalValue}`}
         </th>
@@ -184,12 +173,12 @@ const selectTable = (
     return (
       <tr>
         <th
-          style={
-            {
-              width: '5rem',
-              backgroundColor: '#2FC18C',
-              borderRadius: borderThStart }
-          }
+          style={ {
+            width: '5rem',
+            backgroundColor: '#2FC18C',
+            borderRadius: borderThStart,
+          } }
+          data-testid={ `admin_manage__element-user-table-item-number-${userId}` }
         >
           {userId}
         </th>
@@ -197,14 +186,15 @@ const selectTable = (
           style={
             { width: '30rem', textAlign: 'left' }
           }
+          data-testid={ `admin_manage__element-user-table-name-${userId}` }
         >
           {name}
         </th>
         <th
-          style={
-            {
-              width: '30rem', backgroundColor: '#036B52', color: '#F2FFFC' }
-          }
+          style={ {
+            width: '30rem', backgroundColor: '#036B52', color: '#F2FFFC',
+          } }
+          data-testid={ `admin_manage__element-user-table-email-${userId}` }
         >
           {email}
         </th>
@@ -212,30 +202,30 @@ const selectTable = (
           style={
             { width: '30rem', backgroundColor: '#421981', color: '#F2FFFC' }
           }
+          data-testid={ `admin_manage__element-user-table-role-${userId}` }
         >
           {userType}
         </th>
         <th
-          style={
-            {
-              padding: '0',
-              backgroundColor: '#056CF9',
-              color: '#F2FFFC',
-              borderRadius: borderThFinish }
-          }
+          style={ {
+            padding: '0',
+            backgroundColor: '#056CF9',
+            color: '#F2FFFC',
+            borderRadius: borderThFinish,
+          } }
         >
           <button
             type="button"
             onClick={ onClick }
-            style={
-              {
-                width: '15rem',
-                fontSize: '1.6rem',
-                padding: '8px',
-                backgroundColor: '#056CF9',
-                color: '#F2FFFC',
-                borderRadius: borderThFinish }
-            }
+            data-testid={ `admin_manage__element-user-table-remove-${userId}` }
+            style={ {
+              width: '15rem',
+              fontSize: '1.6rem',
+              padding: '8px',
+              backgroundColor: '#056CF9',
+              color: '#F2FFFC',
+              borderRadius: borderThFinish,
+            } }
           >
             Excluir
           </button>

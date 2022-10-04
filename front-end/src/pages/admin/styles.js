@@ -2,15 +2,13 @@ import styled from 'styled-components';
 import themes from '../../components/themes/themes';
 
 export const Container = styled.div`
-  display: flex;
   align-items: center;
   justify-content: center;
+  display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100vw;
-  height: 100vh;
+  gap: 5rem;
+  position: relative;
 `;
-
 export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
@@ -24,4 +22,28 @@ export const FormContainer = styled.form`
   & > :last-child {
     margin-top: 10px;
   }
+`;
+export const CheckoutInputs = styled.section`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  height: 20vh;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  background: ${themes.bgPrimary.white};
+  border: 1px solid ${themes.bgPrimary.gray};
+  box-shadow: 0px 4px 4px ${themes.bgPrimary.blackShadow};
+`;
+export const Box = styled.form`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-direction: ${(props) => (props.direction === 'row' ? 'row' : 'column')};
+  padding: .5rem;
 `;

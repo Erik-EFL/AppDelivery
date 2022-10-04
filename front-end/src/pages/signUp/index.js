@@ -62,10 +62,10 @@ function SignUp() {
           placeholder="Seu nome"
           size="sm"
           // max={ 11 }
-          value={registerData.name}
-          onChange={(event) => setRegisterData(
+          value={ registerData.name }
+          onChange={ (event) => setRegisterData(
             { ...registerData, name: event.target.value },
-          )}
+          ) }
         />
         <GenericInput
           domId="common_register__input-email"
@@ -73,10 +73,10 @@ function SignUp() {
           placeholder="email@trybeer.com.br"
           size="sm"
           type="email"
-          value={registerData.email}
-          onChange={(event) => setRegisterData(
+          value={ registerData.email }
+          onChange={ (event) => setRegisterData(
             { ...registerData, email: event.target.value },
-          )}
+          ) }
         />
         <GenericInput
           domId="common_register__input-password"
@@ -85,17 +85,17 @@ function SignUp() {
           size="sm"
           mg="10px"
           type="password"
-          value={registerData.password}
-          onChange={(event) => setRegisterData(
+          value={ registerData.password }
+          onChange={ (event) => setRegisterData(
             { ...registerData, password: event.target.value },
-          )}
+          ) }
         />
         <GenericButton
           readLine="Cadastrar"
           large
           dataTestid="common_register__button-register"
-          disabled={buttonDisabled}
-          onClick={handleSubmit}
+          disabled={ buttonDisabled }
+          onClick={ handleSubmit }
         />
       </Styles.FormContainer>
       {error && (
