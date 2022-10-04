@@ -37,6 +37,20 @@ const renderTable = (pageType, userType) => {
       </Styles.TableHeader>
     );
   }
+  if (pageType === 'admin' && userType === 'adminitrator') {
+    return (
+      <Styles.TableHeader>
+        <tr>
+          <th style={ { width: '5rem' } }>&nbsp;</th>
+          <th style={ { width: '30rem' } }>Nome</th>
+          <th style={ { width: '30rem' } }>Email</th>
+          <th style={ { width: '30rem' } }>Tipo</th>
+          <th style={ { width: '15rem' } }>Excluir</th>
+        </tr>
+        {/* criar a função para gerar as linhas da tabela */}
+      </Styles.TableHeader>
+    );
+  }
 };
 
 function TableContainer({ pageName, userRole }) {

@@ -41,7 +41,12 @@ function SignIn() {
       if (result.user) {
         localStorage.setItem('user', JSON.stringify(result.user));
         dispatch(userAuth(result.user));
-        navigate('/customer/products');
+        if (result.user.role === 'administrator') {
+          navigate('/admin/manage');
+        }
+        if (result.user.role === 'customer') {
+          navigate('/customer/products');
+        }
       }
     }).catch((err) => {
       setError(err.response.data.message);
@@ -106,7 +111,7 @@ function SignIn() {
         />
       </Styles.FormContainer>
       {error && (
-        <p data-testid="common_login__element-invalid-email">{ error }</p>
+        <p data-testid="common_login__element-invalid-email">{error}</p>
       )}
     </Styles.Container>
   );
