@@ -101,7 +101,6 @@ function Checkout() {
               bold
               fs="lg"
               disabled={ totalPrices === '0,00' }
-              // onClick={ () => navigate('/customer/checkout') }
               dataTestid="customer_checkout__element-order-total-price"
             >
               {/*  */}
