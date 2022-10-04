@@ -1,6 +1,5 @@
 const borderThFinish = '0px 8px 8px 0px';
 const borderThStart = '8px 0 0 8px';
-
 const selectTable = (
   { productId, productName, quantidade, unitValue, totalValue, role, pageName, name,
     userId, email, onClick, userType,
@@ -244,5 +243,4 @@ const selectTable = (
     );
   }
 };
-
 export default selectTable;

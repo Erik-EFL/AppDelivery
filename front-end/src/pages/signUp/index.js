@@ -99,7 +99,7 @@ function SignUp() {
         />
       </Styles.FormContainer>
       {error && (
-        <p data-testid="common_register__element-invalid_register">{ error }</p>
+        <p data-testid="common_register__element-invalid_register">{error}</p>
       )}
     </Styles.Container>
   );
