@@ -7,7 +7,7 @@ const authMiddleware = {
     if (!authorization) {
       throw new UnauthorizedError('Token not found');
     }
-    const { data } = validateToken(authorization.split(' ')[1]);
+    const { data } = validateToken(authorization);
     req.id = data.id;
     req.role = data.role;
     next();

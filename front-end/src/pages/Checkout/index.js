@@ -18,14 +18,13 @@ import * as Styles from './style';
 
 function Checkout() {
   const sellers = [
-    { id: 1, name: 'Fulana Pereira' },
-    { id: 2, name: 'Erikão Lima' },
-    { id: 3, name: 'Bodnar do Backend' },
+    'Fulana Pereira',
+    'Erikão Lima',
+    'Bodnar do Backend',
   ];
 
-  const [seller, setSeller] = useState(sellers[0]);
   const [address, setAddress] = useState('');
-  const [addressNumber, setAddressNumber] = useState(0);
+  const [addressNumber, setAddressNumber] = useState();
 
   const loginReducer = useSelector((state) => state.userAuthReducer);
   const { totalPrices, cart } = useSelector((state) => state.shoppingCartReducer);
@@ -39,15 +38,10 @@ function Checkout() {
     dispatch(updatePrice());
   };
 
-  const setCurrentSeller = (currentSeller) => {
-    const response = sellers.find((item) => item.name === currentSeller);
-    setSeller(response);
-  };
-
   const orderSubmit = async (e) => {
     e.preventDefault();
     const data = {
-      sellerId: seller.id,
+      sellerId: 2,
       userId: id,
       products: cart.map((item) => ({
         productId: item.id,
@@ -113,8 +107,8 @@ function Checkout() {
             <GenericSelect
               name="P. Vendedora Responsável"
               domId="customer_checkout__select-seller"
-              value={ seller.name }
-              onChange={ (e) => setCurrentSeller(e.target.value) }
+              // value={ seller.name }
+              // onChange={ (e) => setCurrentSeller(e.target.value) }
               data={ sellers }
             />
             <GenericInput
