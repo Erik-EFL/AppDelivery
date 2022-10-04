@@ -4,9 +4,8 @@ import {
   GenericButton,
   GenericInput,
   GenericSelect,
-  Navbar,
-  TableInfo,
-  ScrollContainer } from '../../components';
+  Navbar, ScrollContainer, TableInfo,
+} from '../../components';
 import TableContainer from '../../components/GenericTable/TableContainer';
 import { getAllUsersByAdm, registerUserByAdm } from '../../services/api';
 import * as Styles from './styles';
@@ -153,12 +152,13 @@ function Admin() {
         )
       }
 
-      {loading && (<span>carregando...</span>)}
-      <header><h1>Lista de usuários</h1></header>
-      <section className="upperTable">
-        <TableContainer pageName="admin" userRole="adminitrator" />
-        <ScrollContainer>
-          {users?.length > 0
+      <Styles.UsersContainer>
+        <header><h1>Lista de usuários</h1></header>
+        <section className="upperTable">
+          <TableContainer pageName="admin" userRole="adminitrator" />
+          <ScrollContainer>
+            {loading && (<span>carregando...</span>)}
+            {users?.length > 0
             && users.map((item, index) => (
               <TableInfo
                 userId={ index + 1 }
@@ -169,8 +169,10 @@ function Admin() {
                 pageName="Cadastrar novo usuário"
               />
             ))}
-        </ScrollContainer>
-      </section>
+          </ScrollContainer>
+        </section>
+      </Styles.UsersContainer>
+
     </Styles.Container>
   );
 }
