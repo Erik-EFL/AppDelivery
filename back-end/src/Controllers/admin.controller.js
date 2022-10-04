@@ -7,7 +7,6 @@ const adminController = {
   },
   async getAll(_req, res) {
     const users = await service.getAll();
-    console.log('me tira daqui');
     res.status(200).json(users);
   },
 };

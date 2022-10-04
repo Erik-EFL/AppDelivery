@@ -37,7 +37,6 @@ export const CheckoutInputs = styled.section`
   align-content: center;
 
   height: 20vh;
-  position: relative;
   width: 80%;
   margin: 0 auto;
   background: ${themes.bgPrimary.white};
@@ -58,7 +57,7 @@ export const CartButtonContainer = styled.div`
   bottom: 3rem;
 `;
 
-export const Box = styled.form`
+export const Box = styled.div`
   position: relative;
   display: flex;
   justify-content: center;

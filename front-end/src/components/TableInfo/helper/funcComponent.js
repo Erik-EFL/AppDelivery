@@ -10,6 +10,9 @@ const selectTable = (
     return (
       <tr>
         <th
+          data-testid={
+            `customer_checkout__element-order-table-item-number-${productId}`
+          }
           style={
             {
               width: '4rem',
@@ -17,9 +20,10 @@ const selectTable = (
               borderRadius: borderThStart }
           }
         >
-          {productId}
+          {productId + 1}
         </th>
         <th
+          data-testid={ `customer_checkout__element-order-table-name-${productId}` }
           style={
             { width: '50rem', textAlign: 'left' }
           }
@@ -27,6 +31,7 @@ const selectTable = (
           {productName}
         </th>
         <th
+          data-testid={ `customer_checkout__element-order-table-quantity-${productId}` }
           style={
             {
               width: '15rem', backgroundColor: '#036B52', color: '#F2FFFC' }
@@ -35,6 +40,7 @@ const selectTable = (
           {quantidade}
         </th>
         <th
+          data-testid={ `customer_checkout__element-order-table-unit-price-${productId}` }
           style={
             { width: '15rem', backgroundColor: '#421981', color: '#F2FFFC' }
           }
@@ -42,6 +48,7 @@ const selectTable = (
           {`R$ ${unitValue.replace('.', ',')}`}
         </th>
         <th
+          data-testid={ `customer_checkout__element-order-table-sub-total-${productId}` }
           style={
             {
               width: '15rem',
@@ -63,6 +70,7 @@ const selectTable = (
           }
         >
           <button
+            data-testid={ `customer_checkout__element-order-table-remove-${productId}` }
             style={
               {
                 width: '18rem',
@@ -201,41 +209,33 @@ const selectTable = (
           {name}
         </th>
         <th
-          style={
-            {
-              width: '30rem', backgroundColor: '#036B52', color: '#F2FFFC' }
-          }
+          style={ {
+            width: '30rem', backgroundColor: '#036B52', color: '#F2FFFC' } }
         >
           {email}
         </th>
         <th
-          style={
-            { width: '30rem', backgroundColor: '#421981', color: '#F2FFFC' }
-          }
+          style={ { width: '30rem', backgroundColor: '#421981', color: '#F2FFFC' } }
         >
           {userType}
         </th>
         <th
-          style={
-            {
-              padding: '0',
-              backgroundColor: '#056CF9',
-              color: '#F2FFFC',
-              borderRadius: borderThFinish }
-          }
+          style={ {
+            padding: '0',
+            backgroundColor: '#056CF9',
+            color: '#F2FFFC',
+            borderRadius: borderThFinish } }
         >
           <button
             type="button"
             onClick={ onClick }
-            style={
-              {
-                width: '15rem',
-                fontSize: '1.6rem',
-                padding: '8px',
-                backgroundColor: '#056CF9',
-                color: '#F2FFFC',
-                borderRadius: borderThFinish }
-            }
+            style={ {
+              width: '15rem',
+              fontSize: '1.6rem',
+              padding: '8px',
+              backgroundColor: '#056CF9',
+              color: '#F2FFFC',
+              borderRadius: borderThFinish } }
           >
             Excluir
           </button>
