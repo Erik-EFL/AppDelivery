@@ -18,7 +18,7 @@ const userService = {
     return false;
   },
   create: async (body) => {
-    const { name, email, role = 'customer' } = body;
+    const { name, email } = body;
     // check if user already exists
     const userFound = await user.findOne({
       where: { [Op.or]: [{ name }, { email }] },
@@ -30,7 +30,7 @@ const userService = {
 
     // store a user
     const storedUser = await user
-      .create({ name, email, password: hashedPassword, role });
+      .create({ name, email, password: hashedPassword, role: body?.role || 'customer' });
 
     const { password, ...storedUserWithoutPassword } = storedUser.dataValues;
 

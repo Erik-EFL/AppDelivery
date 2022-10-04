@@ -5,6 +5,7 @@ import {
   UPDATE_QUANTITY,
   UPDATE_ITEM_PRICES,
   REMOVE_CHECKOUT_ITEM,
+  CLEAR_CART,
 } from '../actions/actionsType';
 import {
   addtoCartFlow,
@@ -48,6 +49,13 @@ const shoppingCartReducer = (state = INICIAL_STATE, action) => {
 
   case REMOVE_CHECKOUT_ITEM: {
     return removeItemFromCheckout(state, action);
+  }
+
+  case CLEAR_CART: {
+    return {
+      cart: [],
+      totalPrices: '0,00',
+    };
   }
 
   default:

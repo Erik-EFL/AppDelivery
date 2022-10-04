@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import * as Styles from './styles';
 
-export default function GenericSelect({ name, domId, value, size, data }) {
+export default function GenericSelect({ name, domId, value, size, data, onChange }) {
   return (
     <Styles.LabelGeneric htmlFor={ domId }>
       <p>{name}</p>
@@ -11,8 +11,8 @@ export default function GenericSelect({ name, domId, value, size, data }) {
         data-testid={ domId }
         value={ value }
         size={ size }
+        onChange={ onChange }
       >
-        <option value="Test">Test</option>
         {data
           && data.map(
             (item) => <option key={ item.id } value={ item.name }>{item.name}</option>,
@@ -29,4 +29,5 @@ GenericSelect.propTypes = {
   domId: PropTypes.string,
   value: PropTypes.string,
   placeholder: PropTypes.string,
+  onChange: PropTypes.func,
 }.isRequired;
