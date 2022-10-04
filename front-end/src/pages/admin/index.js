@@ -51,6 +51,7 @@ function Admin() {
       setLoading(true);
       const result = await getAllUsersByAdm();
       setUsers(result.data);
+      setRegisterData(registerInitialState);
     } catch (err) {
       console.log(err);
     } finally {
