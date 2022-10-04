@@ -93,7 +93,7 @@ function Marketplace() {
           readLine="Ver Carrinho: R$ "
           bold
           fs="lg"
-          disabled={ totalPrices === '0,00' }
+          disabled={ (totalPrices === '0.00') || (totalPrices === '0,00') }
           onClick={ () => navigate('/customer/checkout') }
           dataTestid="customer_products__button-cart"
         >

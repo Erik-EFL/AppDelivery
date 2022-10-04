@@ -21,7 +21,7 @@ function TableInfo(
 ) {
   const loginReducer = useSelector((state) => state.userAuthReducer);
   const { role } = loginReducer.user;
-  console.log(role);
+
   return (
     <Styles.InfoTableLine>
       <tbody>

@@ -25,7 +25,7 @@ function SignUp() {
     const isEmailValid = emailRegex.test(email);
     const isPasswordValid = password ? password.length >= Number('6') : '';
     const isNameValid = name ? name.length >= Number('12') : '';
-    const fields = [email, password];
+    const fields = [email, password, name];
     const validateFields = fields.every((field) => field !== '');
     const isValid = isPasswordValid && isEmailValid && validateFields && isNameValid;
     return isValid
@@ -35,9 +35,10 @@ function SignUp() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     await registerUser(registerData).then((response) => {
       const result = response.data;
-      console.log(result);
+
       if (result.user) {
         localStorage.setItem('user', JSON.stringify(result.user));
         dispatch(userAuth(result.user));
@@ -50,7 +51,7 @@ function SignUp() {
 
   useEffect(() => {
     fieldsVerify(registerData);
-  }, [registerData.email, registerData.password, registerData]);
+  }, [registerData]);
 
   return (
     <Styles.Container>
@@ -61,7 +62,6 @@ function SignUp() {
           name="Nome"
           placeholder="Seu nome"
           size="sm"
-          // max={ 11 }
           value={ registerData.name }
           onChange={ (event) => setRegisterData(
             { ...registerData, name: event.target.value },
