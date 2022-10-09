@@ -5,20 +5,20 @@ const sizeHandleChange = (size) => {
   switch (size) {
   case 'sm':
     return `
-        width: 16.25rem;
-      `;
+      width: 15vw;
+    `;
   case 'md':
     return `
-        width: 32rem;
-          `;
+      width: 23vw;
+        `;
   case 'lg':
     return `
-        width: 39rem;
-          `;
+      width: 33vw;
+        `;
   default:
     return `
-        width: 18.55rem;
-      `;
+      width: 18vw;
+    `;
   }
 };
 
