@@ -38,7 +38,7 @@ function AppRoutes() {
           element={ <OrderDetails userRole="customer" /> }
         />
         <Route
-          path="/customer/orders"
+          path="/seller/orders/:id"
           element={ <OrderDetails userRole="seller" /> }
         />
         <Route path="/admin/manage" element={ <Admin /> } />
