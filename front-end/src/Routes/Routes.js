@@ -7,6 +7,7 @@ import {
 import Admin from '../pages/admin';
 import Checkout from '../pages/Checkout';
 import Marketplace from '../pages/marketplace';
+import CustomerShoppes from '../pages/MyShoppes';
 import OrderDetails from '../pages/OrderDetails';
 import SignIn from '../pages/signIn';
 import SignUp from '../pages/signUp';
@@ -35,7 +36,7 @@ function AppRoutes() {
         />
         <Route
           path="/customer/orders"
-          element={ <OrderDetails userRole="customer" /> }
+          element={ <CustomerShoppes userRole="customer" /> }
         />
         <Route
           path="/seller/orders/:id"
