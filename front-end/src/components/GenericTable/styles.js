@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import themes from '../themes/themes';
 
-export const TableHeader = styled.tr`
+export const TableHeader = styled.table`
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 2rem;

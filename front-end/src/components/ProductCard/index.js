@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { formatPrice } from '../../services/helper/utilidades';
 import Counter from '../Counter/index';
 import * as Styles from './styles';
 
@@ -19,13 +20,11 @@ function GenericProductCard(
   return (
     <Styles.ProductCard>
       <p id="price">
-        R$
-        {' '}
         <span data-testid={ `customer_products__element-card-price-${domId}` }>
-          {price.replace('.', ',')}
+          {formatPrice(price)}
         </span>
       </p>
-      <Styles.BoxImage>
+      <Styles.BoxImage ifImage={ name }>
         <img
           src={ img }
           alt={ ` imagem de ${name}` }
