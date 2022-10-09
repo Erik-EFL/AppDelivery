@@ -10,6 +10,7 @@ const adminRoutes = require('../Routes/admin.routes');
 const customerRoutes = require('../Routes/customer.routes');
 const errorMiddleware = require('../Middlewares/error.middleware');
 const salesRouter = require('../Routes/sales.routes');
+const userRouter = require('../Routes/user.routes');
 
 const app = express();
 app.use(cors());
@@ -24,6 +25,7 @@ app.use('/customer', customerRoutes);
 app.use('/products', productsRoutes);
 app.use('/orders', salesRouter);
 app.use('/admin', adminRoutes);
+app.use('/user', userRouter);
 app.use(errorMiddleware);
 
 module.exports = app;
