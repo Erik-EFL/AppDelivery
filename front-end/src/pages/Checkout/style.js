@@ -36,7 +36,7 @@ export const CheckoutInputs = styled.section`
   align-items: center;
   align-content: center;
 
-  height: 20vh;
+  height: 150px;
   width: 80%;
   margin: 0 auto;
   background: ${themes.bgPrimary.white};
@@ -58,6 +58,7 @@ export const CartButtonContainer = styled.div`
 `;
 
 export const Box = styled.div`
+  box-sizing: border-box;
   position: relative;
   display: flex;
   justify-content: center;

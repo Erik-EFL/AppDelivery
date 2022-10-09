@@ -21,26 +21,26 @@ const StatusButtonProps = (status) => {
 const simpleButtonSize = (hgt, wdt) => {
   if (!wdt && hgt) {
     return `
-      height: ${hgt}rem;
-      width: 14.5rem;
+      height: ${hgt}vh;
+      width: 15.5vw;
     `;
   }
   if (!hgt && wdt) {
     return `
-      height: 7.5rem;
-      width: ${wdt}rem;
+      height: 7.5vh;
+      width: ${wdt}vw;
     `;
   }
   if (wdt && hgt) {
     return `
-      height: ${hgt}rem;
-      width: ${wdt}rem;
+      height: ${hgt}vh;
+      width: ${wdt}vw;
     `;
   }
   if (!hgt && !wdt) {
     return `
       padding: 2rem 1rem;
-      width: 14.5rem;
+      width: 15.5vw;
     `;
   }
 };
@@ -62,6 +62,14 @@ const simpleButtonFontSize = (fs) => {
   case 'xl':
     return `
         ${theme.typography.textSize.xl}
+      `;
+  case 'xxl':
+    return `
+        ${theme.typography.textSize.xxl}
+      `;
+  case 'xxxl':
+    return `
+        ${theme.typography.textSize.xxxl}
       `;
   default:
     return `

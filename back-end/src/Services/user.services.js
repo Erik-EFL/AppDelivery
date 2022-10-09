@@ -4,10 +4,12 @@ const { user } = require('../database/models');
 const NotFoundError = require('../Errors/NotFoundError');
 const ConflictError = require('../Errors/ConflictError');
 
+const UserNotFound = 'User not found'
+
 const userService = {
   isSeller: async (id) => {
     const userFound = await user.findByPk(id);
-    if (!userFound) throw new NotFoundError('User not found');
+    if (!userFound) throw new NotFoundError(UserNotFound);
     if (userFound.role === 'seller') return true;
     return false;
   },
@@ -44,6 +46,22 @@ const userService = {
     return users;
   },
 
+  getById: async (id) => {
+    const userFound = await user.findByPk(id, {
+      attributes: ['id', 'name', 'email', 'role'],
+    });
+    if (!userFound) throw new NotFoundError(UserNotFound);
+    return userFound;
+  },
+
+  getUserByRole: async (role) => {
+    const userFound = await user.findAll({
+      attributes: ['id', 'name', 'email', 'role'],
+      where: { role },
+    });
+    if (!userFound) throw new NotFoundError(UserNotFound);
+    return userFound;
+  },
 };
 
 module.exports = userService;

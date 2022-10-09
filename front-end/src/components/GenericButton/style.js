@@ -25,26 +25,26 @@ const simpleButtonVariant = (variant) => {
 const simpleButtonSize = (hgt, wdt) => {
   if (!wdt && hgt) {
     return `
-      height: ${hgt}rem;
-      width: 16.6rem;
+      height: ${hgt}vh;
+      width: 16.6vw;
     `;
   }
   if (!hgt && wdt) {
     return `
-      height: 3rem;
-      width: ${wdt}rem;
+      height: 3vh;
+      width: ${wdt}vw;
     `;
   }
   if (wdt && hgt) {
     return `
-      height: ${hgt}rem;
-      width: ${wdt}rem;
+      height: ${hgt}vh;
+      width: ${wdt}vw;
     `;
   }
   if (!hgt && !wdt) {
     return `
-      height: 3rem;
-      width: 16.6rem;
+      height: 3vh;
+      width: 16.6vw;
     `;
   }
 };
@@ -66,6 +66,14 @@ const simpleButtonFontSize = (fs) => {
   case 'xl':
     return `
         ${themes.typography.textSize.xl}
+      `;
+  case 'xxl':
+    return `
+        ${themes.typography.textSize.xxl}
+      `;
+  case 'xxxl':
+    return `
+        ${themes.typography.textSize.xxxl}
       `;
   default:
     return `

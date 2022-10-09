@@ -1,16 +1,15 @@
-import ProductStatusCard from './ProductStatusCard';
 import Counter from './Counter';
-import GenericSelect from './GenericSelect';
-import GenericInput from './GenericInputs';
 import GenericButton from './GenericButton';
-import Navbar from './NavBar';
-import StatusButton from './StatusButton';
-import GenericProductCard from './ProductCard';
-import GenericContainer from './GenericContainer';
+import GenericInput from './GenericInputs';
+import GenericSelect from './GenericSelect';
 import TableBar from './GenericTable/TableContainer';
+import BarContainer from './HeaderOrderDetails/BarContainer';
+import Navbar from './NavBar';
+import GenericProductCard from './ProductCard';
+import ProductStatusCard from './ProductStatusCard';
+import ScrollContainer, { Tbody } from './ScrollContainer/styles';
+import StatusButton from './StatusButton';
 import TableInfo from './TableInfo/index';
-import BarContainer from './GenericContainer/subComponents/BarContainer';
-import ScrollContainer from './ScrollContainer/styles';
 
 export {
   Counter,
@@ -21,9 +20,9 @@ export {
   ProductStatusCard,
   StatusButton,
   GenericProductCard,
-  GenericContainer,
   TableBar,
   TableInfo,
   BarContainer,
   ScrollContainer,
+  Tbody,
 };

@@ -33,7 +33,8 @@ export const BoxImage = styled.div`
   align-items: center;
 
   img {
-  width: 50%;
+    position: relative;
+    width: ${(props) => (props.ifImage === 'Skol Lata 250ml' ? '50%' : '100%')};
   }
 
   flex-direction: ${(props) => (props.direction === 'row' ? 'row' : 'column')};

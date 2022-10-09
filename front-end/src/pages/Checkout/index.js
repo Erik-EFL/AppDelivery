@@ -14,14 +14,13 @@ import {
   updatePrice,
 } from '../../redux/actions/userActions';
 import { orderCreate } from '../../services/api';
+import usePageName from '../../services/hooks/usePageName';
+import useRequestById from './hooks/useRequestUsers';
 import * as Styles from './style';
 
 function Checkout() {
-  const sellers = [
-    'Fulana Pereira',
-    'Erikão Lima',
-    'Bodnar do Backend',
-  ];
+  const sellers = useRequestById('seller');
+  const seller = sellers?.map((item) => item.name);
 
   const [address, setAddress] = useState('');
   const [addressNumber, setAddressNumber] = useState();
@@ -29,7 +28,7 @@ function Checkout() {
   const loginReducer = useSelector((state) => state.userAuthReducer);
   const { totalPrices, cart } = useSelector((state) => state.shoppingCartReducer);
   const { role, id } = loginReducer.user;
-  const page = 'Finalizar Pedido';
+  const page = usePageName();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -57,7 +56,7 @@ function Checkout() {
       localStorage.removeItem('cart');
       dispatch(clearCart());
     }).catch((err) => {
-      console.log(err.response.data);
+      console.error(err.response.data);
     });
   };
 
@@ -83,7 +82,6 @@ function Checkout() {
                   unitValue={ (+item.price).toFixed(2) }
                   totalValue={ (+item.price * item.qty).toFixed(2) }
                   onClick={ () => deleteFromCart(item.id) }
-                  pageName="Finalizar Pedido"
                 />
               ))}
           </ScrollContainer>
@@ -106,13 +104,15 @@ function Checkout() {
           <Styles.Box direction="row">
             <GenericSelect
               name="P. Vendedora Responsável"
+              size="md"
               domId="customer_checkout__select-seller"
               // value={ seller.name }
               // onChange={ (e) => setCurrentSeller(e.target.value) }
-              data={ sellers }
+              data={ seller }
             />
             <GenericInput
               name="Endereço"
+              size="md"
               placeholder="Seu endereço aqui"
               domId="customer_checkout__input-address"
               value={ address }
@@ -120,6 +120,7 @@ function Checkout() {
             />
             <GenericInput
               name="Número"
+              size="md"
               placeholder="Número da residencia"
               domId="customer_checkout__input-address-number"
               value={ addressNumber }

@@ -19,12 +19,15 @@ export default {
       black: '#001813',
       darkGreen: '#036B52',
       iceWhite: '#F2FFFCBF',
+      white: '#F2FFFC',
     },
     textSize: {
       sm: '1.2rem',
       md: '1.4rem',
       lg: '1.6rem',
       xl: '1.8rem',
+      xxl: '2rem',
+      xxxl: '3.2rem',
     },
   },
 };

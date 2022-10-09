@@ -14,10 +14,24 @@ const registerUserByAdm = (data) => axios
       Authorization: JSON.parse(localStorage.getItem('user')).token,
     },
   });
+
 const getAllUsersByAdm = () => axios.get(`${baseUrl}/admin/manage`, {
   headers: { Authorization: JSON.parse(localStorage.getItem('user')).token },
 });
+
+const getUserByRole = (role) => axios.get(`${baseUrl}/user/profile/role/${role}`, {
+  headers: { Authorization: JSON.parse(localStorage.getItem('user')).token },
+});
+
+const getUserById = (id) => axios.get(`${baseUrl}/user/profile/${id}`, {
+  headers: { Authorization: JSON.parse(localStorage.getItem('user')).token },
+});
+
 const orderCreate = (data) => axios.post(`${baseUrl}/orders`, data, {
+  headers: { Authorization: JSON.parse(localStorage.getItem('user')).token },
+});
+
+const getOrderById = (id) => axios.get(`${baseUrl}/orders/${id}`, {
   headers: { Authorization: JSON.parse(localStorage.getItem('user')).token },
 });
 
@@ -28,4 +42,7 @@ export {
   registerUserByAdm,
   getAllUsersByAdm,
   orderCreate,
+  getOrderById,
+  getUserById,
+  getUserByRole,
 };
