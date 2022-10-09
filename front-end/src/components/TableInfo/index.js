@@ -1,65 +1,56 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import * as Styles from './styles';
+import usePageName from '../../services/hooks/usePageName';
 import selectTable from './helper/funcComponent';
+import * as Styles from './styles';
 
-function TableInfo(
-  {
-    productId,
+function TableInfo({
+  index,
+  productName,
+  quantidade,
+  unitValue,
+  totalValue,
+  userName,
+  userEmail,
+  userType,
+  onClick,
+}) {
+  const loginReducer = useSelector((state) => state.userAuthReducer);
+  const { role } = loginReducer.user;
+  const pageName = usePageName();
+  const userData = {
+    /* costumer and seller order infos */
+    index,
     productName,
     quantidade,
     unitValue,
     totalValue,
-    pageName,
-    name,
-    userId,
-    email,
-    onClick,
+
+    /* adm info  */
+    userName,
+    userEmail,
     userType,
-  },
-) {
-  const loginReducer = useSelector((state) => state.userAuthReducer);
-  const { role } = loginReducer.user;
+    onClick,
+  };
 
   return (
     <Styles.InfoTableLine>
-      <tbody>
-        {
-          selectTable(
-            {
-              productId,
-              productName,
-              quantidade,
-              unitValue,
-              totalValue,
-              role,
-              pageName,
-              name,
-              userId,
-              email,
-              onClick,
-              userType,
-            },
-          )
-        }
-      </tbody>
+      {selectTable(role, pageName, userData)}
     </Styles.InfoTableLine>
   );
 }
 
 TableInfo.propTypes = {
-  productId: PropTypes.string,
+  index: PropTypes.string,
   productName: PropTypes.string,
   quantidade: PropTypes.string,
   unitValue: PropTypes.string,
   totalValue: PropTypes.string,
-  pageName: PropTypes.string,
-  name: PropTypes.string,
-  userId: PropTypes.string,
-  onClick: PropTypes.func,
-  email: PropTypes.string,
+  userName: PropTypes.string,
+  userEmail: PropTypes.string,
   userType: PropTypes.string,
+  onClick: PropTypes.func,
 }.isRequired;
 
 export default TableInfo;
