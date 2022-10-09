@@ -44,6 +44,22 @@ const userService = {
     return users;
   },
 
+  getById: async (id) => {
+    const userFound = await user.findByPk(id, {
+      attributes: ['id', 'name', 'email', 'role'],
+    });
+    if (!userFound) throw new NotFoundError('User not found');
+    return userFound;
+  },
+
+  getUserByRole: async (role) => {
+    const userFound = await user.findAll({
+      attributes: ['id', 'name', 'email', 'role'],
+      where: { role },
+    });
+    if (!userFound) throw new NotFoundError('User not found');
+    return userFound;
+  },
 };
 
 module.exports = userService;
