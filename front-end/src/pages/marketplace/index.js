@@ -11,12 +11,13 @@ import {
   updateUnitPrice,
 } from '../../redux/actions/userActions';
 import { getAllProducts } from '../../services/api';
+import { formatPrice } from '../../services/helper/utilidades';
 import * as Styles from './styles';
 
 function Marketplace() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  console.log('products', products);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cart, totalPrices } = useSelector((state) => state.shoppingCartReducer);
@@ -89,16 +90,16 @@ function Marketplace() {
       <Styles.CartButtonContainer>
         <SimpleButton
           wdt="20.25"
-          hgt="4"
-          readLine="Ver Carrinho: R$ "
+          hgt="7"
+          readLine="Ver Carrinho: "
           bold
-          fs="lg"
+          fs="xxl"
           disabled={ (totalPrices === '0.00') || (totalPrices === '0,00') }
           onClick={ () => navigate('/customer/checkout') }
           dataTestid="customer_products__button-cart"
         >
           <span data-testid="customer_products__checkout-bottom-value">
-            {totalPrices.replace('.', ',')}
+            {formatPrice(totalPrices)}
           </span>
         </SimpleButton>
       </Styles.CartButtonContainer>
