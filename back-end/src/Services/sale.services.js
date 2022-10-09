@@ -24,6 +24,20 @@ const saleService = {
     }
     throw new NotFoundError('User not found');
   },
+
+  async getAllSalesByCustomerId(userId) {
+    const sales = await db.sale.findAll({
+      where: { userId },
+      include: [{
+        model: db.product,
+        as: 'products',
+        // attributes: { exclude: [] },
+      }],
+    });
+    if (!sales.length) throw new NotFoundError('Sales not found');
+    return sales;
+  },
+
   findSaleById: async (saleId) => {
     const sale = await db.sale.findOne({
       where: { id: saleId },
