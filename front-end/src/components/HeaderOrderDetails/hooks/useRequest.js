@@ -18,7 +18,7 @@ const useRequestById = (id, name) => {
         }
       }
     }
-  }, [id]);
+  }, [id, name]);
   return data;
 };
 

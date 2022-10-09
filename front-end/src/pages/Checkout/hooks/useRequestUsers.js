@@ -8,7 +8,7 @@ const useRequestById = (role) => {
   useMemo(async () => {
     const result = await getUserByRole(role);
     setData(result.data);
-  }, []);
+  }, [role]);
   return data;
 };
 

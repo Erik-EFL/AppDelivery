@@ -16,7 +16,7 @@ const userController = {
     const { role } = req.params;
     const users = await getUserByRole(role);
     res.status(200).json(users);
-  }
+  },
 };
 
 module.exports = userController;

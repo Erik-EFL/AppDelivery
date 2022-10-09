@@ -18,9 +18,13 @@ function OrderDetails() {
   const pageName = usePageName();
   const [data, setData] = useState();
 
-  useEffect(async () => {
+  const getData = async () => {
     const response = await getOrderById(idParams);
     setData(response.data);
+  };
+
+  useEffect(() => {
+    getData();
   }, [idParams]);
 
   return (
