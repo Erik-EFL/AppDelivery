@@ -32,7 +32,7 @@ const userService = {
 
     // store a user
     const storedUser = await user
-      .create({ name, email, password: hashedPassword, role: body?.role || 'customer' });
+      .create({ name, email, password: hashedPassword, role: body.role || 'customer' });
 
     const { password, ...storedUserWithoutPassword } = storedUser.dataValues;
 
