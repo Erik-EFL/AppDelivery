@@ -27,13 +27,12 @@ function Admin() {
   const [registerData, setRegisterData] = useState(registerInitialState);
 
   const fieldsVerify = (data) => {
-    // const { name, email, password, role } = data;
     const { name, email, password } = data;
     const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i;
     const isEmailValid = emailRegex.test(email);
     const isPasswordValid = password ? password.length >= PASSWORD_MIN_LENGTH : '';
     const isNameValid = name ? name.length >= NAME_MIN_LENGTH : '';
-    const fields = [email, password];
+    const fields = [email, password, name];
     const validateFields = fields.every((field) => field !== '');
     // const isValidRole = types.includes(role);
     const isValid = isPasswordValid
@@ -73,7 +72,7 @@ function Admin() {
 
   useEffect(() => {
     getUsers();
-  }, []);
+  });
 
   useEffect(() => {
     fieldsVerify(registerData);

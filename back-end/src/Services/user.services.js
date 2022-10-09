@@ -4,7 +4,7 @@ const { user } = require('../database/models');
 const NotFoundError = require('../Errors/NotFoundError');
 const ConflictError = require('../Errors/ConflictError');
 
-const UserNotFound = 'User not found'
+const UserNotFound = 'User not found';
 
 const userService = {
   isSeller: async (id) => {
