@@ -1,12 +1,15 @@
 function formatDate(info) {
-  const date = new Date(info);
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-  const dia = day < Number('10') ? `0${day}` : day;
+  if (!info) return 'DD/MM/AA';
+  if (info) {
+    const date = new Date(info);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const dia = day < Number('10') ? `0${day}` : day;
 
-  const dateFormated = `${dia}/${month}/${year}`;
-  return dateFormated;
+    const dateFormated = `${dia}/${month}/${year}`;
+    return dateFormated;
+  }
 }
 
 function formatPrice(price) {
@@ -30,6 +33,8 @@ function convertNumbers(number) {
   if (number >= Number('1000')) {
     return number;
   }
+
+  return !number && '0000';
 }
 
 export {
