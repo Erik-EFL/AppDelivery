@@ -25,7 +25,7 @@ function OrderDetails() {
 
   useEffect(() => {
     getData();
-  }, [idParams]);
+  });
 
   return (
     <>
