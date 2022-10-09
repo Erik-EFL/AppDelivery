@@ -11,14 +11,14 @@ const getAllProducts = () => axios.get(`${baseUrl}/products`);
 const registerUserByAdm = (data) => axios
   .post(`${baseUrl}/admin/manage`, data, {
     headers: {
-      Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}`,
+      Authorization: JSON.parse(localStorage.getItem('user')).token,
     },
   });
 const getAllUsersByAdm = () => axios.get(`${baseUrl}/admin/manage`, {
-  headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}` },
+  headers: { Authorization: JSON.parse(localStorage.getItem('user')).token },
 });
 const orderCreate = (data) => axios.post(`${baseUrl}/orders`, data, {
-  headers: { Authorization: `Bearer ${JSON.parse(localStorage.getItem('user')).token}` },
+  headers: { Authorization: JSON.parse(localStorage.getItem('user')).token },
 });
 
 export {
