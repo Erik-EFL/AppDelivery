@@ -51,17 +51,6 @@ export const OrderDetails = styled.section`
   }
 `;
 
-export const CartButtonContainer = styled.div`
-  position: fixed;
-  box-sizing: border-box;
-  right: ${window.innerWidth > Number('668') ? '14.7rem' : '1rem'};
-  bottom: ${window.innerHeight > Number('668') ? '4.7rem' : '1rem'};
-
-  span {
-    font-size: 3.2rem;
-  }
-`;
-
 export const TH3 = styled.h3`
   font-family: 'Roboto', sans-serif;
   font-weight: 700;

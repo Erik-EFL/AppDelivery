@@ -2,14 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import SimpleButton from '../../components/GenericButton';
+import TableBar from '../../components/GenericTable/TableContainer';
+import InfoBar from '../../components/HeaderOrderDetails/BarContainer';
+import { ScrollContainer, Tbody } from '../../components/index';
 import Navbar from '../../components/NavBar/index';
+import TableInfo from '../../components/TableInfo/index';
 import { getOrderById } from '../../services/api';
+import { formatPrice } from '../../services/helper/utilidades';
 import usePageName from '../../services/hooks/usePageName';
 import * as Styles from './style';
-import TableBar from '../../components/GenericTable/TableContainer';
-import { ScrollContainer, Tbody } from '../../components/index';
-import TableInfo from '../../components/TableInfo/index';
-import InfoBar from '../../components/HeaderOrderDetails/BarContainer';
 
 function OrderDetails() {
   const { id: idParams } = useParams();
@@ -51,6 +53,19 @@ function OrderDetails() {
             </Tbody>
           </ScrollContainer>
         </main>
+        <Styles.CartButtonContainer>
+          <SimpleButton
+            wdt="20"
+            hgt="7"
+            readLine="Total: "
+            bold
+            fs="xxxl"
+            enable
+            data-testid="customer_order_details__element-order-total-price"
+          >
+            {formatPrice(data?.totalPrice)}
+          </SimpleButton>
+        </Styles.CartButtonContainer>
       </Styles.Container>
     </>
   );

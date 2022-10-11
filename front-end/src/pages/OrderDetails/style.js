@@ -27,6 +27,14 @@ export const Container = styled.div`
   }
 `;
 
+export const CartButtonContainer = styled.div`
+  position: absolute;
+  box-sizing: border-box;
+  right: ${window.innerWidth > Number('668') ? '14.7rem' : '1rem'};
+  bottom: ${window.innerHeight > Number('668') ? '4.7rem' : '1rem'};
+  font-size: 3.2rem;
+`;
+
 export const Box = styled.div`
   display: flex;
   justify-content: space-between;

@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { formatDate, formatPrice } from '../../services/helper/utilidades';
-import SimpleButton from '../GenericButton';
+import { formatDate } from '../../services/helper/utilidades';
 import renderBar from './helper/renderBar';
 import useRequestById from './hooks/useRequest';
 import * as Styles from './styles';
@@ -17,7 +16,7 @@ function BarContainer({ pageName }) {
   const order = useRequestById(paramsId, 'order');
   const seller = useRequestById(order.sellerId, 'user');
 
-  const { id, saleDate, status, totalPrice } = order;
+  const { id, saleDate, status } = order;
   const { name } = seller;
   const saleStatus = status?.toUpperCase();
   const saleDateFormated = formatDate(saleDate);
@@ -38,20 +37,6 @@ function BarContainer({ pageName }) {
   return (
     <Styles.OrderDetails>
       {renderBar(funcParams)}
-      <Styles.CartButtonContainer>
-        <SimpleButton
-          wdt="20"
-          hgt="7"
-          readLine="Total: "
-          bold
-          fs="xxxl"
-          enable
-        >
-          <span data-testid="customer_order_details__element-order-total-price">
-            {formatPrice(totalPrice)}
-          </span>
-        </SimpleButton>
-      </Styles.CartButtonContainer>
     </Styles.OrderDetails>
   );
 }
