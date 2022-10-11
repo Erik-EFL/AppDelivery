@@ -89,7 +89,7 @@ function Checkout() {
           <div className="button-container">
             <GenericButton
               wdt="20.25"
-              hgt="4"
+              hgt="5"
               readLine={ `Total: ${formatPrice(totalPrices)}` }
               bold
               fs="xxl"
@@ -130,6 +130,9 @@ function Checkout() {
           </Styles.Box>
           <Styles.Box style={ { display: 'flex', alignItems: 'center' } }>
             <GenericButton
+              hgt="5"
+              wdt="20.25"
+              fs="xxl"
               onClick={ (e) => orderSubmit(e) }
               dataTestid="customer_checkout__button-submit-order"
               readLine="FINALIZAR PEDIDO"

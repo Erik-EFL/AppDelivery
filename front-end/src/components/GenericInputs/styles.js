@@ -27,6 +27,7 @@ export const GenericInputText = styled.input`
   border: 1px solid ${themes.typography.textColor.black};
   border-radius: .25rem;
   padding: .6rem;
+  max-width: 250px;
   ${({ size }) => sizeHandleChange(size)}
 `;
 

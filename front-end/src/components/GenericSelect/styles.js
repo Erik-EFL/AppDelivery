@@ -28,6 +28,7 @@ export const GenericSelect = styled.select`
   border-radius: 5px;
   padding: .55rem;
   color: ${themes.typography.textColor.black};
+  max-width: 300px;
 
   ${({ size }) => sizeHandleChange(size)}
 `;
