@@ -9,6 +9,7 @@ export const InfoTableLine = styled.tr`
   background-color: ${themes.bgPrimary.lightGray};
   border-radius: 8px;
   width: 100%;
+  max-height: 30px;
 
   th {
     font-size: ${themes.typography.textSize.lg};
