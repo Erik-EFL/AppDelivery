@@ -93,6 +93,7 @@ function SignUp() {
         <GenericButton
           readLine="Cadastrar"
           large
+          hgt="4"
           dataTestid="common_register__button-register"
           disabled={ buttonDisabled }
           onClick={ handleSubmit }

@@ -98,6 +98,7 @@ function SignIn() {
         <GenericButton
           readLine="Login"
           large
+          hgt="4"
           dataTestid="common_login__button-login"
           onClick={ handleSubmit }
           disabled={ buttonDisabled }
@@ -106,6 +107,7 @@ function SignIn() {
           readLine="Ainda não tenho conta"
           variant="secondary"
           large
+          hgt="4"
           dataTestid="common_login__button-register"
           onClick={ () => navigate('/register') }
         />
