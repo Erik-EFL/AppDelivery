@@ -1,4 +1,5 @@
 function formatDate(info) {
+  if (!info) return 'DD/MM/YYYY';
   const date = new Date(info);
   const day = date.getDate();
   const month = date.getMonth() + 1;
@@ -18,6 +19,7 @@ function formatPrice(price) {
 }
 
 function convertNumbers(number) {
+  if (!number) return '0000';
   if (number < Number('10')) {
     return `000${number}`;
   }
