@@ -8,6 +8,7 @@ const ScrollContainer = styled.table`
   width: 98%;
   height: 65%;
   overflow-y: scroll;
+  gap: 5px;
 
 
   /* Works on Firefox */
