@@ -77,7 +77,7 @@ function Checkout() {
               && cart.map((item, index) => (
                 <TableInfo
                   key={ index }
-                  productId={ index }
+                  index={ index }
                   productName={ item.name }
                   quantidade={ item.qty }
                   unitValue={ (+item.price).toFixed(2) }
