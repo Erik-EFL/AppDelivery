@@ -14,6 +14,7 @@ import {
   updatePrice,
 } from '../../redux/actions/userActions';
 import { orderCreate } from '../../services/api';
+import { formatPrice } from '../../services/helper/utilidades';
 import usePageName from '../../services/hooks/usePageName';
 import useRequestById from './hooks/useRequestUsers';
 import * as Styles from './style';
@@ -89,9 +90,9 @@ function Checkout() {
             <GenericButton
               wdt="20.25"
               hgt="4"
-              readLine={ `Total: R$ ${totalPrices.replace('.', ',')}` }
+              readLine={ `Total: ${formatPrice(totalPrices)}` }
               bold
-              fs="lg"
+              fs="xxl"
               disabled={ totalPrices === '0,00' }
               dataTestid="customer_checkout__element-order-total-price"
             >

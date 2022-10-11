@@ -4,6 +4,8 @@ import themes from '../../components/themes/themes';
 export const CheckoutContainer = styled.section`
   display: flex;
   flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
 
   header {
     width: 80%;
@@ -22,8 +24,8 @@ export const CheckoutContainer = styled.section`
 
     .button-container {
       position: absolute;
-      right: 3rem;
-      bottom: 3rem;
+      right: 20px;
+      bottom: 20px;
     }
   }
 `;
@@ -42,13 +44,6 @@ export const CheckoutInputs = styled.section`
   background: ${themes.bgPrimary.white};
   border: 1px solid ${themes.bgPrimary.gray};
   box-shadow: 0px 4px 4px ${themes.bgPrimary.blackShadow};
-`;
-
-export const ScrollContainer = styled.div`
-  margin: 0 auto;
-  width: 98%;
-  height: 65%;
-  overflow-y: scroll;
 `;
 
 export const CartButtonContainer = styled.div`
