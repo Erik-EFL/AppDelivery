@@ -101,6 +101,7 @@ const renderBar = (data) => {
                 fs="md"
                 readLine="MARCAR COMO ENTREGUE"
                 dataTestid="customer_order_details__button-delivery-check"
+                onClick={ () => data.handleStatusChange(data.orderId) }
               />
             </div>
           </div>

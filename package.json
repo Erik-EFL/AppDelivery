@@ -57,6 +57,7 @@
   "dependencies": {
     "@redux-devtools/extension": "^3.2.3",
     "react-hook-form": "^7.36.1",
+    "react-query": "^3.39.2",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.1"
   }

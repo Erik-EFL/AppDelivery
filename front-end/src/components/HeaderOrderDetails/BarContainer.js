@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { formatDate } from '../../services/helper/utilidades';
@@ -8,7 +8,7 @@ import renderBar from './helper/renderBar';
 import useRequestById from './hooks/useRequest';
 import * as Styles from './styles';
 
-function BarContainer({ pageName }) {
+function BarContainer({ pageName, handleStatusChange }) {
   const { id: paramsId } = useParams();
   const { user } = useSelector((state) => state.userAuthReducer);
   const { role } = user;
@@ -32,6 +32,7 @@ function BarContainer({ pageName }) {
     orderId: id,
     sellerName: name,
     saleStatus,
+    handleStatusChange,
   };
 
   return (
@@ -43,6 +44,7 @@ function BarContainer({ pageName }) {
 
 BarContainer.propTypes = {
   pageName: PropTypes.string,
+  handleStatusChange: PropTypes.func,
 }.isRequired;
 
-export default BarContainer;
+export default memo(BarContainer);
