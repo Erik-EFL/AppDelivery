@@ -35,7 +35,7 @@ const getOrderById = (id) => axios.get(`${baseUrl}/orders/${id}`, {
   headers: { Authorization: JSON.parse(localStorage.getItem('user')).token },
 });
 
-const getAllSalesByCustomerId = (id) => axios.get(`${baseUrl}/orders/customer/${id}`, {
+const getAllSalesByCustomerId = () => axios.get(`${baseUrl}/customer/orders`, {
   headers: { Authorization: JSON.parse(localStorage.getItem('user')).token },
 });
 
@@ -44,7 +44,6 @@ const updateSaleStatus = (id, data) => {
     .put(`${baseUrl}/customer/orders/${id}`, data, {
       headers: { Authorization: JSON.parse(localStorage.getItem('user')).token },
     });
-  console.log(id, data);
 };
 
 export {

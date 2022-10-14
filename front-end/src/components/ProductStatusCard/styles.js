@@ -3,10 +3,10 @@ import themes from '../themes/themes';
 
 export const ProductStatusCardContainer = styled.div`
   display: flex;
+  box-sizing: border-box;
   flex-direction: row;
-  align-items: center;
   background-color: ${themes.bgPrimary.lightGray};
-  width: fit-content;
+  max-width: 470px;
   height: fit-content;
   padding-right: .5rem;
   gap: .5rem;
@@ -44,6 +44,7 @@ export const AddressText = styled.p`
 export const Box = styled.div`
   display: flex;
   height: 100%;
+  color: ${themes.typography.textColor.black};
   flex-direction: ${(props) => (props.direction === 'row' ? 'row' : 'column')};
   gap: ${({ gap }) => gap};
   padding: ${({ pd }) => pd}

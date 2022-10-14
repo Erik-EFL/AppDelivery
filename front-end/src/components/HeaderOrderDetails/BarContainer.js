@@ -8,7 +8,7 @@ import renderBar from './helper/renderBar';
 import useRequestById from './hooks/useRequest';
 import * as Styles from './styles';
 
-function BarContainer({ pageName, handleStatusChange }) {
+function BarContainer({ pageName, handleStatusChange, isDisabled }) {
   const { id: paramsId } = useParams();
   const { user } = useSelector((state) => state.userAuthReducer);
   const { role } = user;
@@ -33,6 +33,7 @@ function BarContainer({ pageName, handleStatusChange }) {
     sellerName: name,
     saleStatus,
     handleStatusChange,
+    isDisabled,
   };
 
   return (
@@ -45,6 +46,7 @@ function BarContainer({ pageName, handleStatusChange }) {
 BarContainer.propTypes = {
   pageName: PropTypes.string,
   handleStatusChange: PropTypes.func,
+  isDisabled: PropTypes.bool,
 }.isRequired;
 
 export default memo(BarContainer);

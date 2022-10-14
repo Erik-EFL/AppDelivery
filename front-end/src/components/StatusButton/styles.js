@@ -83,6 +83,7 @@ export const StatusButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: .5rem;
+  max-width: 160px;
   ${(props) => simpleButtonSize(props.hgt, props.wdt)}
   ${(props) => StatusButtonProps(props.status)}
 `;

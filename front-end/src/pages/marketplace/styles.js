@@ -3,18 +3,23 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
   gap: 5rem;
+
   position: relative;
+
 `;
 
 export const MarketContainer = styled.div`
-  align-self: center;
-  max-width: 90%;
+  max-width: 900px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem 2rem;
+  gap: 4rem 3rem;
+  align-self: center;
+
 `;
 
 export const CartButtonContainer = styled.div`

@@ -17,10 +17,12 @@ import * as Styles from './styles';
 function Marketplace() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  console.log('products', products);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { cart, totalPrices } = useSelector((state) => state.shoppingCartReducer);
+
+  console.log(cart);
 
   const getProducts = async () => {
     try {

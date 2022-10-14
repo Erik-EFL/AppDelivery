@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import { convertNumbers } from '../../../services/helper/utilidades';
 import SimpleButton from '../../GenericButton/index';
 import StatusButton from '../../StatusButton/index';
@@ -101,7 +102,10 @@ const renderBar = (data) => {
                 fs="md"
                 readLine="MARCAR COMO ENTREGUE"
                 dataTestid="customer_order_details__button-delivery-check"
-                onClick={ () => data.handleStatusChange(data.orderId) }
+                onClick={ () => {
+                  data.handleStatusChange(data.orderId);
+                } }
+                disabled={ data.isDisabled }
               />
             </div>
           </div>

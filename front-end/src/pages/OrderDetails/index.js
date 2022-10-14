@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -19,6 +20,7 @@ function OrderDetails() {
   const { role: userRole } = user;
   const pageName = usePageName();
   const [data, setData] = useState();
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const getData = async () => {
     const response = await getOrderById(idParams);
@@ -26,12 +28,27 @@ function OrderDetails() {
   };
 
   const handleStatusChange = async (id) => {
-    const status = {
-      status: 'Entregue',
-    };
-    const response = updateSaleStatus(id, status);
-    window.location.reload();
-    return response;
+    if (data.status === 'Entregue') {
+      setIsDisabled(true);
+      alert('Pedido já entregue');
+    }
+    if (data.status === 'Pendente') {
+      setIsDisabled(true);
+      alert('Estamos analisando seu pedido');
+    }
+    if (data.status === 'Preparando') {
+      setIsDisabled(true);
+      alert('Estamos preparando seu pedido');
+    }
+    if (data.status === 'Saiu para entrega') {
+      setIsDisabled(false);
+      const status = {
+        status: 'Entregue',
+      };
+      const response = updateSaleStatus(id, status);
+      window.location.reload();
+      return response;
+    }
   };
 
   useEffect(() => {
@@ -57,6 +74,7 @@ function OrderDetails() {
                   quantidade={ product.salesProducts.quantity }
                   unitValue={ product.price }
                   totalValue={ product.salesProducts.quantity * product.price }
+                  isDisabled={ isDisabled }
                 />
               ))}
             </Tbody>

@@ -10,6 +10,10 @@ export const NavBarContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+
+  .active {
+    background-color: ${themes.bgPrimary.green};
+  }
 `;
 
 export const UsernameTextContainer = styled.div`
@@ -41,10 +45,6 @@ export const SimpleButton = styled(NavLink)`
     : `${themes.bgPrimary.darkGreen}`)};
   cursor: pointer;
   text-decoration: none;
-
-  .active {
-    background-color: ${themes.bgPrimary.green};
-  }
 `;
 
 export const Box = styled.div`

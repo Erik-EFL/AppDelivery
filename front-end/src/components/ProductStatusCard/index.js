@@ -1,17 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import
-{
+import {
   convertNumbers,
   formatDate,
-  formatPrice } from '../../services/helper/utilidades';
+  formatPrice,
+} from '../../services/helper/utilidades';
 
 import StatusButton from '../StatusButton';
 import * as Styles from './styles';
 import OrderIdCard from './subcomponents/OrderIdCard';
 import OrderInfoCard from './subcomponents/OrderInfoCard';
 
-function ProductStatusCard({ userRole, address, price, date, orderId }) {
+function ProductStatusCard({ userRole, address, price, date, orderId, status }) {
   return (
     <Styles.ProductStatusCardContainer>
       <OrderIdCard userRole={ userRole }>
@@ -19,7 +19,7 @@ function ProductStatusCard({ userRole, address, price, date, orderId }) {
       </OrderIdCard>
       <Styles.Box>
         <Styles.Box direction="row" gap="10px" pd="10px">
-          <StatusButton status="ENTREGUE" />
+          <StatusButton status={ status } />
           <Styles.Box direction="column" gap="10px">
             <OrderInfoCard>
               {formatDate(date)}
@@ -45,6 +45,7 @@ ProductStatusCard.propTypes = {
   date: PropTypes.string,
   price: PropTypes.string,
   orderId: PropTypes.string,
+  status: PropTypes.string,
 }.isRequired;
 
 export default ProductStatusCard;
