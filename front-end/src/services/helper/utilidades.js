@@ -21,6 +21,7 @@ function formatPrice(price) {
 }
 
 function convertNumbers(number) {
+  if (!number) return '0000';
   if (number < Number('10')) {
     return `000${number}`;
   }
