@@ -7,8 +7,8 @@ import {
 import Admin from '../pages/admin';
 import Checkout from '../pages/Checkout';
 import Marketplace from '../pages/marketplace';
-import CustomerShoppes from '../pages/MyShoppes';
-import OrderDetails from '../pages/OrderDetails';
+import MyShoppes from '../pages/MyShoppes';
+import OrderDetails from '../pages/OrderDetails/customer';
 import SignIn from '../pages/signIn';
 import SignUp from '../pages/signUp';
 
@@ -32,15 +32,19 @@ function AppRoutes() {
         />
         <Route
           path="/customer/orders/:id"
-          element={ <OrderDetails userRole="customer" /> }
-        />
-        <Route
-          path="/customer/orders"
-          element={ <CustomerShoppes userRole="customer" /> }
+          element={ <OrderDetails /> }
         />
         <Route
           path="/seller/orders/:id"
-          element={ <OrderDetails userRole="seller" /> }
+          element={ <OrderDetails /> }
+        />
+        <Route
+          path="/customer/orders"
+          element={ <MyShoppes /> }
+        />
+        <Route
+          path="/seller/orders"
+          element={ <MyShoppes /> }
         />
         <Route path="/admin/manage" element={ <Admin /> } />
       </Routes>

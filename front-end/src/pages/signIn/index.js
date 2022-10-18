@@ -47,6 +47,9 @@ function SignIn() {
         if (result.user.role === 'customer') {
           navigate('/customer/products');
         }
+        if (result.user.role === 'seller') {
+          navigate('/seller/orders');
+        }
       }
     }).catch((err) => {
       setError(err.response.data.message);

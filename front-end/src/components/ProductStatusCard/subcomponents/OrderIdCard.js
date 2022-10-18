@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 
 import * as Styles from '../styles';
 
-function OrderInfoCard({ children, userRole }) {
+function OrderInfoCard({ children, userRole, dataTestId, id }) {
   return (
-    <Styles.OrderIdContainer userRole={ userRole }>
+    <Styles.OrderIdContainer
+      userRole={ userRole }
+      data-testid={ `${dataTestId}element-order-id-${id}` }
+    >
       <Styles.OrderCardText size="md">
         Pedido
       </Styles.OrderCardText>
@@ -18,6 +21,9 @@ function OrderInfoCard({ children, userRole }) {
 
 OrderInfoCard.propTypes = {
   children: PropTypes.element,
+  userRole: PropTypes.string,
+  dataTestId: PropTypes.func,
+  id: PropTypes.number,
 }.isRequired;
 
-export default OrderInfoCard;
+export default memo(OrderInfoCard);

@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 import * as Styles from './styles';
 
-export default function InputGeneric(
+function InputGeneric(
   { value, name, domId, placeholder, size, type, onChange, max },
 ) {
   return (
@@ -30,3 +31,5 @@ InputGeneric.propTypes = {
   type: PropTypes.string,
   onChange: PropTypes.func,
 }.isRequired;
+
+export default memo(InputGeneric);

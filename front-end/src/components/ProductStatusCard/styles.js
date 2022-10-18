@@ -7,6 +7,7 @@ export const ProductStatusCardContainer = styled.div`
   flex-direction: row;
   background-color: ${themes.bgPrimary.lightGray};
   max-width: 470px;
+  min-width: 470px;
   height: fit-content;
   padding-right: .5rem;
   gap: .5rem;
@@ -18,6 +19,7 @@ export const OrderIdContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: flex-start;
   background-color: ${themes.bgPrimary.white};
   flex-direction: column;
   padding: ${({ userRole }) => (userRole === 'seller' ? '4.1rem 3rem' : '2.6rem 3rem')};
@@ -32,6 +34,7 @@ export const OrderCardText = styled.p`
 
 export const OrderInfoContainer = styled.div`
   border-radius: .5rem;
+  margin-left: 12px;
   background-color: ${themes.bgPrimary.iceWhite};
   padding: .5rem 1rem;
 `;

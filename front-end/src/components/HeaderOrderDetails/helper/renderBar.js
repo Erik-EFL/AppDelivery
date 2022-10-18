@@ -5,58 +5,63 @@ import StatusButton from '../../StatusButton/index';
 import * as Styles from '../styles';
 
 const renderBar = (data) => {
-  if (data.userRole === 'seller' && data.pageName === 'Detalhe do Pedido') {
+  const { pageName, userRole, saleDate, orderId, sellerName, saleStatus,
+    handleStatusChange, orderStatus } = data;
+  if (userRole === 'seller' && pageName === 'Detalhe do Pedido') {
     return (
-      <div>
-        <div>
-          <div style={ { width: '15rem' } }>
-            <Styles.TH3
-              data-testid="seller_order_details__element-order-details-label-order-id"
-            >
-              {`PEDIDO ${convertNumbers(data.orderId)}`}
-            </Styles.TH3>
-          </div>
-          <div style={ { width: '15rem' } }>
-            <Styles.TH3
-              data-testid="seller_order_details__element-order-details-label-order-date"
-              className="date"
-            >
-              {data.saleDate}
-            </Styles.TH3>
-          </div>
-          <div style={ { width: '33rem' } }>
-            <StatusButton
-              data-testid={ `seller_order_details
+      <div className="leftContainer">
+        <Styles.ContainerLeft>
+
+          <Styles.TH3
+            data-testid="seller_order_details__element-order-details-label-order-id"
+            className="orderInfoId"
+          >
+            {`PEDIDO ${convertNumbers(orderId)}`}
+          </Styles.TH3>
+
+          <Styles.TH3
+            data-testid="seller_order_details__element-order-details-label-order-date"
+            className="date orderInfoDate"
+          >
+            {saleDate}
+          </Styles.TH3>
+          <StatusButton
+            data-testid={ `seller_order_details
               __element-order-details-label-delivery-status` }
-              status="PENDENTE"
-              hgt="3.7"
-              wdt="19"
-            />
-          </div>
-          <div style={ { width: '10rem' } }>
-            <SimpleButton
-              data-testid="seller_order_details__button-preparing-check"
-              hgt="3.7"
-              wdt="25"
-              fs="md"
-              readLine="PREPARANDO PEDIDO"
-              variant="primary"
-            />
-          </div>
-          <div style={ { width: '10rem' } }>
-            <SimpleButton
-              data-testid="seller_order_details__button-dispatch-check"
-              hgt="3.7"
-              wdt="25"
-              fs="md"
-              readLine="SAIU PARA ENTREGA"
-            />
-          </div>
-        </div>
+            status={ orderStatus }
+            hgt="3.7"
+            wdt="19"
+            className="orderInfoStatus"
+          />
+        </Styles.ContainerLeft>
+        <Styles.ContainerRight>
+          <SimpleButton
+            data-testid="seller_order_details__button-preparing-check"
+            hgt="3.7"
+            wdt="25"
+            fs="md"
+            readLine="PREPARANDO PEDIDO"
+            variant="primary"
+            className="orderInfoButton"
+            onClick={ () => handleStatusChange() }
+            disabled={ saleStatus !== 'PENDENTE' }
+          />
+
+          <SimpleButton
+            data-testid="seller_order_details__button-dispatch-check"
+            hgt="3.7"
+            wdt="25"
+            fs="md"
+            readLine="SAIU PARA ENTREGA"
+            className="orderInfoButton"
+            onClick={ () => handleStatusChange() }
+            disabled={ saleStatus !== 'PREPARANDO' }
+          />
+        </Styles.ContainerRight>
       </div>
     );
   }
-  if (data.userRole === 'customer' && data.pageName === 'Detalhe do Pedido') {
+  if (userRole === 'customer' && pageName === 'Detalhe do Pedido') {
     return (
       <div>
         <div className="leftContainer">
@@ -67,7 +72,7 @@ const renderBar = (data) => {
               data-testid="customer_order_details__element-order-details-label-order-id"
             >
               <strong>
-                {`PEDIDO ${convertNumbers(data.orderId)}`}
+                {`PEDIDO ${convertNumbers(orderId)}`}
                 ;
               </strong>
             </Styles.TH3>
@@ -75,7 +80,7 @@ const renderBar = (data) => {
               data-testid={ `customer_order_details
               __element-order-details-label-seller-name` }
             >
-              { data.sellerName }
+              { sellerName }
             </Styles.TSPAN>
           </div>
           <div className="badgesContainer">
@@ -84,11 +89,11 @@ const renderBar = (data) => {
               data-testid={ `customer_order_details
             __element-order-details-label-order-date` }
             >
-              {data.saleDate}
+              {saleDate}
             </div>
             <div className="statusContainer">
               <StatusButton
-                status={ data.saleStatus }
+                status={ orderStatus }
                 hgt="5"
                 wdt="15"
                 data-testid={ `customer_order_details__
@@ -102,10 +107,8 @@ const renderBar = (data) => {
                 fs="md"
                 readLine="MARCAR COMO ENTREGUE"
                 dataTestid="customer_order_details__button-delivery-check"
-                onClick={ () => {
-                  data.handleStatusChange(data.orderId);
-                } }
-                disabled={ data.isDisabled }
+                onClick={ () => handleStatusChange() }
+                disabled={ saleStatus !== 'EM TRÂNSITO' }
               />
             </div>
           </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearCart } from '../../redux/actions/userActions';
 import * as Styles from './styles';
@@ -38,13 +38,18 @@ function Navbar() {
       return (
         <Styles.SimpleButton
           variant="simple"
+          data-testid="customer_products__element-navbar-link-products"
         >
           GERENCIAR USUÁRIOS
         </Styles.SimpleButton>
       );
     }
     return (
-      <Styles.SimpleButton variant="simple">
+      <Styles.SimpleButton
+        variant="simple"
+        data-testid="customer_products__element-navbar-link-products"
+        to="/seller/orders"
+      >
         PEDIDOS
       </Styles.SimpleButton>
     );
@@ -76,4 +81,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default memo(Navbar);

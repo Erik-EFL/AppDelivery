@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import usePageName from '../../services/hooks/usePageName';
 import selectTable from './helper/funcComponent';
@@ -53,4 +53,4 @@ TableInfo.propTypes = {
   onClick: PropTypes.func,
 }.isRequired;
 
-export default TableInfo;
+export default memo(TableInfo);

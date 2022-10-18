@@ -49,6 +49,24 @@ export const OrderDetails = styled.section`
       align-items: center;
     }
   }
+
+  .orderInfoId {
+    margin-left: 8px;
+  }
+
+  :disabled {
+    background-color: ${themes.bgPrimary.lightGray};
+  }
+`;
+
+export const ContainerLeft = styled.div`
+  display: flex;
+  gap: 10px;
+`;
+export const ContainerRight = styled.div`
+  display: flex;
+  gap: 10px;
+  margin-right: 5px;
 `;
 
 export const TH3 = styled.h3`

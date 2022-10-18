@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import * as Styles from './style';
 
 function SimpleButton(
@@ -47,4 +47,4 @@ SimpleButton.propTypes = {
   bold: PropTypes.bool,
 }.isRequired;
 
-export default SimpleButton;
+export default memo(SimpleButton);
