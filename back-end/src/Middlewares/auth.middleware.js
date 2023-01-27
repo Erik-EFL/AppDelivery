@@ -12,6 +12,31 @@ const authMiddleware = {
     req.role = data.role;
     next();
   },
+
+  verifyIfUserRouteAuthorized: (req, _res, next) => {
+    const { role } = req;
+    if (role !== 'user') {
+      throw new UnauthorizedError('User not authorized');
+    }
+    next();
+  },
+
+  verifyIfAdminRouteAuthorized: (req, _res, next) => {
+    const { role } = req;
+    if (role !== 'admin') {
+      throw new UnauthorizedError('User not authorized');
+    }
+    next();
+  },
+
+  verifyIfUserIsOwnerAccount: (req, _res, next) => {
+    const { id } = req.params;
+    const { id: userId } = req;
+    if (id !== userId) {
+      throw new UnauthorizedError('User not authorized');
+    }
+    next();
+  }
 };
 
 module.exports = authMiddleware;
