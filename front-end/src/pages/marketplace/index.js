@@ -22,8 +22,6 @@ function Marketplace() {
   const dispatch = useDispatch();
   const { cart, totalPrices } = useSelector((state) => state.shoppingCartReducer);
 
-  console.log(cart);
-
   const getProducts = async () => {
     try {
       setLoading(true);
