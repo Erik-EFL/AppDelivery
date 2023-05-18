@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Preview]()
+![Preview](imagem.png)
 
 </div>
 
@@ -111,6 +111,30 @@
         <img src="https://avatars.githubusercontent.com/u/56979306?s=400&u=526ff856d28fc3ce1926f51be6aa1f947156b8bb&v=4" width="100px;" alt="Foto de Erik Ferreida de Lima"/><br>
         <sub>
           <b>Erik Lima</b>
+        </sub>
+      </a>
+    </td>
+      <td align="center">
+      <a href="https://github.com/kingreto1">
+        <img src="https://avatars.githubusercontent.com/u/85196393?v=4" width="100px;" alt="Foto de Gabriel Melo"/><br>
+        <sub>
+          <b>Gabriel Melo</b>
+        </sub>
+      </a>
+    </td>
+      <td align="center">
+      <a href="https://github.com/Thiago-Bodnar">
+        <img src="https://avatars.githubusercontent.com/u/94481341?v=4" width="100px;" alt="Foto de Thiago Bodnar"/><br>
+        <sub>
+          <b>Thiago Bodnar</b>
+        </sub>
+      </a>
+    </td>
+      <td align="center">
+      <a href="https://github.com/tcorrea">
+        <img src="https://avatars.githubusercontent.com/u/20843662?v=4" width="100px;" alt="Foto de Thiago de Carvalho Corrêa"/><br>
+        <sub>
+          <b>Thiago de Carvalho Corrêa</b>
         </sub>
       </a>
     </td>

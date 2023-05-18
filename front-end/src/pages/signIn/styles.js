@@ -12,6 +12,24 @@ export const Container = styled.div`
   background-color: rgb(240, 230, 215);
 `;
 
+export const ImgContainer = styled.div`
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: ${themes.typography.textColor.black};
+    margin-top: -20px;
+  }
+`;
+
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;

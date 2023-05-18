@@ -6,6 +6,7 @@ import {
   GenericButton,
   GenericInput,
 } from '../../components';
+import logo from '../../images/logo.webp';
 import { userAuth } from '../../redux/actions/userActions';
 import { requestLogin } from '../../services/api';
 import * as Styles from './styles';
@@ -72,8 +73,11 @@ function SignIn() {
 
   return (
     <Styles.Container>
-      <h1>Techila</h1>
-      <h2>O delivery de cachaça</h2>
+      <Styles.ImgContainer>
+        <img src={ logo } alt="logo" />
+        <h1>Techila</h1>
+        <h2>O delivery de cachaça</h2>
+      </Styles.ImgContainer>
       <Styles.FormContainer>
         <GenericInput
           domId="common_login__input-email"
